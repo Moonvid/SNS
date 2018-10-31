@@ -18,6 +18,7 @@
 	rel="stylesheet">
 </head>
 <body>
+ㄴ리ㅏ허ㅣ낭ㄹ허ㅣㅗㅗㅎ
 	<%@ include file="/WEB-INF/views/common/layout_top.jsp"%>
 	<%@ include file="/WEB-INF/views/common/layout_right.jsp"%>
 	<br>
