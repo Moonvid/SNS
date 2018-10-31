@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.springsns.member.dao.MemberDaoInterface">
+
+	<!-- 로그인용 -->
+	<select id="getMemberInfo" resultType="com.team.springsns.model.MemberInfo">
+		select * from member where userid=#{Id}
+	</select>
+
+	<!-- 회원가입용 -->
+	<insert id="insertMemberInfo"
+		parameterType="com.team.springsns.model.MemberInfo" useGeneratedKeys="true" keyColumn="userno">
+		insert into member (userid, username, userpassword, userprofilephoto, userintro, userblock, manager)
+		values(#{userId}, #{userName}, #{userPassword}, #{userProfilePhoto}, #{userIntro}, #{userBlock}, #{manager})
+	</insert>
+
+</mapper>

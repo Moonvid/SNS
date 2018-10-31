@@ -1,4 +1,4 @@
-package com.team.springsns;
+package com.team.springsns.member.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -33,7 +33,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "loginForm";
 	}
 	
 }

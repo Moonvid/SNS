@@ -1,0 +1,45 @@
+@charset "utf-8";
+body{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.back{
+	/* opacity: 0.5; */
+	background-color: white;	
+	width: 450px;
+	height: 350px;
+	z-index: 100;
+	margin: 130px auto;	
+	background-color: rgba( 255, 255, 255, 0.5 );
+}
+.login-form{
+	margin: 0 auto;	
+	/* position: relative; */
+}
+table{
+    width: 300px;
+    margin: 0 auto;
+    padding : 15px;
+    z-index: 10000;    
+    position: relative;  
+}
+.btn{
+    width: 300px; 
+    height: 30px;
+    font-weight: bold;
+ 	color: white;
+ 	background-color: rgb(69,81,147);
+}
+.btn:hover{
+    background-color: gray;
+    color: white;
+}
+a{
+    text-decoration: none;
+    color : rgb(69,81,147);
+}
+p{
+    padding: 10px 0;
+}
