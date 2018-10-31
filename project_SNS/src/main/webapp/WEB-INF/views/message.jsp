@@ -26,12 +26,7 @@
 	<br>
 	<br>
 	<br>
-<%-- 	<a
-				href="${pageContext.request.contextPath}/MessageFrom/MessageFrom">보낼
-					메세지 페이지 이동</a><br> --%>
-					<a
-				href="${pageContext.request.contextPath}/MessageTo/WhoRecv">받은
-					메세지 페이지 이동</a>
+	<a href="${pageContext.request.contextPath}/MessageTo/WhoRecv">받은 메세지 페이지 이동</a>
 
 </body>
 </html>

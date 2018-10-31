@@ -84,8 +84,6 @@
 	<beans:bean id="dataDao" class="com.team.springsns.search.vo.DataVO"></beans:bean>
 
 
-
-
 	<!-- Service 등록 -->
 	<beans:bean id="memberLoginService"
 		class="com.team.springsns.member.service.MemberLoginService" />
@@ -93,8 +91,5 @@
 	<beans:bean id="memberRegService"
 		class="com.team.springsns.member.service.MemberRegService" />
 		
-	<beans:bean id="messageService"	class="com.team.springsns.message.service.MessageService"></beans:bean>
-	
-	
-	
+	<beans:bean id="messageService"	class="com.team.springsns.message.service.MessageService"></beans:bean>	
 </beans:beans>

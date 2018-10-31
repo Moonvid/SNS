@@ -13,9 +13,7 @@
 	href="${pageContext.request.contextPath}/css/loginCSS.css"
 	type="text/css">
 <!-- 구글폰트 -->
-<link
-	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo" rel="stylesheet">
 
 </head>
 <body>
@@ -25,8 +23,9 @@
 	<br>
 	<br>
 	<br>
+	<br>
 	<form method="post">
-		받은 메세지 확인할 아이디 : <input type="text" name="recvId"/>
+		받은 메세지 확인할 아이디 : <input type="text" name="recvid"/>
 		<input type="submit" value="확인" />
 	</form>
 </body>

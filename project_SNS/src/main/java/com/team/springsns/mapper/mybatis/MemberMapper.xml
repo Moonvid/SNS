@@ -7,34 +7,33 @@
 		parameterType="com.team.springsns.model.MessageWriteInfo"
 		useGeneratedKeys="true" keyProperty="idx">
 		insert into message
-		(SendId,RecvId,MessageCont,SendDate)
-		values(#{sendId},#{recvId},#{messageCont},#{sendDate})
+		(sendid,recvid,messagecont,senddate)
+		values(#{sendid},#{recvid},#{messagecont},#{senddate})
 	</insert>
 
 	<select id="selectById"
 		resultType="com.team.springsns.model.MessageWriteInfo">
-		select * from message where userid=#{userID}
+		select * from message where userid=#{userid}
 	</select>
 
 	<select id="recvMessage"
 		resultType="com.team.springsns.model.MessageWriteInfo">
-		select * from message where recvId=#{recvId}
+		select * from message where recvid=#{recvid}
 	</select>
 
 	<select id="cntMessage"
 		resultType="com.team.springsns.model.MessageWriteInfo">
-		select recvId, count(recvId) count from message where recvId=#{recvId} and CheckMessage=0
+		select recvid, count(recvid) count from message where recvid=#{recvid} and checkmessage=0
 	</select>
 
-	<update id="changeCheckMessage"
-		parameterType="com.team.springsns.model.MessageWriteInfo">
+	<update id="changeCheckMessage"	parameterType="com.team.springsns.model.MessageWriteInfo">
 		update
 		message set
 		CheckMessage=1 where
-		MessageNum=#{messageNum}
+		messageno=#{messageno}
 	</update>
 	<delete id="deleteMessage" parameterType="com.team.springsns.model.MessageWriteInfo">
-		delete from message where MessageNum= #{messageNum}
+		delete from message where messageno= #{messageno}
 	</delete>
 
 </mapper>

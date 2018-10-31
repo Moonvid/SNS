@@ -24,7 +24,7 @@
 	<br>
 	<br>
 	<br>
-	<h1>${messageInfo.recvId }의 확인 안 한 메세지 개수: ${messageInfo.count }개 입니다.</h1>
-	<a href="${pageContext.request.contextPath}/MessageTo/MessageTo?recvId=${messageInfo.recvId }">메세지 확인</a>
+	<h1>${messageInfo.recvid }의 확인 안 한 메세지 개수: ${messageInfo.count }개 입니다.</h1>
+	<a href="${pageContext.request.contextPath}/MessageTo/MessageTo?recvid=${messageInfo.recvid }">메세지 확인</a>
 </body>
 </html>

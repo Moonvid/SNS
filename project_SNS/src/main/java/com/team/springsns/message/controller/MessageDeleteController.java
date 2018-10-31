@@ -23,8 +23,8 @@ public class MessageDeleteController {
 		int result = service.MessageDelete(messageWriteInfo);
 
 		if (result == 1) {
-			String recvId = URLEncoder.encode(messageWriteInfo.getRecvId(), "utf-8");
-			modelAndView.setViewName("redirect:/MessageTo/MessageTo?recvId=" + recvId);
+			String recvId = URLEncoder.encode(messageWriteInfo.getRecvid(), "utf-8");
+			modelAndView.setViewName("redirect:/MessageTo/MessageTo?recvid=" + recvId);
 		} else {
 			modelAndView.setViewName("error");
 		}

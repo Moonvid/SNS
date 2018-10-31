@@ -37,7 +37,7 @@ public class MessageWriteController {
 
 		System.out.println(ctime);
 
-		messageWriteInfo.setSendDate(ctime);
+		messageWriteInfo.setSenddate(ctime);
 		
 		service.goMessageTo(messageWriteInfo);
 		modelAndView.setViewName("message");

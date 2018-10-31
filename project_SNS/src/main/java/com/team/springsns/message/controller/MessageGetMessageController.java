@@ -20,10 +20,10 @@ public class MessageGetMessageController {
 	private MessageService service;
 
 	@RequestMapping(value = "/MessageTo/MessageTo")
-	public ModelAndView getMessage(@RequestParam("recvId") String recvId, MessageWriteInfo messageWriteInfo) {
+	public ModelAndView getMessage(@RequestParam("recvid") String recvId, MessageWriteInfo messageWriteInfo) {
 		ModelAndView modelAndView = new ModelAndView();
 		if (recvId != null) {
-			messageWriteInfo.setRecvId(recvId);
+			messageWriteInfo.setRecvid(recvId);
 		}
 
 		List<MessageWriteInfo> list;

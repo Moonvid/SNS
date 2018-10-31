@@ -2,13 +2,13 @@ package com.team.springsns.model;
 
 public class MessageWriteInfo {
 	private int count;
-	private String messageNum;
-	private String sendId;
-	private String recvId;
-	private String messageCont;
-	private String sendDate;
+	private String messageno;
+	private String sendid;
+	private String recvid;
+	private String messagecont;
+	private String senddate;
 	private String hashTag;
-	private boolean checkMessage = false;
+	private boolean checkmessage = false;
 
 	public int getCount() {
 		return count;
@@ -18,44 +18,44 @@ public class MessageWriteInfo {
 		this.count = count;
 	}
 
-	public String getMessageNum() {
-		return messageNum;
+	public String getMessageno() {
+		return messageno;
 	}
 
-	public void setMessageNum(String messageNum) {
-		this.messageNum = messageNum;
+	public void setMessageno(String messageno) {
+		this.messageno = messageno;
 	}
 
-	public String getSendId() {
-		return sendId;
+	public String getSendid() {
+		return sendid;
 	}
 
-	public void setSendId(String sendId) {
-		this.sendId = sendId;
+	public void setSendid(String sendid) {
+		this.sendid = sendid;
 	}
 
-	public String getRecvId() {
-		return recvId;
+	public String getRecvid() {
+		return recvid;
 	}
 
-	public void setRecvId(String recvId) {
-		this.recvId = recvId;
+	public void setRecvid(String recvid) {
+		this.recvid = recvid;
 	}
 
-	public String getMessageCont() {
-		return messageCont;
+	public String getMessagecont() {
+		return messagecont;
 	}
 
-	public void setMessageCont(String messageCont) {
-		this.messageCont = messageCont;
+	public void setMessagecont(String messagecont) {
+		this.messagecont = messagecont;
 	}
 
-	public String getSendDate() {
-		return sendDate;
+	public String getSenddate() {
+		return senddate;
 	}
 
-	public void setSendDate(String sendDate) {
-		this.sendDate = sendDate;
+	public void setSenddate(String senddate) {
+		this.senddate = senddate;
 	}
 
 	public String getHashTag() {
@@ -66,19 +66,19 @@ public class MessageWriteInfo {
 		this.hashTag = hashTag;
 	}
 
-	public boolean isCheckMessage() {
-		return checkMessage;
+	public boolean isCheckmessage() {
+		return checkmessage;
 	}
 
-	public void setCheckMessage(boolean checkMessage) {
-		this.checkMessage = checkMessage;
+	public void setCheckmessage(boolean checkmessage) {
+		this.checkmessage = checkmessage;
 	}
 
 	@Override
 	public String toString() {
-		return "MessageWriteInfo [count=" + count + ", MessageNum=" + messageNum + ", sendId=" + sendId + ", recvId="
-				+ recvId + ", messageCont=" + messageCont + ", sendDate=" + sendDate + ", hashTag=" + hashTag
-				+ ", checkMessage=" + checkMessage + "]";
+		return "MessageWriteInfo [count=" + count + ", messageno=" + messageno + ", sendid=" + sendid + ", recvid="
+				+ recvid + ", messagecont=" + messagecont + ", senddate=" + senddate + ", hashTag=" + hashTag
+				+ ", checkmessage=" + checkmessage + "]";
 	}
 
 }

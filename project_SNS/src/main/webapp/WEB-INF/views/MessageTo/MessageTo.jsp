@@ -35,18 +35,17 @@
 			<td>메세지 내용</td>
 			<td>보낸 시간</td>
 			<td>메세지 확인 유무</td>
-			<td>확인 버튼</td>
+			<td colspan="2">확인 삭제</td>
 		</tr>
 		<c:forEach var="messageInfo" items="${messageInfo}">
 			<tr class="checkMessage">
-				<td>${messageInfo.sendId }</td>
-				<td>${messageInfo.recvId }</td>
-				<td>${messageInfo.messageCont }</td>
-				<td>${messageInfo.sendDate }</td>
-				<td id="unique${messageInfo.messageNum}" class="${messageInfo.messageNum}">${messageInfo.checkMessage }</td>
-				<td><button class="ReadMessage"	value="${messageInfo.messageNum}">[읽음]</button></td>				
-				<td><button  value="${messageInfo.messageNum},${messageInfo.recvId }" class="DeleteMessage" 
-				onclick="MessageDelete(this)">[삭제]</button></td>
+				<td>${messageInfo.sendid }</td>
+				<td>${messageInfo.recvid }</td>
+				<td>${messageInfo.messagecont }</td>
+				<td>${messageInfo.senddate }</td>
+				<td id="unique${messageInfo.messageno}" class="${messageInfo.messageno}">${messageInfo.checkmessage }</td>
+				<td><button class="ReadMessage"	value="${messageInfo.messageno}">[읽음]</button></td>				
+				<td><button value="${messageInfo.messageno},${messageInfo.recvid }" class="DeleteMessage" onclick="MessageDelete(this)">[삭제]</button></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -59,7 +58,7 @@
 		var param = $(obj).val().split(',');
 		var con = confirm('삭제하시겠습니까?');
 		if(con){
-			var url ="/tp/MessageDelete?messageNum="+param[0]+"&recvId="+param[1];
+			var url ="/springsns/MessageDelete?messageno="+param[0]+"&recvid="+param[1];
 			location.href = url;
 		}
 	}
@@ -74,6 +73,7 @@
 					$(this).find('td[id*="unique"]').each(function(index, item) {
 						if (item.innerHTML == "true") {
 							secondthis.find('.ReadMessage').attr('disabled', true);
+							secondthis.find('.ReadMessage').css('color','red');
 						}
 					});
 				});
@@ -84,18 +84,19 @@
 			var messageNum = $(this).val();
 			var attribute = $(this);
 			/* 루트기준 절대경로 */
-			var url = '/tp/ReadMessage';
+			var url = '/springsns/ReadMessage';
 			var checkMessage = '#unique' + messageNum;
 			$.ajax({
 				url : url,
 				data : {
 				/* 파라미터 넘기는것 '?num=ttt' */
-					"messageNum" : messageNum
+					"messageno" : messageNum
 				}, 
 				success : function(response) {
 					if (response == 1) {
 						$(checkMessage).text('true');
 						attribute.attr('disabled', true);
+						attribute.css('color','red');
 					}
 				}
 			});

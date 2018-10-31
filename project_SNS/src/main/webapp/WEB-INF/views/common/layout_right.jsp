@@ -80,7 +80,7 @@ body {
 			<ul>
 				<li><a href="#">글쓰기</a></li>
 				<li><a href="#">친구목록</a></li>
-				<li><a href="${pageContext.request.contextPath}/message">쪽지함</a></li>
+				<li><a href="${pageContext.request.contextPath}/MessageTo/WhoRecv?recvid=${loginInfo.userName}">쪽지함</a></li>
 				<li><a href="#">프로필</a></li>
 			</ul>
 		</div>

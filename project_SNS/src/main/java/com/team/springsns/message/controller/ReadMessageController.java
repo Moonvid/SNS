@@ -17,9 +17,9 @@ public class ReadMessageController {
 
 	@RequestMapping(method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public int readMessage(String messageNum) {
+	public int readMessage(String messageno) {
 		MessageWriteInfo messageWriteInfo = new MessageWriteInfo();
-		messageWriteInfo.setMessageNum(messageNum);
+		messageWriteInfo.setMessageno(messageno);
 		return service.changeCheckMessage(messageWriteInfo);
 	}
 }
