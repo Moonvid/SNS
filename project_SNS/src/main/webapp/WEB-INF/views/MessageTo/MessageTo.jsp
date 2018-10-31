@@ -66,16 +66,12 @@
 	/* 페이지 로드 될떄 읽음 버튼 누른애들은 버튼 비활성화 */
 		$(document).ready(function() {
 			$('.checkMessage').filter(function(text) {
-				/* this==text */
-				$(this).filter(function(test) {
-					var secondthis = $(this);
-					/* this==test */
-					$(this).find('td[id*="unique"]').each(function(index, item) {
-						if (item.innerHTML == "true") {
-							secondthis.find('.ReadMessage').attr('disabled', true);
-							secondthis.find('.ReadMessage').css('color','red');
-						}
-					});
+				var secondthis = $(this);
+				$(this).find('td[id*="unique"]').each(function(index, item) {
+					if (item.innerHTML == "true") {
+						secondthis.find('.ReadMessage').attr('disabled', true);
+						secondthis.find('.ReadMessage').css('color','blue');
+					}
 				});
 			});
 		});
