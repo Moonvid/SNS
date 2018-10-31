@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.team.springsns.isgood.dao.IsGoodDaoInterface">
+ 
+ 	<insert id="insertIsGood" parameterType="com.team.springsns.model.IsGoodDTO">
+ 		insert into isgood (boardno, userno) 
+ 		value (#{boardNo}, #{userNo})
+ 	</insert>
+ 	
+ 	<select id="selectIsGood" resultType="com.team.springsns.model.IsGoodDTO">
+ 		select * from isgood where boardno=#{boardNo} and userno=#{userNo}
+ 	</select>
+ 	
+ 	<select id="getCountIsGood" resultType="com.team.springsns.model.CountIsGoodDTO">
+ 		select boardno, count(userno) as isgoodcnt from isgood group by boardno having boardno=#{boardNo}
+ 	</select>
+
+<!--  	<select id="getBoardAll" resultType="com.bitcamp.sns.model.Board">
+ 		select * from board
+ 	</select> -->
+ 	
+ 	<delete id="deleteIsGood" parameterType="com.team.springsns.model.IsGoodDTO">
+ 		delete from isgood where boardno=#{boardNo} and userno=#{userNo}
+ 	</delete>
+ 
+ 	<delete id="deleteIsGoodAll">
+ 		delete from isgood where boardno=#{boardNo}
+ 	</delete>
+ 
+ </mapper>
