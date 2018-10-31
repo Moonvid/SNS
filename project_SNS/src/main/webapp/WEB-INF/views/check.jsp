@@ -18,7 +18,6 @@
 	rel="stylesheet">
 </head>
 <body>
-<a></a>
 	<%@ include file="/WEB-INF/views/common/layout_top.jsp"%>
 	<%@ include file="/WEB-INF/views/common/layout_right.jsp"%>
 	<br>
