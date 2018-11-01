@@ -24,6 +24,13 @@
 	margin: 10px;
 	border: 1px solid;
 }
+
+.commentSection{
+	padding-left: 20px;
+	padding-bottom: 20px;
+	
+	background-color: white;
+}
 </style>
 
 </head>
@@ -91,8 +98,8 @@
 				</span>
 				<span><a href="comment?boardNo=${board.boardNo}">[댓글달기]</a></span>
 				<span><button class="commBtn" value="${board.boardNo}">댓글...댓글을 보자!</button></span>
+			<div class="commentSection" id="commHidden_${board.boardNo}" style="display:none;">
 			</div>
-			<div id="commHidden_${board.boardNo}" style="display:none;">
 		
 			</div>
 		</c:forEach>
@@ -112,7 +119,7 @@
 <script>
 $('.commBtn').click(function() {
 	var bNo = $(this).val();
-	alert(bNo);
+	//alert(bNo);
 		var commList = [];
 		var comm = "";
 	 
@@ -131,12 +138,13 @@ $('.commBtn').click(function() {
 			 		if(commList.length==0){
 			 			comm += 'NO COMMENT!';
 			 		}else{
+			 				comm += '<br>총 댓글: '+commList.length+'<br>';
 			 			for(var i=0; i<commList.length; i++){
-			 				comm += '댓글번호 : '+commList[i].commentNo+'<br>';
+			 				comm += '<br>댓글번호 : '+commList[i].commentNo+' ';
+			 				comm += '<a href="deleteComment?commentNo='+commList[i].commentNo+'">[삭제하기] </a>';
+			 				comm += '<a href="editComment?commentNo='+commList[i].commentNo+'">[수정하기]</a><br>';
 			 				comm += '작성자 : '+commList[i].userId+'<br>';
 			 				comm += '코멘트 : '+commList[i].commentCont+'<br>';
-			 				comm += '<a href="deleteComment?commentNo='+commList[i].commentNo+'">[삭제하기]</a>';
-			 				comm += '<a href="editComment?commentNo='+commList[i].commentNo+'">[수정하기]</a><br><br>';
 			 			}
 			 		}
 			 		$('#commHidden_'+bNo).empty();
