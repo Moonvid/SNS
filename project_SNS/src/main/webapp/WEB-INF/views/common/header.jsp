@@ -27,6 +27,9 @@
 				<li><a href="<c:url value='/list/boardList' />">게시글관리</a></li>
 				<li><a href="<c:url value='/list/commentList' />">댓글관리</a></li>
 				<li><a href="<c:url value='/notice/list' />">공지사항</a></li>
+				<c:if test="${!empty loginInfo}">
+					<li><a href="<c:url value='/team/logout' />" onclick="javascript:session.invalidate()">로그아웃</a></li>
+				</c:if>
 			</ul>
 		</div>
 	</nav>
