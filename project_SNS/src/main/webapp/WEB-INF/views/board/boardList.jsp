@@ -46,6 +46,19 @@
 			<div><a href="<%=request.getContextPath()%>/board/edit?boardno=<c:out value="${board.boardNo}"/>">수정</a>
 				<a href='<%=request.getContextPath()%>/board/delete?boardno=<c:out value="${board.boardNo}" />&userid=<c:out value="${loginInfo.userId }" />'>삭제</a></div>
 			<div><a href="report?boardNo=${board.boardNo }&userNo=${loginInfo.userNo}" Onclick="javascript:reportNo()">신고하기</a></div>
+			<span id="isGood_${board.boardNo}">좋아요 : 
+				<c:if test="${isGoodList.isEmpty()}">0</c:if>
+				<c:if test="${!isGoodList.isEmpty() }">
+					<c:forEach var="isGood" items="${isGoodList}">
+						<c:if test="${board.boardNo eq isGood.boardNo}">
+							${isGood.isGoodCnt}
+						</c:if>
+					</c:forEach>
+				</c:if>
+				</span>
+				<span>
+			<button class="isGoodBnt" value="${board.boardNo}">좋아요!</button>
+			</span>
 		</div>
 	</c:forEach>
 	</section>
@@ -57,5 +70,21 @@
 	</c:forEach>
 
 
+
+<script>
+	$('.isGoodBnt').click(function() {
+		var boardNo = $(this).val();
+		var userNo = ${loginInfo.userNo}
+		 $.ajax({
+		 	type: "POST",
+			url: "isGoodBoard",
+			data: {"boardNo":boardNo, "userNo":userNo},
+		 	success: function(data){
+		 		$('#isGood_'+boardNo).empty(),
+				$('#isGood_'+boardNo).append("좋아요 : "+data);
+		 	}                                                             
+		});
+	});
+</script>
 </body>
 </html>
