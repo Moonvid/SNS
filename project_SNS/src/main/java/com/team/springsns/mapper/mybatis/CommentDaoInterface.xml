@@ -14,6 +14,10 @@
 	<select id="selectCommentList" resultType="com.team.springsns.comment.model.CommentDTO">
 		select * from comment where boardno=#{boardNo}
 	</select>
+		
+	<select id="getComment" resultType="com.team.springsns.comment.model.CommentDTO">
+		select * from comment where commentno=#{commentNo}
+	</select>
 	
 	<delete id="deleteComment" >
 		delete from comment where commentno=#{commentNo}

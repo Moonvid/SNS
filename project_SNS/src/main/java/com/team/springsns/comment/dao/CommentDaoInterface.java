@@ -11,4 +11,5 @@ public interface CommentDaoInterface {
 	public void deleteComment(int commentNo);
 	public void deleteCommentAll(int boardNo);
 	public void updateComment(String commentCont, int commentNo);
+	public CommentDTO getComment(int commentNo);
 }
