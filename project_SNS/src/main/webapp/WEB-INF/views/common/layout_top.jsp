@@ -46,10 +46,9 @@
 					</c:otherwise>
 				</c:choose>
 			</ul>
-			<form class="navbar-form navbar-center" action="#">
+			<form class="navbar-form navbar-center" action="${pageContext.request.contextPath}/check">
 				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search"
-						name="search">
+					<input type="text" class="form-control" placeholder="Search" name="search">
 					<div class="input-group-btn">
 						<button class="btn btn-default" type="submit">
 							<i class="glyphicon glyphicon-search"></i>
