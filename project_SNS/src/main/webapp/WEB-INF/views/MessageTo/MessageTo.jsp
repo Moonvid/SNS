@@ -7,24 +7,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/loginCSS.css"
-	type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/loginCSS.css" type="text/css">
 <!-- 구글폰트 -->
-<link
-	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo"
-	rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <style>
 #wrap{
-	width:1000px;
+	width:800px;
 	margin:0;
 }
 </style>
@@ -34,7 +26,7 @@
 	<%@ include file="/WEB-INF/views/common/layout_right.jsp"%>
 	
 	<br>
-	<h1>${resultInfo.recvid }님의 확인 안 한 메세지 개수: ${resultInfo.count }개 입니다.</h1><br>
+	<h3>${resultInfo.recvid }님의 확인 안 한 메세지 개수: ${resultInfo.count }개 입니다.</h3><br>
 	
 	<h1>받은 메세지 출력</h1>
 	<div id="wrap">
@@ -60,7 +52,6 @@
 		</c:forEach>
 	</table>
 	</div>
-	<a href="../board/boardList">[메인으로]</a>
 	<!-- 왜 data 받을때 그냥 messageNum으로 받으면 값 안넘어가는지는 잘 모르겠다. 질문하자 -->
 	<!--경로도 왜 contextPath까지 다 써줘야하나?-->
 	<script>
