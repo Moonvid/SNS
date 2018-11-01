@@ -20,12 +20,12 @@ public class MemberLoginController {
 	private MemberLoginService service;
 
 	// 로그인 처리하기
-	@RequestMapping(value = "/")
-	//@RequestMapping(value = "/", method = RequestMethod.POST)
+	@RequestMapping(value = "/", method = RequestMethod.POST)
+	// @RequestMapping(value = "/", method = RequestMethod.POST)
 	public ModelAndView loginProcess(@RequestParam(value = "userId", required = false) String userId,
 			@RequestParam(value = "userPassword", required = true) String userPassword, HttpSession session)
 			throws SQLException {
-
+		System.out.println("1111");
 		ModelAndView modelAndView = new ModelAndView();
 
 		modelAndView.setViewName("team/loginFail"); // 실패하는걸 디폴트로 하면 if문에서 else 안써도 됨
@@ -40,7 +40,7 @@ public class MemberLoginController {
 
 				} else {
 					// 정상적으로 들어왔지만 일반 계정일때
-					//modelAndView.setViewName("team/team");
+					// modelAndView.setViewName("team/team");
 					modelAndView.setViewName("team/team");
 				}
 			}

@@ -49,7 +49,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="${pageContext.request.contextPath }/team/searchMain">[메인으로]</a>
+	<a href="../">[메인으로]</a>
 	<!-- 왜 data 받을때 그냥 messageNum으로 받으면 값 안넘어가는지는 잘 모르겠다. 질문하자 -->
 	<!--경로도 왜 contextPath까지 다 써줘야하나?-->
 	<script>

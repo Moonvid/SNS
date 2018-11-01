@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.team.springsns.model.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,7 +91,8 @@ body {
 					+ expireDate.toGMTString();
 		}
 	</script>
-
+<%MemberInfo memberInfo = (MemberInfo)request.getSession(false).getAttribute("loginInfo");
+%>
 	<div class="back">
 		<!-- <div class="login-form"> -->
 			<table>
