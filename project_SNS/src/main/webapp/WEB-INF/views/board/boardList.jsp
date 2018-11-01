@@ -40,7 +40,9 @@
 					<c:out value="${loginInfo.userNo }" />
 				</div>
 				<div>
-					<c:if test="${!empty board.hashTag}">
+				<c:set var="cont" value="신고접수된 글입니다." />
+				<c:set var="boardcont" value="${board.boardContent}"/>
+					<c:if test="${boardcont ne cont}">
 					사진: <img
 							src="<c:url value='/uploadfile/${board.boardPhotoFile}' />">
 						<%-- <c:out value="${board.boardPhotoFile }" /> --%>
@@ -59,7 +61,7 @@
 					<fmt:formatDate pattern="yyyy-MM-dd" value="${board.boardDate }" />
 				</div>
 				<div>
-					<c:if test="${!empty board.hashTag}">
+					<c:if test="${boardcont ne cont}">
 						<a
 							href="<%=request.getContextPath()%>/board/edit?boardno=<c:out value="${board.boardNo}"/>">수정</a>
 						<a
@@ -67,8 +69,10 @@
 					</c:if>
 				</div>
 				<div>
-					<input type="button" class="btn btn-default"
-						Onclick="reportNo(${board.boardNo})" value="신고하기">
+					<c:if test="${boardcont ne cont}">
+						<input type="button" class="btn btn-default"
+							Onclick="reportNo(${board.boardNo})" value="신고하기">
+					</c:if>
 				</div>
 				<span id="isGood_${board.boardNo}">좋아요 : <c:if
 						test="${isGoodList.isEmpty()}">0</c:if> <c:if
@@ -79,10 +83,9 @@
 						</c:if>
 						</c:forEach>
 					</c:if>
-				</span> <span> 
-				<c:if test="${!empty board.hashTag}">
+				</span> <span> <c:if test="${boardcont ne cont}">
 						<button class="isGoodBnt" value="${board.boardNo}">좋아요!</button>
-				</c:if>
+					</c:if>
 				</span>
 			</div>
 		</c:forEach>
