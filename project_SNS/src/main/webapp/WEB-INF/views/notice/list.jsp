@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%
+	MemberInfo loginInfo2 = (MemberInfo)request.getSession(false).getAttribute("loginInfo");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +24,7 @@
 	margin-bottom: 10px;
 }
 
-td, th{
+td, th {
 	width: 200px;
 	height: 30px;
 }
@@ -43,7 +46,15 @@ a {
 </head>
 <body>
 
-	<%@ include file="/WEB-INF/views/common/layout_top.jsp"%>
+	<c:set var="userId" value="${loginInfo2.userId}" />
+	<c:choose>
+		<c:when test="${userId eq 'managerSol@gamil.com'} ">
+			<%@ include file="/WEB-INF/views/common/header.jsp"%>
+		</c:when>
+		<c:otherwise>
+			<%@ include file="/WEB-INF/views/common/layout_top.jsp"%>
+		</c:otherwise>
+	</c:choose>
 
 	<c:if test="${viewData.isEmpty()}">
 		<h1 id="title">
@@ -74,9 +85,11 @@ a {
 							<td>${notice.noticeHit}</td>
 						</tr>
 					</c:forEach>
-					<tr>
-						<td colspan="5" style="text-align: right;"><a href="write">글쓰기</a></td>
-					</tr>
+					<c:if test="${userId eq 'managerSol@gmail.com'} ">
+						<tr>
+							<td colspan="5" style="text-align: right;"><a href="write">글쓰기</a></td>
+						</tr>
+					</c:if>
 				</table>
 			</form>
 		</div>

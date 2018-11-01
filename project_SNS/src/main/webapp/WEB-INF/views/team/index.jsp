@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>관리자페이지</title>
+<link rel="stylesheet" href="css/default.css">
 </head>
 <body>
-<h1>관리자 페이지입니다</h1>
+
+	<%@ include file="/WEB-INF/views/common/header.jsp"%>
+	
+	<h1>메인페이지</h1>
+
 </body>
 </html>
