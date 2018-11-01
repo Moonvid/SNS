@@ -2,9 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%
-	MemberInfo loginInfo2 = (MemberInfo)request.getSession(false).getAttribute("loginInfo");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,9 +43,8 @@ a {
 </head>
 <body>
 
-	<c:set var="userId" value="${loginInfo2.userId}" />
 	<c:choose>
-		<c:when test="${userId eq 'managerSol@gamil.com'} ">
+		<c:when test="${loginInfo.manager}">
 			<%@ include file="/WEB-INF/views/common/header.jsp"%>
 		</c:when>
 		<c:otherwise>
@@ -85,7 +81,7 @@ a {
 							<td>${notice.noticeHit}</td>
 						</tr>
 					</c:forEach>
-					<c:if test="${userId eq 'managerSol@gmail.com'} ">
+					<c:if test="${loginInfo.manager}">
 						<tr>
 							<td colspan="5" style="text-align: right;"><a href="write">글쓰기</a></td>
 						</tr>
@@ -93,7 +89,6 @@ a {
 				</table>
 			</form>
 		</div>
-
 		<!-- 해당페이지로 가게 넘버링 해주기 -->
 		<div id="paging">
 			<c:forEach var="num" begin="1" end="${viewData.pageTotalCount}">

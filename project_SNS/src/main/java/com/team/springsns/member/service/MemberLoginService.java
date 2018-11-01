@@ -38,6 +38,4 @@ public class MemberLoginService {
 		}
 		return result;
 	}
-	
-
 }
