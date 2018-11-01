@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.team.springsns.search.Interface.DataInterface;
 import com.team.springsns.search.vo.DataVO;
+import com.team.springsns.search.vo.SearchAndPageResultData;
 
 @Service
 public class SearchDataService {
@@ -21,11 +22,15 @@ public class SearchDataService {
 
 	private DataInterface data;
 
-	public List<DataVO> getSearchData(String searchData) {
-		System.out.println("Service 진입@@"+searchData);
+	static int Page_Count_Number = 5;
+
+	public SearchAndPageResultData getSearchData(String searchData) {
 		data = sqlSessionTemplate.getMapper(DataInterface.class);
 		List<DataVO> resultDataDao = new ArrayList<DataVO>();
-
+		
+		//페이지갯수와 쿼리결과를 받기위한 VO
+		SearchAndPageResultData searchAndPageResultData = new SearchAndPageResultData();
+		
 		DataVO paramDataDao = new DataVO();
 
 		// 문자열을 숫자 형식을 바꿔 주기 위해 NumberFormat사용
@@ -48,13 +53,23 @@ public class SearchDataService {
 			if (searchData.length() == pos.getIndex()) {
 				paramDataDao.setUserno(IdData);
 				resultDataDao = data.searchIdData(paramDataDao);
-
 			} else {
 				// 숫자가 아니면 컨텐츠인걸로 확인
 				paramDataDao.setBoardcontent(searchData);
 				resultDataDao = data.searchContentData(paramDataDao);
 			}
 		}
-		return resultDataDao;
+
+//		페이징 처리 어케하냐!!!!!!!!!!!!!!!!!!!!!!!!
+		int page = 1;
+		int resultCnt = resultDataDao.size();
+		int pagenum1 = resultCnt / Page_Count_Number;
+		int pagenum2 = resultCnt % Page_Count_Number;
+		int finalpage = pagenum1 + pagenum2;
+			
+		searchAndPageResultData.setPageData(finalpage);
+		searchAndPageResultData.setQueryResult(resultDataDao);
+
+		return searchAndPageResultData;
 	}
 }

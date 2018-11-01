@@ -1,35 +1,33 @@
 package com.team.springsns.search.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.team.springsns.search.vo.DataVO;
 import com.team.springsns.search.service.SearchDataService;
+import com.team.springsns.search.vo.SearchAndPageResultData;
 
 @Controller
 public class SearchDataController {
-
+	
 	@Autowired
 	private SearchDataService service;
 
 	@RequestMapping(value = "/check", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView getSearchData(String search) {
-		System.out.println("Controller 진입@@"+search);
-
 		ModelAndView modelAndView = new ModelAndView();
-		List<DataVO> dataDao = new ArrayList<DataVO>();
-
+		SearchAndPageResultData dataDao = new SearchAndPageResultData();
+		
 		dataDao = service.getSearchData(search);
-		modelAndView.addObject("dataVO", dataDao);
+
+		System.out.println(dataDao);
+		
+		modelAndView.addObject("dataVO", dataDao.getQueryResult());
 		modelAndView.addObject("search",search);
 		modelAndView.setViewName("check");
-		System.out.println(dataDao);
+		
 		return modelAndView;
 	}
 }

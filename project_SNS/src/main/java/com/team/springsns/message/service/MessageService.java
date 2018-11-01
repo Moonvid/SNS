@@ -22,6 +22,7 @@ public class MessageService {
 
 	public MessageWriteInfo getCntMessage(MessageWriteInfo messageWriteInfo) {
 		MessageWriteInfo resultInfo = memberDao.getCntMessage(messageWriteInfo);
+
 		if (resultInfo.getRecvid() == null) {
 			resultInfo.setRecvid(messageWriteInfo.getRecvid());
 			resultInfo.setCount(0);

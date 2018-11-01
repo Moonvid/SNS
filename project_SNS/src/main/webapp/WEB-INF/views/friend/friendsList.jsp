@@ -25,9 +25,13 @@ table {
 #friendmenu{
 	padding: 20px;
 	text-align: center;
+	font-size: 20px;
 }
 #friendname {
 	padding: 20px;
+}
+#tablesetting{
+text-align: center;
 }
 </style>
 </head>
@@ -42,16 +46,19 @@ table {
 </c:if>
 
 <c:if test="${!empty friendsList}">
-	<table>
+	<table id="tablesetting" border=1>
 		<tr>
-			<td id="friendmenu">친구목록</td>
+			<td id="friendmenu" colspan="3">친구목록</td>
 		</tr>
 		<c:forEach var="friends" items="${friendsList}">
 			<tr>
 				<td id="friendname"><a href="friendsPage/${friends.userNo}">${friends.userName}</a></td>
-			</tr>
-			<tr>
+			
 				<td id="friendname"><button class="remove" value="${loginInfo.userNo},${friends.userNo}" onclick="Remove(this)">친구 해제</button></td>
+		
+			<%-- ${friends.userId },${friends.userName },${friends.friendNo },${friends.userNo } --%>
+			
+				<td><button onclick="location.href='${pageContext.request.contextPath}/MessageFrom/MessageFrom?recvid=${friends.userId }&sendid=${loginInfo.userId }'" >쪽지보내기</button></td>
 			</tr>
 		</c:forEach>
 	</table>
