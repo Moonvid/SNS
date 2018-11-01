@@ -37,9 +37,13 @@
 	</select>
 
 	<!-- 전체 게시글 카운트 -->
-	<select id="selectCount" resultType="int">
-		select count(*) from
-		board
+	<select id="selectCount" parameterType="java.lang.String" resultType="int">
+		select count(*)	from
+			(select boardno, boardcontent, boardphoto, hashtag, boarddate, userid
+			from SNS_Project.board as b
+			join SNS_Project.member as m
+			on m.userno = b.userno) as c
+		where c.userid = #{userId};
 	</select>
 
 	<!-- 페이징된 리스트표출 -->

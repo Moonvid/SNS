@@ -13,7 +13,7 @@ public interface BoardDao {
 	//boardno에 대한 board 선택
 	public Board select(int boardno);
 	//board count
-	public int selectCount();
+	public int selectCount(String userId);
 	//리스트(페이징)
 	public List<Board> selectList(@Param("userId") String userId, @Param("firstRow") int firstRow, @Param("endRow") int endRow );
 	//삭제

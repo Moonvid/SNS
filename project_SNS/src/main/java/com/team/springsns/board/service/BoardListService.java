@@ -18,13 +18,13 @@ public class BoardListService {
 	private SqlSessionTemplate sqlSessionTemplate;
 	private BoardDao dao;
 	
-	private static final int BOARD_COUNT_PER_PAGE = 20;
+	private static final int BOARD_COUNT_PER_PAGE = 5;
 
 	public BoardListView getBoardList(int pageNumber, String userId) {
 		dao = sqlSessionTemplate.getMapper(BoardDao.class);
 		
 		int currentPageNumber = pageNumber;
-		int boardTotalCount = dao.selectCount();
+		int boardTotalCount = dao.selectCount(userId);
 		List<Board> boardList = null;
 		int firstRow = 0;
 		int endRow = 0;

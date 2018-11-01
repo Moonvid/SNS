@@ -50,4 +50,6 @@ public class UserBoardListController {
 
 		return modelAndView;
 	}
+
+
 }
