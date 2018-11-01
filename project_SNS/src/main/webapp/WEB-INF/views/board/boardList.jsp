@@ -8,12 +8,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-	function reportNo() {
-
+	function reportNo(boardNo) {
 		if (confirm('신고하시겠습니까?')) {
-			return true;
-		} else {
-			return false;
+			location.href="report?boardNo="+boardNo+"&userNo=<c:out value="${loginInfo.userNo}" />";
 		}
 	}
 </script>
@@ -26,9 +23,7 @@
 	padding: 10px;
 	margin: 10px;
 	border: 1px solid;
-	
 }
-
 </style>
 
 </head>
@@ -36,31 +31,61 @@
 	<%@ include file="/WEB-INF/views/common/layout_top.jsp"%>
 	<%@ include file="/WEB-INF/views/common/layout_right.jsp"%>
 	<section id="boardSection">
-	<c:forEach items="${viewData.boardList}" var="board">
-		<div class="userBoard">
-			<div>#번호: <c:out value="${board.boardNo }" /> 로그인 userno: <c:out value="${loginInfo.userNo }" /></div>
-			<div>사진: <img src="<c:url value='/uploadfile/${board.boardPhotoFile}' />"><%-- <c:out value="${board.boardPhotoFile }" /> --%></div>
-			<div>내용: <c:out value="${board.boardContent }" /></div>
-			<div>해시태그: <c:out value="${board.hashTag }" /></div>
-			<div>등록일: <fmt:formatDate pattern="yyyy-MM-dd" value="${board.boardDate }" /></div>
-			<div><a href="<%=request.getContextPath()%>/board/edit?boardno=<c:out value="${board.boardNo}"/>">수정</a>
-				<a href='<%=request.getContextPath()%>/board/delete?boardno=<c:out value="${board.boardNo}" />&userid=<c:out value="${loginInfo.userId }" />'>삭제</a></div>
-			<div><a href="report?boardNo=${board.boardNo }&userNo=${loginInfo.userNo}" Onclick="javascript:reportNo()">신고하기</a></div>
-			<span id="isGood_${board.boardNo}">좋아요 : 
-				<c:if test="${isGoodList.isEmpty()}">0</c:if>
-				<c:if test="${!isGoodList.isEmpty() }">
-					<c:forEach var="isGood" items="${isGoodList}">
-						<c:if test="${board.boardNo eq isGood.boardNo}">
+		<c:forEach items="${viewData.boardList}" var="board">
+			<div class="userBoard">
+				<div>
+					#번호:
+					<c:out value="${board.boardNo }" />
+					로그인 userno:
+					<c:out value="${loginInfo.userNo }" />
+				</div>
+				<div>
+					<c:if test="${!empty board.hashTag}">
+					사진: <img
+							src="<c:url value='/uploadfile/${board.boardPhotoFile}' />">
+						<%-- <c:out value="${board.boardPhotoFile }" /> --%>
+					</c:if>
+				</div>
+				<div>
+					내용:
+					<c:out value="${board.boardContent }" />
+				</div>
+				<div>
+					해시태그:
+					<c:out value="${board.hashTag }" />
+				</div>
+				<div>
+					등록일:
+					<fmt:formatDate pattern="yyyy-MM-dd" value="${board.boardDate }" />
+				</div>
+				<div>
+					<c:if test="${!empty board.hashTag}">
+						<a
+							href="<%=request.getContextPath()%>/board/edit?boardno=<c:out value="${board.boardNo}"/>">수정</a>
+						<a
+							href='<%=request.getContextPath()%>/board/delete?boardno=<c:out value="${board.boardNo}" />&userid=<c:out value="${loginInfo.userId }" />'>삭제</a>
+					</c:if>
+				</div>
+				<div>
+					<input type="button" class="btn btn-default"
+						Onclick="reportNo(${board.boardNo})" value="신고하기">
+				</div>
+				<span id="isGood_${board.boardNo}">좋아요 : <c:if
+						test="${isGoodList.isEmpty()}">0</c:if> <c:if
+						test="${!isGoodList.isEmpty() }">
+						<c:forEach var="isGood" items="${isGoodList}">
+							<c:if test="${board.boardNo eq isGood.boardNo}">
 							${isGood.isGoodCnt}
 						</c:if>
-					</c:forEach>
+						</c:forEach>
+					</c:if>
+				</span> <span> 
+				<c:if test="${!empty board.hashTag}">
+						<button class="isGoodBnt" value="${board.boardNo}">좋아요!</button>
 				</c:if>
 				</span>
-				<span>
-			<button class="isGoodBnt" value="${board.boardNo}">좋아요!</button>
-			</span>
-		</div>
-	</c:forEach>
+			</div>
+		</c:forEach>
 	</section>
 
 	<!-- 해당페이지로 가게 넘버링 해주기 -->
@@ -71,7 +96,7 @@
 
 
 
-<script>
+	<script>
 	$('.isGoodBnt').click(function() {
 		var boardNo = $(this).val();
 		var userNo = ${loginInfo.userNo}
