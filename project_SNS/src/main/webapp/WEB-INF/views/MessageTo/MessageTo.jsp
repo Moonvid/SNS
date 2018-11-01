@@ -19,6 +19,13 @@
 	width:800px;
 	margin:0;
 }
+.fs{
+	font-size: 10px;
+	width: 50px;
+}
+.table{
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -26,7 +33,7 @@
 	<%@ include file="/WEB-INF/views/common/layout_right.jsp"%>
 	
 	<br>
-	<h3>${resultInfo.recvid }님의 확인 안 한 메세지 개수: ${resultInfo.count }개 입니다.</h3><br>
+	<h3 value="${resultInfo.recvid }">${resultInfo.recvid }님의 확인 안 한 메세지 개수: <span class="${resultInfo.recvid }"  value="${resultInfo.recvid }msgcnt">${resultInfo.count }</span>개 입니다.</h3><br>
 	
 	<h1>받은 메세지 출력</h1>
 	<div id="wrap">
@@ -37,7 +44,7 @@
 			<td>메세지 내용</td>
 			<td>보낸 시간</td>
 			<td>메세지 확인 유무</td>
-			<td colspan="2">확인 삭제</td>
+			<td colspan="3">확인 답장 삭제</td>
 		</tr>
 		<c:forEach var="messageInfo" items="${messageInfo}">
 			<tr class="checkMessage">
@@ -46,8 +53,9 @@
 				<td>${messageInfo.messagecont }</td>
 				<td>${messageInfo.senddate }</td>
 				<td id="unique${messageInfo.messageno}" class="${messageInfo.messageno}">${messageInfo.checkmessage }</td>
-				<td><button class="ReadMessage"	value="${messageInfo.messageno}">[읽음]</button></td>				
-				<td><button value="${messageInfo.messageno},${messageInfo.recvid }" class="DeleteMessage" onclick="MessageDelete(this)">[삭제]</button></td>
+				<td><button class="ReadMessage fs"	value="${messageInfo.messageno}">읽음</button></td>				
+				<td><button class="fs" onclick="location.href='${pageContext.request.contextPath}/MessageFrom/MessageFrom?recvid=${messageInfo.sendid }&sendid=${messageInfo.recvid }'">답장</button></td>				
+				<td><button value="${messageInfo.messageno},${messageInfo.recvid }" class="DeleteMessage fs" onclick="MessageDelete(this)">삭제</button></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -83,7 +91,10 @@
 			var attribute = $(this);
 			/* 루트기준 절대경로 */
 			var url = '/springsns/ReadMessage';
+			var innerUrl ='/springsns/ReloadMessage'
 			var checkMessage = '#unique' + messageNum;
+			
+			
 			$.ajax({
 				url : url,
 				data : {
@@ -95,6 +106,17 @@
 						$(checkMessage).text('true');
 						attribute.attr('disabled', true);
 						attribute.css('color','red');
+						$.ajax({
+							url:innerUrl,
+							data:{
+								"recvid":$('h3').attr('value')
+							},
+							success:function(result){
+									if($('span').attr('class')==$('h3').attr('value')){
+										$('span[value*="msgcnt"]').text(result.count);
+									}
+							}							
+						});
 					}
 				}
 			});
