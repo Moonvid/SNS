@@ -109,10 +109,10 @@
 	<!-- 해당페이지로 가게 넘버링 해주기 -->
 	<c:forEach var="num" begin="1" end="${viewData.pageTotalCount}">
 		<a
-			href='boardList?page=${num}&userid=<c:out value="${loginInfo.userId }" />'>[${num}]</a>
+			href='boardList?userId=<c:out value="${loginInfo.userId }" />&page=${num}'>[${num}]</a>
 	</c:forEach>
 
-
+<!-- &userid=<c:out value="${loginInfo.userId }" /> -->
 
 
 

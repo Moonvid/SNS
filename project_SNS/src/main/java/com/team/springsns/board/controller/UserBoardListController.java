@@ -46,6 +46,7 @@ public class UserBoardListController {
 
 		modelAndView.setViewName("board/boardList");
 		modelAndView.addObject("viewData", viewData);
+		//modelAndView.addObject("userId", userId);
 		modelAndView.addObject("isGoodList", isGoodList);
 
 		return modelAndView;
