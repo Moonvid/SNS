@@ -28,6 +28,7 @@ public class SearchDataController {
 		dataDao = service.getSearchData(searchData);
 		modelAndView.addObject("dataVO", dataDao);
 		modelAndView.setViewName("check");
+		System.out.println(dataDao);
 		return modelAndView;
 	}
 }

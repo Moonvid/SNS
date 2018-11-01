@@ -51,9 +51,11 @@
 					%>
 
 				</ul>
-				<form class="navbar-form navbar-right">
-					<input type="text" class="form-control" placeholder="Search...">
-					<button type="button" class="btn btn-default"><a href="check">검색</a></button>
+				<form action="check" method="POST"	class="navbar-form navbar-right">
+					<div>
+						<input type="text" name="searchData" class="form-control" />
+						<button class="btn btn-default">검색</button>
+					</div>
 				</form>
 			</div>
 		</div>

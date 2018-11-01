@@ -22,7 +22,7 @@ public class SearchDataService {
 	private DataInterface data;
 
 	public List<DataVO> getSearchData(String searchData) {
-		System.out.println("Service 진입");
+		System.out.println("Service 진입@@"+searchData);
 		data = sqlSessionTemplate.getMapper(DataInterface.class);
 		List<DataVO> resultDataDao = new ArrayList<DataVO>();
 
