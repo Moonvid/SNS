@@ -19,7 +19,7 @@
 		<div class="container-fluid">
 			<div class="navbar-header active">
 				<a href="<c:url value='/notice/list' />"><img
-					src="${pageContext.request.contextPath}/uploadfile/logo2.png"
+					src="${pageContext.request.contextPath}/images/logo_fin2.png"
 					style="height: 50px;"></a>
 			</div>
 			<ul class="nav navbar-nav">

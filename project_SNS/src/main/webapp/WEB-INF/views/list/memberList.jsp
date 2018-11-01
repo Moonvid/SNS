@@ -27,7 +27,7 @@ td, th {
 }
 </style>
 <script>
-	function deleteBoard() {
+	function deleteMember() {
 
 		if (confirm('삭제하시겠습니까?')) {
 			return true;

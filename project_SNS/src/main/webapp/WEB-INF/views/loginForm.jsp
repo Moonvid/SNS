@@ -31,7 +31,7 @@
 <style type="text/css">
 body {
 	background-image:
-		url("${pageContext.request.contextPath}/images/back_22.png");
+		url("${pageContext.request.contextPath}/images/back.png");
 }
  #logo {
 	width: 250px;
