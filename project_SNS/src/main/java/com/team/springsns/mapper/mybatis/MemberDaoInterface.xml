@@ -11,8 +11,8 @@
 	<!-- 회원가입용 -->
 	<insert id="insertMemberInfo"
 		parameterType="com.team.springsns.model.MemberInfo" useGeneratedKeys="true" keyColumn="userno">
-		insert into member (userid, username, userpassword, userprofilephoto, userintro, userblock, manager)
-		values(#{userId}, #{userName}, #{userPassword}, #{userProfilePhoto}, #{userIntro}, #{userBlock}, #{manager})
+		insert into member (userid, userpassword, username, userprofilephoto, userintro, userblock, manager)
+		values(#{userId}, #{userPassword}, #{userName}, #{userProfilePhoto}, #{userIntro}, #{userBlock}, #{manager})
 	</insert>
 
 </mapper>

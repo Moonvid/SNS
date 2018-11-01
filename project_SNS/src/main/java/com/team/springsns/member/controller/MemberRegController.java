@@ -36,8 +36,8 @@ public class MemberRegController {
 		
 		// 에러의 경우 이동경로 설정이 가능
 		ModelAndView modelAndView = new ModelAndView();
-		// 정상처리 된 경우 mypage로 이동
-		modelAndView.setViewName("loginForm");
+		// 정상처리 된 경우 다시 로그인폼으로 이동
+		modelAndView.setViewName("redirect:/");
 
 		try {
 			int resultCnt = regService.memberReg(memberInfo, request);  // memberInfo 정보를 서비스에 보냄
@@ -47,7 +47,7 @@ public class MemberRegController {
 			if (resultCnt < 1) {
 				modelAndView.setViewName("team/regFail");
 			} else {
-				modelAndView.setViewName("loginForm");
+				modelAndView.setViewName("redirect:/");
 			}
 
 		} catch (SQLException e) {

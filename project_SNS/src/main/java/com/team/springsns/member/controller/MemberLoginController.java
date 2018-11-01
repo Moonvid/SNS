@@ -20,7 +20,8 @@ public class MemberLoginController {
 	private MemberLoginService service;
 
 	// 로그인 처리하기
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	@RequestMapping(value = "/")
+	//@RequestMapping(value = "/", method = RequestMethod.POST)
 	public ModelAndView loginProcess(@RequestParam(value = "userId", required = false) String userId,
 			@RequestParam(value = "userPassword", required = true) String userPassword, HttpSession session)
 			throws SQLException {

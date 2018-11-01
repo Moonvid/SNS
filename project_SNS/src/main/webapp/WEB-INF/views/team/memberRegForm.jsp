@@ -40,7 +40,7 @@
 </head>
 <body>
 	<div>
-		<img src="${pageContext.request.contextPath}/img/logo1.png" id="logo">
+		<img src="${pageContext.request.contextPath}/images/logo2.png" id="logo">
 	</div>
 
 	<div class="reg_form">
