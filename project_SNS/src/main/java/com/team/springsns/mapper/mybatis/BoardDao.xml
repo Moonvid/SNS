@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.springsns.dao.BoardDao">
+
+	<resultMap id="board" type="com.team.springsns.board.model.Board">
+		<result property="userNo" column="userno" javaType="int" />
+		<result property="boardNo" column="boardno" javaType="int" />
+		<result property="boardContent" column="boardcontent"
+			javaType="java.lang.String" />
+		<result property="boardPhoto" column="boardphoto"
+			javaType="java.lang.String" />
+		<result property="boardDate" column="boarddate"
+			javaType="java.sql.Timestamp" />
+		<result property="hashTag" column="hashtag"
+			javaType="java.lang.String" />
+	</resultMap>
+
+	<!-- 게시글 저장 -->
+	<insert id="insert" useGeneratedKeys="true"
+		keyProperty="boardno">
+		<!-- insert into board_test (userno, boardcontent, boardphoto, hashtag) 
+			values (#{userNo}, #{boardContent}, #{boardPhoto}, #{hashTag}) -->
+		insert into board (userno,
+		boardcontent, boardphoto, hashtag)
+		values
+		(#{userNo},
+		#{boardContent},
+		#{boardPhoto},
+		#{hashTag})
+	</insert>
+
+	<!-- 리스트표출용 -->
+	<select id="select" parameterType="map" resultMap="board">
+		select * from
+		board where boardno = #{boardNo}
+	</select>
+
+	<!-- 전체 게시글 카운트 -->
+	<select id="selectCount" resultType="int">
+		select count(*) from
+		board
+	</select>
+
+	<!-- 페이징된 리스트표출 -->
+	<select id="selectList" parameterType="map" resultMap="board">
+		select *
+
+		from
+
+		(select boardno, boardcontent, boardphoto, hashtag, boarddate,
+		userid
+		from SNS_Project.board as b
+		join SNS_Project.member as m
+		on
+		m.userno = b.userno) as c
+
+		where c.userid = #{userId}
+
+		order by c.boardno
+		desc limit #{firstRow}, #{endRow};
+
+	</select>
+
+	<!-- 삭제 -->
+	<delete id="delete">
+		delete from board where
+		boardno = #{boardNo}
+	</delete>
+
+	<!-- 수정 -->
+	<update id="edit">
+		update board set
+		boardcontent = #{boardContent},
+		boardphoto = #{boardPhoto},
+		boarddate = now()
+		where boardno = #{boardNo}
+	</update>
+
+	<resultMap id="report" type="com.team.springsns.board.model.Board">
+		<result property="userNo" column="userno" javaType="int" />
+		<result property="boardNo" column="boardno" javaType="int" />
+	</resultMap>
+
+
+	<!-- 신고관련 -->
+	<select id="reportCnt" resultType="int">
+		select count(boardno)
+		from
+		report where boardno = #{boardNo}
+	</select>
+
+	<update id="report">
+		update board set
+		boardcontent = '신고접수된 글입니다.',
+		boardphoto = NULL,
+		hashtag = '',
+		boarddate = now()
+		where boardno = #{boardNo}
+	</update>
+
+	<insert id="reportUp" parameterType="int">
+		insert into report
+		(boardno, userno)
+		values
+		(#{boardNo}, #{userNo})
+	</insert>
+
+
+</mapper>
+
