@@ -14,7 +14,6 @@ public class BoardDeleteService {
 	private SqlSessionTemplate sqlSessionTemplate;
 	private BoardDao dao;
 	
-	@Autowired
 	private IsGoodDaoInterface isGoodDao;
 	
 	public void delete(int boardno) {
