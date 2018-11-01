@@ -1,4 +1,4 @@
-package com.team.springsns.model;
+package com.team.springsns.isgood.model;
 
 public class IsGoodDTO {
 

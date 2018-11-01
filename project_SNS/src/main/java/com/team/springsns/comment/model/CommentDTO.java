@@ -1,4 +1,4 @@
-package com.team.springsns.model;
+package com.team.springsns.comment.model;
 
 import java.util.Date;
 

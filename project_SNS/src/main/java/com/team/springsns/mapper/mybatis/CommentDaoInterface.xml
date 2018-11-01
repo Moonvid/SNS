@@ -5,13 +5,13 @@
 <mapper namespace="com.team.springsns.comment.dao.CommentDaoInterface">
 
 	<insert id="insertComment"
-		parameterType="com.team.springsns.model.CommentDTO"
+		parameterType="com.team.springsns.comment.model.CommentDTO"
 		useGeneratedKeys="true" keyProperty="commentNo">
 		insert into comment (boardno, userid, commentcont, commentdate) 
 		value (#{boardNo}, #{userId}, #{commentCont}, now())
 	</insert>
 
-	<select id="selectCommentList" resultType="com.team.springsns.model.CommentDTO">
+	<select id="selectCommentList" resultType="com.team.springsns.comment.model.CommentDTO">
 		select * from comment where boardno=#{boardNo}
 	</select>
 	

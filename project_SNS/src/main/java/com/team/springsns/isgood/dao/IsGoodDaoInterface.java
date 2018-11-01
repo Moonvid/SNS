@@ -1,7 +1,7 @@
 package com.team.springsns.isgood.dao;
 
-import com.team.springsns.model.CountIsGoodDTO;
-import com.team.springsns.model.IsGoodDTO;
+import com.team.springsns.isgood.model.CountIsGoodDTO;
+import com.team.springsns.isgood.model.IsGoodDTO;
 
 public interface IsGoodDaoInterface {
 

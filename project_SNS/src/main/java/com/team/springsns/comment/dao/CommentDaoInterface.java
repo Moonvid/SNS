@@ -2,7 +2,7 @@ package com.team.springsns.comment.dao;
 
 import java.util.List;
 
-import com.team.springsns.model.CommentDTO;
+import com.team.springsns.comment.model.CommentDTO;
 
 public interface CommentDaoInterface {
 	
