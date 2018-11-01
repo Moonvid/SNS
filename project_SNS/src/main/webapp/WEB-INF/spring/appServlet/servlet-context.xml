@@ -83,7 +83,6 @@
 	<beans:bean id="mybatisMemberDao" class="com.team.springsns.message.dao.MemberDao"></beans:bean>
 	<beans:bean id="dataDao" class="com.team.springsns.search.vo.DataVO"></beans:bean>
 
-
 	<!-- Service 등록 -->
 	<beans:bean id="memberLoginService"
 		class="com.team.springsns.member.service.MemberLoginService" />

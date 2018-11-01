@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.team.springsns.friend.dao.FriendsDaoInterface">
+	
+	<!-- 친구 요청 시 -->
+	<insert id="setFriendRequest"
+			parameterType="com.team.springsns.friend.model.FriendRequestInfo"
+			useGeneratedKeys="true" keyProperty="requestNo">
+		insert into request(requestUserNo, requestUserName, responseUserNo, responseUserName)
+		values(#{requestUserNo}, #{requestUserName}, #{responseUserNo}, #{responseUserName})
+	</insert>
+	
+	<!-- 받은 친구요청 수락1 -->
+	<insert id="setFriendAccept1"
+			parameterType="com.team.springsns.friend.model.Friends">
+	
+		insert into relation(userno, friendno)
+		values(#{userNo}, #{friendNo})
+	</insert>
+	
+	<!-- 받은 친구요청 수락2 -->
+	<insert id="setFriendAccept2"
+			parameterType="com.team.springsns.friend.model.Friends">
+	
+		insert into relation(userno, friendno)
+		values(#{friendNo}, #{userNo})
+	</insert>
+	
+	<!-- 받은 친구 신청 리스트 가져오기 -->
+	<select id="getRequestList"
+			resultType="com.team.springsns.friend.model.FriendRequestInfo">
+		select * from request  
+		where ResponseUserNo = #{userNo}
+	</select>
+	
+	<!-- 친구 목록 리스트 가져오기 -->
+	<select id="getFriendsList" resultType="com.team.springsns.friend.model.FriendsListView">
+		select * from member m, relation r 
+		where m.userno = r.friendno and r.userno = #{userNo};
+	</select>
+	
+	<!-- 친구 페이지 이동  -->
+	<select id="getFriendPage" resultType="com.team.springsns.model.MemberInfo">
+		select * from member where userNo = #{userNo}
+	</select>
+	
+	<!-- 친구 해제 -->
+	<delete id="deleteFriend" parameterType="com.team.springsns.friend.model.Friends">
+		delete from relation where friendno=#{friendNo}
+	</delete>
+	
+	<!-- 친구 요청 대기 리스트에서 삭제 -->
+	<delete id="deleteRequest" parameterType="com.team.springsns.friend.model.FriendRequestInfo">
+		delete from request where requestUserNo = #{requestUserNo}
+	</delete>
+
+</mapper>

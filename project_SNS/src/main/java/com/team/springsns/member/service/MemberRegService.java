@@ -44,7 +44,7 @@ public class MemberRegService {
 		//multipartFile이 있어야 저장 가능함
 		if(!memberInfo.getPhotoFile().isEmpty()) {
 																		//확장자 포함한 파일 이름
-			imgName = memberInfo.getUserId() + "_" + memberInfo.getPhotoFile().getOriginalFilename(); 
+			imgName = (memberInfo.getUserId()) + "_" + memberInfo.getPhotoFile().getOriginalFilename(); 
 			
 			// 실제로 물리적 저장
 			memberInfo.getPhotoFile().transferTo(new File(dir, imgName));
