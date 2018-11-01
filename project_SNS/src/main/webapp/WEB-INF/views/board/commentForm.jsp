@@ -8,7 +8,8 @@
 <link rel="stylesheet" href="../css/default.css">
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/common/header.jsp"%>
+	<%@ include file="/WEB-INF/views/common/layout_top.jsp"%>
+	<%@ include file="/WEB-INF/views/common/layout_right.jsp"%>
 	
 	<h1> 댓글 </h1>
 	<form method="post">
