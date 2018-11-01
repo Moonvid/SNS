@@ -8,17 +8,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<meta name="viewport" content="width=device-width" initial-scale="1">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/bootstrap.css"
+	type="text/css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/loginCSS.css"
+	type="text/css">
+<!-- 구글폰트 -->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo" rel="stylesheet">
 <style>
 table {
 	border: 1px solid black;
+	width: 800px;
 }
-td {
+#friendmenu{
 	padding: 20px;
 	text-align: center;
+}
+#friendname {
+	padding: 20px;
 }
 </style>
 </head>
 <body>
+<%@ include file="/WEB-INF/views/common/layout_top.jsp"%>
+<%@ include file="/WEB-INF/views/common/layout_right.jsp"%>
+<br><br>
 <h1>친구 목록</h1>
 
 <c:if test="${empty friendsList}">
@@ -28,16 +44,17 @@ td {
 <c:if test="${!empty friendsList}">
 	<table>
 		<tr>
-			<td>FriendName</td>
+			<td id="friendmenu">FriendName</td>
 		</tr>
 		<c:forEach var="friends" items="${friendsList}">
 			<tr>
-				<td><a href="friendsPage/${friends.userNo}">${friends.userName}</a></td>
+				<td id="friendname"><a href="friendsPage/${friends.userNo}">${friends.userName}</a></td>
 			</tr>
 		</c:forEach>
 	</table>
 </c:if>
 
+<br><br><br><br>
 <h1>받은 친구 요청</h1>
 <c:if test="${empty requestList}">
 		전달  받은 친구신청이 없습니다.

@@ -77,10 +77,10 @@ body {
 	<div class="sidebar">
 		<div class="icon">
 			<ul class="nav nav-tabs">
-				<li><a href="write">글쓰기</a></li>
-				<li><a href="${pageContext.request.contextPath}/friendsList">친구목록</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/write">글쓰기</a></li>
+				<li><a href="${pageContext.request.contextPath}/friend/friendsList">친구목록</a></li>
 				<li><a href="${pageContext.request.contextPath}/MessageTo/WhoRecv?recvid=${loginInfo.userName}">쪽지함</a></li>
-				<li><a href="${pageContext.request.contextPath}/team/profile">프로필</a></li>
+				<li><a href="#">프로필</a></li>
 			</ul>
 		</div>
 

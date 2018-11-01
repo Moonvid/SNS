@@ -8,19 +8,34 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<meta name="viewport" content="width=device-width" initial-scale="1">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/bootstrap.css"
+	type="text/css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/loginCSS.css"
+	type="text/css">
+<!-- 구글폰트 -->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo" rel="stylesheet">
 <style>
-	div{
-		text-align: right;
-	}
+table {
+	border: 1px solid black;
+	width: 800px;
+}
+td {
+	padding: 20px;
+	text-align: center;
+}
 </style>
 </head>
 <body>
-	<div>
-		<h3>나의 ID : ${loginInfo.userId} &nbsp;&nbsp;&nbsp;&nbsp;이름 : ${loginInfo.userName }</h3>
-	</div>
+<%@ include file="/WEB-INF/views/common/layout_top.jsp"%>
+<%@ include file="/WEB-INF/views/common/layout_right.jsp"%>
+
+<br><br>
 	<h1>친구 페이지</h1>
-	
-	<h4>아이디 : ${friendInfo.userId}</h4> 
+	<br><br>
+	<h4>ID : ${friendInfo.userId}</h4> 
 	<h4>이름 : ${friendInfo.userName}</h4>
 	<c:forEach var="friendRequestInfo" items="${friendRequestInfo}">
 	<input id="loginUser${friendRequestInfo.requestUserNo}" type="hidden" value="${friendRequestInfo.requestAccept }" /></c:forEach>

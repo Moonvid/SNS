@@ -22,7 +22,7 @@ public class FriendsListController {
 	@Autowired
 	private FriendRequestService requestService;
 	
-	@RequestMapping("/team/friendsList")
+	@RequestMapping("/friend/friendsList")
 	public ModelAndView getFriendsList(HttpSession session) {
 		
 		// ModelAndView 메서드 사용을 위한 객체 선언
@@ -50,7 +50,7 @@ public class FriendsListController {
 			mav.addObject("requestList", requestService.viewRequestList(loginInfo.getUserNo()));			
 		}
 		
-		mav.setViewName("team/friendsList");
+		mav.setViewName("friend/friendsList");
 		
 		
 		
