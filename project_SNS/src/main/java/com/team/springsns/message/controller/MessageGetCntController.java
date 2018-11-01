@@ -1,5 +1,7 @@
 package com.team.springsns.message.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,14 +24,16 @@ public class MessageGetCntController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView goWhoRecv(MessageWriteInfo messageWriteInfo,HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
-		System.out.println("2222"+messageWriteInfo);
 		String recvid = (String)(((MemberInfo)session.getAttribute("loginInfo")).getUserId());
 		
 		messageWriteInfo.setRecvid(recvid);
-		System.out.println("3333"+messageWriteInfo);
 		MessageWriteInfo resultInfo = service.getCntMessage(messageWriteInfo);
+		List<MessageWriteInfo> messageInfo = service.getMessage(messageWriteInfo);
+
 		
+		resultInfo.setRecvid(messageWriteInfo.getRecvid());
 		modelAndView.addObject("resultInfo", resultInfo);
+		modelAndView.addObject("messageInfo", messageInfo);
 		modelAndView.setViewName("MessageTo/MessageTo");
 		
 		return modelAndView;
