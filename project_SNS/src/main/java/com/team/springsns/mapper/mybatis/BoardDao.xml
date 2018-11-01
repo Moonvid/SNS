@@ -81,19 +81,21 @@
 		where boardno = #{boardNo}
 	</update>
 
-	<resultMap id="report" type="com.team.springsns.board.model.Board">
+<!-- 	<resultMap id="report" type="com.team.springsns.board.model.Board">
 		<result property="userNo" column="userno" javaType="int" />
 		<result property="boardNo" column="boardno" javaType="int" />
 	</resultMap>
-
+ -->
 
 	<!-- 신고관련 -->
-	<select id="reportCnt" resultType="int">
+	<!-- board별신고건수 알려주는거 -->
+	<!-- <select id="reportCnt" resultType="int">
 		select count(boardno)
 		from
 		report where boardno = #{boardNo}
-	</select>
+	</select> -->
 
+	<!-- 신고접수되면 수정해주는쿼리 -->
 	<update id="report">
 		update board set
 		boardcontent = '신고접수된 글입니다.',
@@ -103,12 +105,31 @@
 		where boardno = #{boardNo}
 	</update>
 
+	<!-- 신고버튼누르면 신고해주는쿼리 -->
 	<insert id="reportUp" parameterType="int">
 		insert into report
 		(boardno, userno)
 		values
 		(#{boardNo}, #{userNo})
 	</insert>
+	
+	<!-- 신고들어왔을때, boardno값 넣어주고 default값 = 0으로 들어감! -->
+	<insert id="reportcntPlus" parameterType="int">
+		insert into report_cnt (boardno) values (#{boardNo})
+	</insert>
+	
+	<!-- 신고건수 카운트된거 반환해주는 쿼리 -->
+	<select id="reportcntCnt" resultType="int">
+		select reportcnt from report_cnt
+		where boardno = #{boardNo}
+	</select>
+	
+	<!-- 신고들어왔을때 신고카운트업해주는쿼리 -->
+	<update id="reportcntUp">
+		update report_cnt
+		set reportcnt = reportcnt + 1
+		where boardno = #{boardNo}
+	</update>
 
 
 </mapper>

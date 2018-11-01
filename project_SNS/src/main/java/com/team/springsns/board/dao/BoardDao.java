@@ -21,9 +21,11 @@ public interface BoardDao {
 	//수정
 	public int edit(Board board);
 	
-	public int reportCnt(int boardNo); // 신고건수
+	/*public int reportCnt(int boardNo); // 신고건수*/	
 	public int report(int boardNo); // 신고받은 게시글 바꿔주기
 	public int reportUp(@Param("boardNo") int boardNo, @Param("userNo") int userNo); // 추가
-	
+	public int reportcntPlus(@Param("boardNo") int boardNo);
+	public int reportcntCnt(int boardNo);
+	public int reportcntUp(int boardNo);
 	
 }

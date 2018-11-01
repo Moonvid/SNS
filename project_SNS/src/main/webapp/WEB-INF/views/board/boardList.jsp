@@ -7,13 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
-	function reportNo(boardNo) {
-		if (confirm('신고하시겠습니까?')) {
-			location.href="report?boardNo="+boardNo+"&userNo=<c:out value="${loginInfo.userNo}" />";
-		}
-	}
-</script>
 <style>
 #boardSection {
 	width: 60%;
@@ -76,8 +69,9 @@
 				</div>
 				<div>
 					<c:if test="${boardcont ne cont}">
-						<input type="button" class="btn btn-default"
-							Onclick="reportNo(${board.boardNo})" value="신고하기">
+					<input type="hidden" id="reportChk" value="${board.reportCheck}">
+						<button class="btn btn-default"
+							<%-- Onclick="reportNo(${board.boardNo})" --%> value="${board.boardNo }">신고하기</button>
 					</c:if>
 				</div>
 				<span id="isGood_${board.boardNo}">좋아요 : <c:if
@@ -178,6 +172,41 @@ $('.commBtn').click(function() {
 
 <script>
 
+$('.btn').click(function() {
+	var boardNo = $(this).val();
+	var userNo = '${loginInfo.userNo}';
+	var chk = confirm('신고하시겠습니까?');
+
+	/* 루트기준 절대경로 */
+	var url = '/springsns/reportcnt';
+	var url2 = '/springsns';
+	$.ajax({
+		url : url,
+		data : {
+			"boardNo" : boardNo
+		}, 
+		success : function(chk, response) {
+			if (response == 1 && chk) {
+				$('#reportChk').val('true');
+				$('.btn').attr('disabled', true);
+			}
+		}
+	});
+	
+	$.ajax({
+		url : url2,
+		data : {
+			"boardNo" : boardNo,
+			"userNo" : userNo
+		},
+		success : function reportNo(chk){
+			if (chk) {
+				location.href='report?boardNo='+boardNo+'&userNo='+userNo;
+				}
+			}
+		});
+		
+	});
 </script>
 </body>
 </html>
