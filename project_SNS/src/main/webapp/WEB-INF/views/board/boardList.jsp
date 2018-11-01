@@ -25,10 +25,9 @@
 	border: 1px solid;
 }
 
-.commentSection{
+.commentSection {
 	padding-left: 20px;
 	padding-bottom: 20px;
-	
 	background-color: white;
 }
 </style>
@@ -47,8 +46,8 @@
 					<c:out value="${loginInfo.userNo }" />
 				</div>
 				<div>
-				<c:set var="cont" value="신고접수된 글입니다." />
-				<c:set var="boardcont" value="${board.boardContent}"/>
+					<c:set var="cont" value="신고접수된 글입니다." />
+					<c:set var="boardcont" value="${board.boardContent}" />
 					<c:if test="${boardcont ne cont}">
 					사진: <img
 							src="<c:url value='/uploadfile/${board.boardPhotoFile}' />">
@@ -90,17 +89,19 @@
 						</c:if>
 						</c:forEach>
 					</c:if>
-				</span>
-				<span> 
-				<c:if test="${boardcont ne cont}">
-					<button class="isGoodBnt" value="${board.boardNo}">좋아요!</button>
+				</span> <span> <c:if test="${boardcont ne cont}">
+						<button class="isGoodBnt" value="${board.boardNo}">좋아요!</button>
 					</c:if>
 				</span><br>
-				<span><a href="comment?boardNo=${board.boardNo}">[댓글달기]</a></span><br>
-				<span><button class="commBtn" value="${board.boardNo}">댓글...댓글을 보자!</button></span>
-			<div class="commentSection" id="commHidden_${board.boardNo}" style="display:none;">
-			</div>
-		
+				<c:if test="${boardcont ne cont}">
+					<span><a href="comment?boardNo=${board.boardNo}">[댓글달기]</a></span>
+					<br>
+					<span><button class="commBtn" value="${board.boardNo}">댓글...댓글을
+							보자!</button></span>
+				</c:if>
+				<div class="commentSection" id="commHidden_${board.boardNo}"
+					style="display: none;"></div>
+
 			</div>
 		</c:forEach>
 	</section>
@@ -116,7 +117,7 @@
 
 
 
-<script>
+	<script>
 $('.commBtn').click(function() {
 	   	var userId = '${loginInfo.userId}';
 		var bNo = $(this).val();
