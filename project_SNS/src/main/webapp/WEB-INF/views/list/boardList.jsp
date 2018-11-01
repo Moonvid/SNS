@@ -28,12 +28,10 @@ td, th {
 }
 </style>
 <script>
-	function deleteBoard() {
+	function deleteBoard(boardNo){
 
-		if (confirm('삭제하시겠습니까?')) {
-			return true;
-		} else {
-			return false;
+		if (confirm('게시글을 삭제하시겠습니까?')) {
+			location.href="delete_board?boardNo="+boardNo;
 		}
 	}
 </script>
@@ -47,7 +45,7 @@ td, th {
 
 	<c:if test="${!boards.isEmpty()}">
 		<div id="wrap">
-			<h1 id="title" style="text-align: center;">게시글 목록</h1>
+			<h1 id="title" style="text-align: center;">게시글 목록</h1><br>
 
 			<form>
 				<table class="table table-hover">
@@ -67,9 +65,10 @@ td, th {
 							<td>${board.hashTag}</td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 									value="${board.boardDate}" /></td>
-							<td><a href="edit_board?boardNo=${board.boardNo}">수정</a> <a
-								href="delete_board?boardNo=${board.boardNo}"
-								Onclick="deleteBoard()">삭제</a></td>
+							<td>
+							<input type="button" class="btn btn-default" onclick="javascript:location.href='edit_board?boardNo='+${board.boardNo}" value="수정">
+							<input type="button" class="btn btn-default" Onclick="deleteBoard(${board.boardNo})" value="삭제">
+							</td>
 						</tr>
 					</c:forEach>
 				</table>

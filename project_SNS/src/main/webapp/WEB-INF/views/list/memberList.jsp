@@ -27,12 +27,10 @@ td, th {
 }
 </style>
 <script>
-	function deleteMember() {
+	function deleteMember(userNo) {
 
-		if (confirm('삭제하시겠습니까?')) {
-			return true;
-		} else {
-			return false;
+		if (confirm('회원을 탈퇴하시겠습니까?')) {
+			return location.href="delete_member?userNo="+userNo;
 		}
 	}
 </script>
@@ -46,7 +44,7 @@ td, th {
 
 	<c:if test="${!members.isEmpty()}">
 		<div id="wrap">
-			<h1 id="title" style="text-align: center;">회원목록</h1>
+			<h1 id="title" style="text-align: center;">회원목록</h1><br>
 
 			<form>
 				<table class="table table-hover">
@@ -65,9 +63,10 @@ td, th {
 							<td>${member.userName}</td>
 							<td>${member.userPassword}</td>
 							<td>${member.userIntro}</td>
-							<td><a href="edit_member?userNo=${member.userNo}">수정</a> <a
-								href="delete_member?userNo=${member.userNo}"
-								Onclick="deleteMember()">삭제</a></td>
+							<td>
+							<input type="button" class="btn btn-default" onclick="javascript:location.href='edit_member?userNo='+${member.userNo}" value="수정">
+							<input type="button" class="btn btn-default" Onclick="deleteMember(${member.userNo})" value="탈퇴">
+							</td>
 						</tr>
 					</c:forEach>
 				</table>

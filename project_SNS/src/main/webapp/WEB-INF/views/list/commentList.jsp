@@ -17,9 +17,9 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <style>
-td, th {
+td, th{
 	width: 150px;
-	height: 30px;
+	height: 50px;
 }
 
 #wrap {
@@ -30,10 +30,8 @@ td, th {
 <script>
 	function deleteComm() {
 
-		if (confirm('삭제하시겠습니까?')) {
-			return true;
-		} else {
-			return false;
+		if (confirm('댓글을 삭제하시겠습니까?')) {
+			return location.href="delete_comment?commentNo="+commentNo;
 		}
 	}
 </script>
@@ -47,7 +45,7 @@ td, th {
 
 	<c:if test="${!comments.isEmpty()}">
 		<div id="wrap">
-			<h1 id="title" style="text-align: center;">댓글 목록</h1>
+			<h1 id="title" style="text-align: center;">댓글 목록</h1><br>
 
 			<form>
 				<table class="table table-hover">
@@ -67,9 +65,10 @@ td, th {
 							<td>${comment.commentCont}</td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 									value="${comment.commentDate}" /></td>
-							<td><a href="edit_comment?commentNo=${comment.commentNo}">수정</a>
-								<a href="delete_comment?commentNo=${comment.commentNo}"
-								Onclick="javascript:deleteComm()">삭제</a></td>
+							<td>
+							<input type="button" class="btn btn-default" onclick="javascript:location.href='edit_comment?commentNo='+${comment.commentNo}" value="수정">
+							<input type="button" class="btn btn-default" Onclick="deleteComment(${comment.commentNo})" value="삭제">
+								</td>
 						</tr>
 					</c:forEach>
 				</table>
