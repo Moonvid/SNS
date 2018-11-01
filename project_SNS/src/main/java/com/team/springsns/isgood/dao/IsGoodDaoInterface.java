@@ -10,7 +10,7 @@ public interface IsGoodDaoInterface {
 
 	public IsGoodDTO selectIsGood(IsGoodDTO isGoodDTO);
 	public void insertIsGood(IsGoodDTO isGoodDTO);
-	public int deleteIsGood(IsGoodDTO isGoodDTO);
+	public void deleteIsGood(IsGoodDTO isGoodDTO);
 	public CountIsGoodDTO getCountIsGood(int boardNo);
 	public List<Board> getBoardAll();
 	public void deleteIsGoodAll(int boardNo);
