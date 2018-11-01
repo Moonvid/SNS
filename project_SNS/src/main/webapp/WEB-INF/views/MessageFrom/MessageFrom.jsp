@@ -13,9 +13,7 @@
 	href="${pageContext.request.contextPath}/css/loginCSS.css"
 	type="text/css">
 <!-- 구글폰트 -->
-<link
-	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo" rel="stylesheet">
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
