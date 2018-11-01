@@ -83,10 +83,17 @@
 						</c:if>
 						</c:forEach>
 					</c:if>
-				</span> <span> <c:if test="${boardcont ne cont}">
-						<button class="isGoodBnt" value="${board.boardNo}">좋아요!</button>
+				</span>
+				<span> 
+				<c:if test="${boardcont ne cont}">
+					<button class="isGoodBnt" value="${board.boardNo}">좋아요!</button>
 					</c:if>
 				</span>
+				<span><a href="comment?boardNo=${board.boardNo}">[댓글달기]</a></span>
+				<span><button class="commBtn" value="${board.boardNo}">댓글...댓글을 보자!</button></span>
+			</div>
+			<div id="commHidden_${board.boardNo}" style="display:none;">
+		
 			</div>
 		</c:forEach>
 	</section>
@@ -98,6 +105,50 @@
 	</c:forEach>
 
 
+
+
+
+
+<script>
+$('.commBtn').click(function() {
+	var bNo = $(this).val();
+	alert(bNo);
+		var commList = [];
+		var comm = "";
+	 
+		status = $('#commHidden_'+bNo).css("display");
+		if(status=="none"){
+			status = $('#commHidden_'+bNo).css("display", "");
+			
+			$.ajax({
+				type: "GET",
+				url: "viewComment",
+				data: {"bNo":bNo},
+				dataType: "JSON",
+			 	success: function(data){
+			 		commList = data;
+			 		
+			 		if(commList.length==0){
+			 			comm += 'NO COMMENT!';
+			 		}else{
+			 			for(var i=0; i<commList.length; i++){
+			 				comm += '댓글번호 : '+commList[i].commentNo+'<br>';
+			 				comm += '작성자 : '+commList[i].userId+'<br>';
+			 				comm += '코멘트 : '+commList[i].commentCont+'<br>';
+			 				comm += '<a href="deleteComment?commentNo='+commList[i].commentNo+'">[삭제하기]</a>';
+			 				comm += '<a href="editComment?commentNo='+commList[i].commentNo+'">[수정하기]</a><br><br>';
+			 			}
+			 		}
+			 		$('#commHidden_'+bNo).empty();
+			 		$('#commHidden_'+bNo).append(comm);
+			 	}
+			});
+			
+		}else{
+			status = $('#commHidden_'+bNo).css("display", "none");
+		}
+});
+</script>
 
 	<script>
 	$('.isGoodBnt').click(function() {
