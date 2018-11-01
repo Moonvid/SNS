@@ -33,12 +33,13 @@ body {
 	background-image:
 		url("${pageContext.request.contextPath}/images/back.png");
 }
- #logo {
+
+#logo {
 	width: 250px;
 	margin-left: 30px;
 	margin-bottom: 10px;
 	padding-top: 10px;
-} 
+}
 </style>
 
 </head>
@@ -106,48 +107,55 @@ body {
 					+ expireDate.toGMTString();
 		}
 	</script>
-	<%
-		MemberInfo memberInfo = (MemberInfo) request.getSession(false).getAttribute("loginInfo");
-	%>
-	<div class="back">
-		<!-- <div class="login-form"> -->
-		<table>
-			<tr>
-				<td><a href=#""><img
-						src="${pageContext.request.contextPath}/images/logo_fin.png"
-						id="logo"></a></td>
-			</tr>
-			<tr>
-				<td>
-					<form method="post">
-						<div class="form-group">
-							<label for="userId">이메일 주소</label> <input type="text"
-								class="form-control" id="userId" name="userId"
-								placeholder="이메일을 입력하세요">
-						</div>
-						<div class="form-group">
-							<label for="userPassword">암호</label> <input type="password"
-								class="form-control" name="userPassword" placeholder="암호를 입력하세요">
-						</div>
-						<div class="checkbox">
-							<label> <input type="checkbox" id="idSaveCheck">
-								아이디 저장하기
-							</label>
-						</div>
-						<input type="submit" class="btn2 btn" value="로그인">
-					</form>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<P>
-						계정이 없으신가요? <a href="<c:url value='/team/memberReg' />">회원가입</a>
-					</P>
-				</td>
-			</tr>
-		</table>
-		<!-- 	</div> -->
-	</div>
-
+	<c:choose>
+	<c:when test="${empty loginInfo.userId}">
+		<div class="back">
+			<!-- <div class="login-form"> -->
+			<table>
+				<tr>
+					<td><a href=#""><img
+							src="${pageContext.request.contextPath}/images/logo_fin.png"
+							id="logo"></a></td>
+				</tr>
+				<tr>
+					<td>
+						<form method="post">
+							<div class="form-group">
+								<label for="userId">이메일 주소</label> <input type="text"
+									class="form-control" id="userId" name="userId"
+									placeholder="이메일을 입력하세요">
+							</div>
+							<div class="form-group">
+								<label for="userPassword">암호</label> <input type="password"
+									class="form-control" name="userPassword"
+									placeholder="암호를 입력하세요">
+							</div>
+							<div class="checkbox">
+								<label> <input type="checkbox" id="idSaveCheck">
+									아이디 저장하기
+								</label>
+							</div>
+							<input type="submit" class="btn2 btn" value="로그인">
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<P>
+							계정이 없으신가요? <a href="<c:url value='/team/memberReg' />">회원가입</a>
+						</P>
+					</td>
+				</tr>
+			</table>
+			<!-- 	</div> -->
+		</div>
+	</c:when>
+	<c:otherwise>
+	<script>
+		location.href='${pageContext.request.contextPath}/board/boardList';
+	</script>
+	
+	</c:otherwise>
+</c:choose>
 </body>
 </html>
