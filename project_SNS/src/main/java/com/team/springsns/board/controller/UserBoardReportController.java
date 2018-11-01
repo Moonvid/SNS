@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.springsns.board.service.BoardReportService;
@@ -20,24 +21,20 @@ public class UserBoardReportController {
 	private BoardReportService service;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView report(@RequestParam("boardNo") int boardNo, @RequestParam("userNo") int userNo, HttpServletRequest request) {
+	@ResponseBody
+	public int report(@RequestParam("boardNo") int boardNo, @RequestParam("userNo") int userNo, HttpServletRequest request) {
 		
 		/*String userId = request.getParameter("userId");*/
-		MemberInfo loginInfo = (MemberInfo) request.getSession(false).getAttribute("loginInfo");
+/*		MemberInfo loginInfo = (MemberInfo) request.getSession(false).getAttribute("loginInfo");
 		String userId= loginInfo.getUserId();
-		ModelAndView modelAndView = new ModelAndView();
+		ModelAndView modelAndView = new ModelAndView();*/
 		
-		service.report(boardNo, userNo);
-		int result = service.getReport(boardNo);
+		return service.report(boardNo, userNo);
 
-		if (result >= 3) {
-			service.updateReport(boardNo);
-		}
-
-		modelAndView.addObject("userId", userId);
+/*		modelAndView.addObject("userId", userId);
 		modelAndView.setViewName("redirect:/board/boardList?userId=" + userId);
 		
-		return modelAndView;
+		return modelAndView;*/
 	}
 
 }
