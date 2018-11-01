@@ -7,57 +7,56 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<meta name="viewport" content="width=device-width" initial-scale="1">
 <!-- 구글폰트 -->
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo"
 	rel="stylesheet">
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/default.css">
-<style type="text/css">
-#logo {
-	width: 150px;
-	height: 50px;
-	position: absolute;
-	margin-top: 0;
-}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-.navbar {
-	background-color: rgb(33, 57, 93); /* #00264B; */
-	color: white;
+<style type="text/css">
+#logo_fin{
+	height: 50px;
+	padding-right: 30px;
 }
 </style>
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
-			<div class="navbar-header">
-				<a href="#"><img src="images/logo2.png" id="logo"></a>
+			<div class="navbar-header active">
+				<a href="<c:url value='/notice/list' />"><img
+					src="${pageContext.request.contextPath}/images/logo_fin2.png"
+					id = "logo_fin"></a>
 			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="<c:url value='/notice/list' />">공지사항</a></li>
-					<li><a href="#">마이페이지</a></li>
-					<%
-						MemberInfo loginInfo = (MemberInfo) request.getSession(false).getAttribute("loginInfo");
-						if (loginInfo == null) { /** userId와 같은 아이디로 세션이 없으면**/
-					%><li><a href="<c:url value='/loginForm' />">로그인</a></li>
-					<%
-						} else {
-					%>
-					<li><a href="<c:url value='/team/logout' />">로그아웃</a></li>
-					<%
-						}
-					%>
-
-				</ul>
-				<form action="check" method="POST"	class="navbar-form navbar-right">
-					<div>
-						<input type="text" name="searchData" class="form-control" />
-						<button class="btn btn-default">검색</button>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="<c:url value='/notice/list' />">공지사항</a></li>
+				<li><a href="#">마이페이지</a></li>
+				<c:choose>
+					<c:when test="${empty loginInfo}">
+						<li><a href="<c:url value='/loginForm' />">로그인</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="<c:url value='/team/logout' />">로그아웃</a></li>
+					</c:otherwise>
+				</c:choose>
+			</ul>
+			<form class="navbar-form navbar-center" action="#">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Search"
+						name="search">
+					<div class="input-group-btn">
+						<button class="btn btn-default" type="submit">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
 					</div>
-				</form>
-			</div>
+				</div>
+			</form>
 		</div>
 	</nav>
 

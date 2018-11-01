@@ -5,8 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width" initial-scale="1">
-<title></title>
+<meta name="viewport" content="width=device-width", initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/default.css">
 <style type="text/css">
@@ -15,12 +14,12 @@ body {
 }
 
 .sidebar {
-	width: 300px;
-	height: 600px;
+	width: 380px;
+	height:650px;
 	float: right;
-	margin-top: 40px;
 	margin-right: 10px;
 	background-color: white;
+	border-radius: 10px;
 }
 
 .icon a {
@@ -30,8 +29,8 @@ body {
 .icon li {
 	list-style-type: none;
 	float: left;
-	padding: 5px;
-	margin: 0 auto;
+	margin-left: 13px;
+	margin-top: 5px;
 }
 
 .menu>button {
@@ -77,16 +76,14 @@ body {
 <body>
 	<div class="sidebar">
 		<div class="icon">
-			<ul>
+			<ul class="nav nav-tabs">
 				<li><a href="#">글쓰기</a></li>
 				<li><a href="#">친구목록</a></li>
 				<li><a href="${pageContext.request.contextPath}/MessageTo/WhoRecv?recvid=${loginInfo.userName}">쪽지함</a></li>
 				<li><a href="#">프로필</a></li>
 			</ul>
 		</div>
-		<!-- <div class="edit">
-				<a href="#"><img src="images/setting.png" ></a>
-			</div> -->
+
 		<div class="myphoto"></div>
 
 		<div id="info">
