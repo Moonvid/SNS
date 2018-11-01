@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.team.springsns.model.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,16 +36,16 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">공지사항</a></li>
+					<li><a href="<c:url value='/notice/list' />">공지사항</a></li>
 					<li><a href="#">마이페이지</a></li>
 					<%
 						MemberInfo loginInfo = (MemberInfo) request.getSession(false).getAttribute("loginInfo");
 						if (loginInfo == null) { /** userId와 같은 아이디로 세션이 없으면**/
-					%><li><a href="<%=request.getContextPath()%>/loginForm">로그인</a></li>
+					%><li><a href="<c:url value='/loginForm' />">로그인</a></li>
 					<%
 						} else {
 					%>
-					<li><a href="<%=request.getContextPath()%>/team/logout">로그아웃</a></li>
+					<li><a href="<c:url value='/team/logout' />">로그아웃</a></li>
 					<%
 						}
 					%>
