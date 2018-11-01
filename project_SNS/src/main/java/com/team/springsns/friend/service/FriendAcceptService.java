@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.team.springsns.friend.dao.FriendsDaoInterface;
 import com.team.springsns.friend.model.FriendRequestInfo;
 import com.team.springsns.friend.model.Friends;
-
+ 
 @Service
 public class FriendAcceptService {
 	 

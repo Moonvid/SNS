@@ -12,7 +12,7 @@ import com.team.springsns.friend.service.FriendAcceptService;
 
 @Controller
 public class FriendAcceptController {
-	 
+	  
 	@Autowired
 	private FriendAcceptService acceptService;
 	

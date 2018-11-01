@@ -3,7 +3,7 @@ package com.team.springsns.friend.model;
 import org.springframework.web.multipart.MultipartFile;
 
 public class FriendsListView {
-	 
+	  
 	private int userNo;
 	private String userId;
 	private String userName;

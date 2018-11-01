@@ -15,7 +15,7 @@ import com.team.springsns.member.dao.MemberDaoInterface;
 import com.team.springsns.model.MemberInfo;
 
 public class MemberRegService {
-
+ 
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	

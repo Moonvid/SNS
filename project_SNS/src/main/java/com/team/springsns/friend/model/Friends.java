@@ -1,7 +1,7 @@
 package com.team.springsns.friend.model;
 
 public class Friends {
-
+ 
 	int userNo;
 	int friendNo;
 	 

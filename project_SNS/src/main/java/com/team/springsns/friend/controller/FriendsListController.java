@@ -15,7 +15,7 @@ import com.team.springsns.friend.service.FriendsListService;
 
 @Controller
 public class FriendsListController {
-	
+	 
 	@Autowired
 	private FriendsListService ListService;
 	

@@ -64,7 +64,7 @@ body {
 	width: 200px;
 	text-align: center;
 	margin-top: 50px;
-}
+} 
 </style>
 <!-- 구글폰트 -->
 <link

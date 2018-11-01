@@ -17,7 +17,7 @@ import com.team.springsns.friend.service.FriendsViewService;
 
 @Controller
 public class FriendsPageController {
-	
+	 
 	@Autowired
 	private FriendsViewService viewService;
 	
