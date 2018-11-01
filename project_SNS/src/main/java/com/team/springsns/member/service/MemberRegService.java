@@ -2,7 +2,6 @@ package com.team.springsns.member.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +14,7 @@ import com.team.springsns.member.dao.MemberDaoInterface;
 import com.team.springsns.model.MemberInfo;
 
 public class MemberRegService {
- 
+
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
@@ -40,11 +39,11 @@ public class MemberRegService {
 		System.out.println(dir);
 		// DB 저장용 파일 이름, 물리적 저장할 때의 이름 (DB에 있는 이름 = 실제 파일 이름)
 		String imgName = "";
-		  
+		
 		//multipartFile이 있어야 저장 가능함
 		if(!memberInfo.getPhotoFile().isEmpty()) {
 																		//확장자 포함한 파일 이름
-			imgName = (memberInfo.getUserId()) + "_" + memberInfo.getPhotoFile().getOriginalFilename(); 
+			imgName = memberInfo.getUserId() + "_" + memberInfo.getPhotoFile().getOriginalFilename(); 
 			
 			// 실제로 물리적 저장
 			memberInfo.getPhotoFile().transferTo(new File(dir, imgName));

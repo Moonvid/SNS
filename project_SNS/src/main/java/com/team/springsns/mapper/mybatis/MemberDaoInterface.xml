@@ -5,14 +5,23 @@
 
 	<!-- 로그인용 -->
 	<select id="getMemberInfo" resultType="com.team.springsns.model.MemberInfo">
-		select * from member where userid=#{Id}
+		select * from member where userid=#{userId}
 	</select>
 
 	<!-- 회원가입용 -->
 	<insert id="insertMemberInfo"
 		parameterType="com.team.springsns.model.MemberInfo" useGeneratedKeys="true" keyColumn="userno">
-		insert into member (userid, userpassword, username, userprofilephoto, userintro, userblock, manager)
-		values(#{userId}, #{userPassword}, #{userName}, #{userProfilePhoto}, #{userIntro}, #{userBlock}, #{manager})
+		insert into member (userid, username, userpassword, userprofilephoto, userintro, userblock, manager)
+		values(#{userId}, #{userName}, #{userPassword}, #{userProfilePhoto}, #{userIntro}, #{userBlock}, #{manager})
 	</insert>
+	
+	<update id="updateMemberInfo" parameterType="com.team.springsns.model.MemberInfo">
+		update member set 
+		userpassword=#{userPassword}, 
+		username=#{userName}, 
+		userprofilephoto=#{userProfilePhoto}, 
+		userintro=#{userIntro} 
+		where userid=#{userId}
+	</update>
 
 </mapper>

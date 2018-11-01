@@ -6,4 +6,5 @@ public interface MemberDaoInterface {
 
 	public MemberInfo getMemberInfo (String userId);
 	public int insertMemberInfo(MemberInfo memberInfo);
+	public void updateMemberInfo(MemberInfo memberInfo);
 }
