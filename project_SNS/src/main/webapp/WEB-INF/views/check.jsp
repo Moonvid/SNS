@@ -6,16 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width" initial-scale="1">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/bootstrap.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/loginCSS.css"
-	type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/loginCSS.css" type="text/css">
 <!-- 구글폰트 -->   
-<link
-	href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo" rel="stylesheet">
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/layout_top.jsp"%>
@@ -24,12 +18,12 @@
 	<br>
 	<br>
 	<br>
+	<h2>${search}를 검색하였습니다!</h2><br>
 	<c:forEach var="dataVo" items="${dataVO }">
 		<hr>
-	${dataVo}<br>
-	Userno:${dataVo.userno }<br>
-	Boardcontent:${dataVo.boardcontent }<br>
-	Hashtag:${dataVo.hashtag }<br>
+		Userno:${dataVo.userno }<br>
+		Boardcontent:${dataVo.boardcontent }<br>
+		Hashtag:${dataVo.hashtag }<br>
 		<hr>
 	</c:forEach>
 </body>

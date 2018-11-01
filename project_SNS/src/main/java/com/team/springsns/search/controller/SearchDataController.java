@@ -20,13 +20,14 @@ public class SearchDataController {
 
 	@RequestMapping(value = "/check", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView getSearchData(String search) {
-		System.out.println("Controller 진입");
+		System.out.println("Controller 진입@@"+search);
 
 		ModelAndView modelAndView = new ModelAndView();
 		List<DataVO> dataDao = new ArrayList<DataVO>();
 
 		dataDao = service.getSearchData(search);
 		modelAndView.addObject("dataVO", dataDao);
+		modelAndView.addObject("search",search);
 		modelAndView.setViewName("check");
 		System.out.println(dataDao);
 		return modelAndView;
