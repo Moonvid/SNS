@@ -11,7 +11,7 @@ import com.team.springsns.friend.model.Friends;
 
 @Service
 public class FriendsListService {
-
+ 
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	

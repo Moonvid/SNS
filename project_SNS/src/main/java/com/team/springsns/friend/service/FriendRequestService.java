@@ -12,7 +12,7 @@ import com.team.springsns.friend.model.Friends;
 
 @Service
 public class FriendRequestService {
-
+ 
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 

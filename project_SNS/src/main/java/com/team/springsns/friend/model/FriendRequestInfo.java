@@ -9,7 +9,7 @@ public class FriendRequestInfo {
 	private String responseUserName;
 	private boolean requestAccept;
 	private boolean requestCancel;
-	
+	 
 	public FriendRequestInfo() {
 		
 	}

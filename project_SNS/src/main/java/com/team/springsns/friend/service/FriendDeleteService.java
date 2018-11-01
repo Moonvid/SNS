@@ -9,7 +9,7 @@ import com.team.springsns.friend.model.Friends;
 
 @Service
 public class FriendDeleteService {
-
+ 
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 

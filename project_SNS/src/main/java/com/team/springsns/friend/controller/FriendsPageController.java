@@ -29,7 +29,7 @@ public class FriendsPageController {
 		
 		// ModelAndView 메서드 사용을 위한 객체 선언
 		ModelAndView mav = new ModelAndView();
-		
+		 
 		// 현재 컨트롤러로 부터 이동할 view단의 default 페이지 주소 설정
 		mav.setViewName("team/friendsPage");
 		

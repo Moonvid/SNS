@@ -5,7 +5,7 @@ import java.util.List;
 import com.team.springsns.friend.model.FriendRequestInfo;
 import com.team.springsns.friend.model.Friends;
 import com.team.springsns.model.MemberInfo;
-
+ 
 public interface FriendsDaoInterface {
 	
 	// 친구 목록 가져오는 메서드

@@ -40,7 +40,7 @@ public class MemberRegService {
 		System.out.println(dir);
 		// DB 저장용 파일 이름, 물리적 저장할 때의 이름 (DB에 있는 이름 = 실제 파일 이름)
 		String imgName = "";
-		
+		  
 		//multipartFile이 있어야 저장 가능함
 		if(!memberInfo.getPhotoFile().isEmpty()) {
 																		//확장자 포함한 파일 이름

@@ -14,7 +14,7 @@ public class FriendsViewService {
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	private FriendsDaoInterface friendsDao;
-	
+	  
 	// 친구 페이지를 보여주는 메서드
 	public MemberInfo viewFriendPage(int userNo) {
 		

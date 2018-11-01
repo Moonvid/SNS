@@ -10,7 +10,7 @@ import com.team.springsns.friend.service.FriendDeleteService;
 
 @Controller
 public class FriendDeleteController {
-
+ 
 	@Autowired
 	private FriendDeleteService service;
 

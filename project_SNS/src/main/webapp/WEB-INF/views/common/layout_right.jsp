@@ -72,7 +72,7 @@ body {
 	rel="stylesheet">
 
 </head>
-
+ 
 <body>
 	<div class="sidebar">
 		<div class="icon">

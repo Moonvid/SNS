@@ -39,7 +39,7 @@ public class FriendsListController {
 		FriendRequestInfo requestInfo = new FriendRequestInfo();
 		*/
 		
-		
+		 
 		// 가져온 친구 목록이 있으면 ModelAndView 객체에 friendsList란 이름으로 객체를 저장하여 view 단에 넘겨준다.
 		if(!ListService.viewFriendsList(loginInfo.getUserNo()).isEmpty()) {
 				mav.addObject("friendsList", ListService.viewFriendsList(loginInfo.getUserNo()));

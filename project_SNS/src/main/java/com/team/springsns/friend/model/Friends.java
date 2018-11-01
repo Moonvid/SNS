@@ -4,7 +4,7 @@ public class Friends {
 
 	int userNo;
 	int friendNo;
-	
+	 
 	public int getUserNo() {
 		return userNo;
 	}
