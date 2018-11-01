@@ -15,7 +15,7 @@
 	<form method="post">
 		아이디: <input type="text" name="userId" value="${loginInfo.userId }" readonly/> <br />
 		<input type="hidden" name="commentNo" value="${comment.commentNo}">
-		댓글:<textarea name="commentCont" cols="30" row="3" >${comment.commentCont}</textarea> <br />
+		댓글:<textarea name="commentCont" cols="30" rows="3" >${comment.commentCont}</textarea> <br />
 		<input type="submit" value="댓글수정" />
 	</form>
 </body>

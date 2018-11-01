@@ -14,8 +14,8 @@
 	<h1> 댓글 </h1>
 	<form method="post">
 		아이디: <input type="text" name="userId" value="${loginInfo.userId }" readonly/> <br />
-		<input type="hidden" name="userIdx" value="${loginInfo.userNo}">
-		댓글:<textarea name="commentCont" cols="30" row="3" ></textarea> <br />
+		<input type="hidden" name="userNo" value="${loginInfo.userNo}">
+		댓글:<textarea name="commentCont" cols="30" rows="3" ></textarea> <br />
 		<input type="submit" value="댓글달기" />
 	</form>
 </body>
