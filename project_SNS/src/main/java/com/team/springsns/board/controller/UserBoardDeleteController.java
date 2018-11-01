@@ -8,11 +8,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.springsns.board.service.BoardDeleteService;
+import com.team.springsns.comment.service.DeleteCommentAllService;
 
 @Controller
 public class UserBoardDeleteController {
 	@Autowired
 	private BoardDeleteService service;
+	
+	@Autowired
+	private DeleteCommentAllService deleteCommentAllService;
 
 	@RequestMapping(value = "board/delete", method = RequestMethod.GET)
 	public ModelAndView getDeleteForm(@RequestParam(value = "userid", required = false) String userId, @RequestParam("boardno") int boardno) {
@@ -22,6 +26,8 @@ public class UserBoardDeleteController {
 		modelAndView.addObject("userId", userId);
 		modelAndView.setViewName("redirect:/board/boardList");
 		
+		
+		deleteCommentAllService.deleteCommentAll(boardno);
 		
 		return modelAndView;
 	}
