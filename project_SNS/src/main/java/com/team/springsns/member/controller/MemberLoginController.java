@@ -35,7 +35,7 @@ public class MemberLoginController {
 			if (service.login(userId, userPassword, session)) {
 
 				// 정상적 로그인 & 관리자 계정일때
-				if (userId.equals("managerSol@gmail.com")) {
+				if (userId.equals("manager@gmail.com")) {
 					modelAndView.setViewName("team/index");
 
 				} else {
