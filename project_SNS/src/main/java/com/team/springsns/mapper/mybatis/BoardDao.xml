@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.team.springsns.dao.BoardDao">
+<mapper namespace="com.team.springsns.board.dao.BoardDao">
 
 	<resultMap id="board" type="com.team.springsns.board.model.Board">
 		<result property="userNo" column="userno" javaType="int" />
