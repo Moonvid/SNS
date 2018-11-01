@@ -21,7 +21,11 @@ public interface FriendsDaoInterface {
 	public int setFriendRequest(FriendRequestInfo requestInfo);
 	
 	// relation 테이블에서 친구 해제(삭제)하는 메서드
-	public int deleteFriend(Friends friends);
+	public int deleteFriend1(Friends friends);
+	
+	// relation 테이블에서 친구 해제(삭제)하는 메서드
+	public int deleteFriend2(Friends friends);
+		
 	
 	// request 테이블에서 요청 대기 삭제하는 메서드
 	public int deleteRequest(FriendRequestInfo requestInfo);
@@ -34,5 +38,8 @@ public interface FriendsDaoInterface {
 
 	// 친구 요청을 수락 시 테이블에 추가하는 메서드 2
 	public int setFriendAccept2(Friends friends);
+	
+	// 친구 상태를 체크하는 메서드
+	public int chkFriend(Friends friends);
 
 }

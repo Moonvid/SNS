@@ -15,10 +15,19 @@ public class FriendDeleteService {
 
 	private FriendsDaoInterface friendsDao;
 
-	public int deleteMessagae(int followingNo) {
+	public int deleteFriend(Friends friends) {
 		friendsDao = sqlSessionTemplate.getMapper(FriendsDaoInterface.class);
-		Friends friends = new Friends();
-		friends.setFriendNo(followingNo);
-		return friendsDao.deleteFriend(friends);
+		
+		int deleteCnt1 = 0;
+		int deleteCnt2 = 0;
+		int total = 0;
+		
+		deleteCnt1 = friendsDao.deleteFriend1(friends);
+		deleteCnt2 = friendsDao.deleteFriend2(friends);
+		
+		if(deleteCnt1==1 && deleteCnt1==deleteCnt2)
+			total = 1;
+		
+		return total;
 	}
 }

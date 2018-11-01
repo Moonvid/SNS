@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team.springsns.friend.dao.FriendsDaoInterface;
+import com.team.springsns.friend.model.Friends;
 import com.team.springsns.model.MemberInfo;
  
 @Service
@@ -24,6 +25,17 @@ public class FriendsViewService {
 		
 		return friendInfo;
 		
+	}
+	
+	public int chkFriend(Friends friends) {
+		
+		friendsDao = sqlSessionTemplate.getMapper(FriendsDaoInterface.class);
+		
+		int chkCnt = 0;
+		
+		chkCnt = friendsDao.chkFriend(friends);
+		
+		return chkCnt;
 	}
 	
 

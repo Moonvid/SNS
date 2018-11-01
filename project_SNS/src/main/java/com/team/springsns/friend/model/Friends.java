@@ -4,7 +4,16 @@ public class Friends {
  
 	int userNo;
 	int friendNo;
+	
+	public Friends() {
+		
+	}
 	 
+	public Friends(int userNo, int friendNo) {
+		super();
+		this.userNo = userNo;
+		this.friendNo = friendNo;
+	}
 	public int getUserNo() {
 		return userNo;
 	}

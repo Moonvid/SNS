@@ -21,7 +21,7 @@
 	<h2>${search}를 검색하였습니다!</h2><br>
 	<c:forEach var="dataVo" items="${dataVO }">
 		<hr>
-		Userno:${dataVo.userno }<br>
+		<a href="${pageContext.request.contextPath}/friend/friendsPage/${dataVo.userno }">Userno:${dataVo.userno }</a><br>
 		Boardcontent:${dataVo.boardcontent }<br>
 		Hashtag:${dataVo.hashtag }<br>
 		<hr>

@@ -20,7 +20,7 @@
 <style>
 table {
 	border: 1px solid black;
-	width: 800px;
+	width: 1100px;
 }
 #friendmenu{
 	padding: 20px;
@@ -44,11 +44,14 @@ table {
 <c:if test="${!empty friendsList}">
 	<table>
 		<tr>
-			<td id="friendmenu">FriendName</td>
+			<td id="friendmenu">친구목록</td>
 		</tr>
 		<c:forEach var="friends" items="${friendsList}">
 			<tr>
 				<td id="friendname"><a href="friendsPage/${friends.userNo}">${friends.userName}</a></td>
+			</tr>
+			<tr>
+				<td id="friendname"><button class="remove" value="${loginInfo.userNo},${friends.userNo}" onclick="Remove(this)">친구 해제</button></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -83,7 +86,24 @@ table {
 		
 	});
 	
-	// 친구 요청 수락 했을 때
+	// 친구 해제 했을 때
+	
+	function Remove(data){
+		var userNoArray = $(data).val().split(',');
+		var url = '${pageContext.request.contextPath}/friendRemove';
+		$.ajax({
+			url: url,
+			data: {
+				"userNo": userNoArray[0],
+				"friendNo": userNoArray[1]
+			},
+			success:function(data){
+				location.reload();
+			}
+		});
+	}
+	
+	// 친구 요청 수락했을 때
 	function Accept(data){
 		
 		var userNoArray = $(data).val().split(',');
@@ -99,14 +119,14 @@ table {
 				"friendNo" : userNoArray[1]
 			},
 			success:function(data){
-				if(data == 1){
-					alert("수락 성공!");
-				}
+			
+				location.reload();
 			}
 		});
 		
 	}
 	
+	// 친구 요청 거절했을 때
 	function deny(data){
 		
 		var userNoArray = $(data).val().split(',');
@@ -120,9 +140,8 @@ table {
 				"requestUserNo" : userNoArray[1]
 			},
 			success:function(data){
-				if(data == 1){
-					alert("거절 성공!");
-				}
+				
+				location.reload();
 			}
 		});
 	}

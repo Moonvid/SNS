@@ -46,14 +46,25 @@
 		select * from member where userNo = #{userNo}
 	</select>
 	
-	<!-- 친구 해제 -->
-	<delete id="deleteFriend" parameterType="com.team.springsns.friend.model.Friends">
-		delete from relation where friendno=#{friendNo}
+	<!-- 친구 해제1 -->
+	<delete id="deleteFriend1" parameterType="com.team.springsns.friend.model.Friends">
+		delete from relation where userno=#{userNo} and friendno=#{friendNo}
+	</delete>
+	
+	<!-- 친구 해제2 -->
+	<delete id="deleteFriend2" parameterType="com.team.springsns.friend.model.Friends">
+		delete from relation where userno=#{friendNo} and friendno=#{userNo}
 	</delete>
 	
 	<!-- 친구 요청 대기 리스트에서 삭제 -->
 	<delete id="deleteRequest" parameterType="com.team.springsns.friend.model.FriendRequestInfo">
 		delete from request where requestUserNo = #{requestUserNo}
 	</delete>
+	
+	<!-- 친구 상태 확인 -->
+	<select id="chkFriend" parameterType="com.team.springsns.friend.model.Friends" resultType="int">
+		select count(*) from relation where userno = #{userNo} and friendno = #{friendNo};
+	</select>
+	
 
 </mapper>

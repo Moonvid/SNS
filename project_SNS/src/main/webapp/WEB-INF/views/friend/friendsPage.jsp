@@ -18,14 +18,6 @@
 <!-- 구글폰트 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo" rel="stylesheet">
 <style>
-table {
-	border: 1px solid black;
-	width: 800px;
-}
-td {
-	padding: 20px;
-	text-align: center;
-}
 </style>
 </head>
 <body>
@@ -33,32 +25,36 @@ td {
 <%@ include file="/WEB-INF/views/common/layout_right.jsp"%>
 
 <br><br>
+
 	<h1>친구 페이지</h1>
 	<br><br>
 	<h4>ID : ${friendInfo.userId}</h4> 
 	<h4>이름 : ${friendInfo.userName}</h4>
+
 	<c:forEach var="friendRequestInfo" items="${friendRequestInfo}">
 	<input id="loginUser${friendRequestInfo.requestUserNo}" type="hidden" value="${friendRequestInfo.requestAccept }" /></c:forEach>
 	
-	<table border=1>
-		<tr>
-			<td>아이디 : ${friendInfo.userId}</td>
-			<td>이름 : ${friendInfo.userName}</td>
-			<td class="${loginInfo.userNo}"><button id="${loginInfo.userNo}" value="${loginInfo.userNo},${loginInfo.userName},${friendInfo.userNo},${friendInfo.userName}" onclick="friendReg(this)">[친구신청]</button></td>
-		</tr>
-	</table>
+	<c:if test="${chkFriends==0}">
+	<span class="${loginInfo.userNo}"><button id="${loginInfo.userNo}" value="${loginInfo.userNo},${loginInfo.userName},${friendInfo.userNo},${friendInfo.userName}" onclick="friendReg(this)">[친구신청]</button></span>
+	</c:if>
+	
 	<script>
 	/* 로그인 되어있는 상태의 입장이라 생각하고 진행 */
 	/* 친구신청 페이지 들어왔을떄 요청 중인지 아닌지 확인하기 위한 코드 */
 	
 	$(document).ready(function(){
 		var aarray = $('button[onclick="friendReg(this)"]').val().split(',');
-		var cancelRequest1='<td class="1"><button value ="'+aarray[0]+','+aarray[1]+','+aarray[2]+','+aarray[4]+'" onclick="cancelReg(this)">[요청취소]</button></td>';
+		var cancelRequest1='<td class="1"><button value ="'+aarray[0]+','+aarray[1]+','+aarray[2]+','+aarray[3]+'" onclick="cancelReg(this)">[요청취소]</button></td>';
+		console.log($('input[type="hidden"]').val());
+		
 		if($('input[type="hidden"]').val()=='false'){
 			$('button[onclick="friendReg(this)"]').text('[요청중...]');
 			$('button[onclick="friendReg(this)"]').attr('disabled',true);
 			$('.${loginInfo.userNo}').after(cancelRequest1); 
 		}
+		
+		
+		
 	});
 	
 	/* 요청 버튼 누르면 요청중 으로 변경 */
