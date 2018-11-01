@@ -118,11 +118,12 @@
 
 <script>
 $('.commBtn').click(function() {
-	var bNo = $(this).val();
-	//alert(bNo);
+	   	var userId = '${loginInfo.userId}';
+		var bNo = $(this).val();
+		/* alert(bNo); */
 		var commList = [];
 		var comm = "";
-	 
+	 	
 		status = $('#commHidden_'+bNo).css("display");
 		if(status=="none"){
 			status = $('#commHidden_'+bNo).css("display", "");
@@ -141,8 +142,8 @@ $('.commBtn').click(function() {
 			 				comm += '<br>총 댓글: '+commList.length+'<br>';
 			 			for(var i=0; i<commList.length; i++){
 			 				comm += '<br>댓글번호 : '+commList[i].commentNo+' ';
-			 				comm += '<a href="deleteComment?commentNo='+commList[i].commentNo+'">[삭제하기] </a>';
-			 				comm += '<a href="editComment?commentNo='+commList[i].commentNo+'">[수정하기]</a><br>';
+			 				comm += '<a href="editComment?commentNo='+commList[i].commentNo+'">[수정하기]</a>';
+			 				comm += '<a href="deleteComment?commentNo='+commList[i].commentNo+'&userId='+userId+'">[삭제하기]</a><br>';
 			 				comm += '작성자 : '+commList[i].userId+'<br>';
 			 				comm += '코멘트 : '+commList[i].commentCont+'<br>';
 			 			}
