@@ -60,7 +60,7 @@ a {
 
 	<c:if test="${!viewData.isEmpty()}">
 		<div id="wrap">
-			<h1 id="title" style="text-align: center;">공지사항</h1>
+			<h1 id="title" style="text-align: center;">공지사항</h1><br>
 
 			<form>
 				<table class="table table-hover">

@@ -95,8 +95,8 @@
 				<c:if test="${boardcont ne cont}">
 					<button class="isGoodBnt" value="${board.boardNo}">좋아요!</button>
 					</c:if>
-				</span>
-				<span><a href="comment?boardNo=${board.boardNo}">[댓글달기]</a></span>
+				</span><br>
+				<span><a href="comment?boardNo=${board.boardNo}">[댓글달기]</a></span><br>
 				<span><button class="commBtn" value="${board.boardNo}">댓글...댓글을 보자!</button></span>
 			<div class="commentSection" id="commHidden_${board.boardNo}" style="display:none;">
 			</div>

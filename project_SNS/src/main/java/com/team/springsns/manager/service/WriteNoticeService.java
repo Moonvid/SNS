@@ -27,7 +27,7 @@ public class WriteNoticeService {
 		noticeDao = sqlSessionTemplate.getMapper(NoticeDao.class);
 	
 		// 물리적 저장 경로
-				String uploadUri = "/uploadfile";
+				String uploadUri = "/uploadfile/userphoto";
 
 				// uploadUri 경로의 시스템 경로
 				String dir = request.getSession().getServletContext().getRealPath(uploadUri);

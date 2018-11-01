@@ -40,7 +40,7 @@
 			<td colspan="2">확인 삭제</td>
 		</tr>
 		<c:forEach var="messageInfo" items="${messageInfo}">
-			<tr><!--  class="checkMessage" -->
+			<tr class="checkMessage">
 				<td>${messageInfo.sendid }</td>
 				<td>${messageInfo.recvid }</td>
 				<td>${messageInfo.messagecont }</td>

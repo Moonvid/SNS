@@ -32,13 +32,11 @@ td {
 }
 </style>
 <script>
-	function deleteNo() {
+	function deleteNo(noticeNo) {
 
 		if (confirm('삭제하시겠습니까?')) {
-			return true;
-		} else {
-			return false;
-		}
+			location.href="delete?noticeNo=" + noticeNo;
+		} 
 	}
 </script>
 </head>
@@ -46,7 +44,7 @@ td {
 
 	<%@ include file="/WEB-INF/views/common/layout_top.jsp"%>
 
-	<h1 id="title" style="text-align: center;">게시글 보기</h1>
+	<h1 id="title" style="text-align: center;">게시글 보기</h1><br>
 	<div id="wrap">
 		<form method="get" enctype="multipart/form-data">
 			<table class="table table-bordered">
@@ -68,18 +66,24 @@ td {
 					<td colspan="4"><c:set var="img" value="${i.noticePhoto}" />
 						<c:if test="${img != null}">
 							<br>
-							<img
-								src="<c:url value='/uploadfile/userphoto/${i.noticePhoto}' />">
+							<img src="${pageContext.request.contextPath}/uploadfile/userphoto/${i.noticePhoto}">
 							<br>
-						</c:if> ${i.noticeCont}</td>
+						</c:if> 
+						${i.noticeCont}</td>
 				</tr>
 
 				<c:if test="${loginInfo.manager}">
 					<tr>
-						<td colspan="4" style="text-align: right"><a
+						<td colspan="4" style="text-align: right">
+						
+						<input type="button" class="btn btn-default" onclick="javascript:location.href='edit?noticeNo=' + ${i.noticeNo}" value="수정">
+							<input type="button" class="btn btn-default" Onclick="deleteNo(${i.noticeNo})" value="삭제">
+						
+						<%-- <a
 							href="edit?noticeNo=${i.noticeNo}">수정하기</a> <a
 							href="delete?noticeNo=${i.noticeNo}"
-							Onclick="javascript:deleteNo()">삭제하기</a></td>
+							Onclick="javascript:deleteNo()">삭제하기</a> --%>
+							</td>
 					</tr>
 				</c:if>
 				<tr>
