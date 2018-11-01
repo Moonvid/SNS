@@ -30,7 +30,7 @@
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header active">
-				<a href="<c:url value='/notice/list' />"><img
+				<a href="<c:url value='/board/boardList?userId=${loginInfo.userId }' />"><img
 					src="${pageContext.request.contextPath}/images/logo_fin2.png"
 					id = "logo_fin"></a>
 			</div>
