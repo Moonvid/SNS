@@ -17,9 +17,9 @@
  		select boardno, count(userno) as isgoodcnt from isgood group by boardno having boardno=#{boardNo}
  	</select>
 
-<!--  	<select id="getBoardAll" resultType="com.bitcamp.sns.model.Board">
+ 	<select id="getBoardAll" resultType="com.team.springsns.board.model.Board">
  		select * from board
- 	</select> -->
+ 	</select>
  	
  	<delete id="deleteIsGood" parameterType="com.team.springsns.isgood.model.IsGoodDTO">
  		delete from isgood where boardno=#{boardNo} and userno=#{userNo}

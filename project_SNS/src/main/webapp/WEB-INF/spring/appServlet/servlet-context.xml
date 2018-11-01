@@ -91,5 +91,35 @@
 	<beans:bean id="memberRegService"
 		class="com.team.springsns.member.service.MemberRegService" />
 		
-	<beans:bean id="messageService"	class="com.team.springsns.message.service.MessageService"></beans:bean>	
+	<beans:bean id="messageService"	class="com.team.springsns.message.service.MessageService"></beans:bean>
+	
+	
+	
+	<!-- IsGood Service -->
+	<beans:bean id="countIsGoodService"
+		class="com.team.springsns.isgood.sevice.CountIsGoodService" />
+		
+	<beans:bean id="getIsGoodCountAllService"
+		class="com.team.springsns.isgood.sevice.GetIsGoodCountAllService" />
+	
+	<beans:bean id="isGoodService"
+		class="com.team.springsns.isgood.sevice.IsGoodService" />
+	
+	<!-- Comment Service -->
+	<beans:bean id="deleteCommentAllService"
+		class="com.team.springsns.comment.service.DeleteCommentAllService" />
+		
+	<beans:bean id="deleteCommentService"
+		class="com.team.springsns.comment.service.DeleteCommentService" />
+	
+	<beans:bean id="editCommentService"
+		class="com.team.springsns.comment.service.EditCommentService" />
+		
+	<beans:bean id="getCommentListService"
+		class="com.team.springsns.comment.service.GetCommentListService" />
+	
+	<beans:bean id="writeCommentService"
+		class="com.team.springsns.comment.service.WriteCommentService" />
+	
+		
 </beans:beans>
