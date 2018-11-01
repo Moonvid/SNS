@@ -10,9 +10,12 @@
 <body>
 
 <form method="post">
+	<!-- page 값 전달용 -->
+	<input type="hidden" name="page" value=1>
+
 	<!-- 사용자 관련 내용은 hidden으로 바꿔야함 -->
 	사용자no: <input type="text" name="userNo" value=${loginInfo.userNo }><br>
-	사용자id: <input type="text" name="userId" value=${loginInfo.userId }><br>
+	사용자id: <input type="text" name="userId" value='<c:out value="${loginInfo.userId }" />' ><br>
 
 	게시글no: <input type="text" name="boardNo" value='<c:out value="${board.boardNo }" />' readonly="readonly"><br>
 	내용: <textarea name="boardContent"><c:out value="${board.boardContent }" /></textarea><br>
