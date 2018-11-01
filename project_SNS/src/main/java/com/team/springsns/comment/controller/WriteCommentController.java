@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.team.springsns.comment.model.CommentDTO;
 import com.team.springsns.comment.service.WriteCommentService;
@@ -21,9 +23,17 @@ public class WriteCommentController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public String writeComment(CommentDTO commentDTO) {
+	public ModelAndView writeComment(@RequestParam(value = "userId", required = false) String userId,
+								CommentDTO commentDTO) {
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("userId", userId);
+		modelAndView.setViewName("redirect:/board/boardList");
+		
 		writeCommentService.writeComment(commentDTO);
-		return "redirect:/board/boardList";
+		
+		return modelAndView;
 	}
 
 }
