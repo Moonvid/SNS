@@ -14,14 +14,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.team.springsns.manager.model.Board;
 import com.team.springsns.manager.model.Comment;
 import com.team.springsns.manager.service.EditBoardService;
-import com.team.springsns.manager.service.EditCommentService;
+import com.team.springsns.manager.service.EditManagerCommentService;
 
 @Controller
 @RequestMapping("/list/edit_comment")
-public class CommentEditController {
+public class ManagerCommentEditController {
 	
 	@Autowired
-	private EditCommentService service;
+	private EditManagerCommentService service;
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView getEditForm(@RequestParam("commentNo") int commentNo) {

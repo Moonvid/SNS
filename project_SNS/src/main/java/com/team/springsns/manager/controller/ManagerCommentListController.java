@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.team.springsns.manager.service.GetCommentListService;
+import com.team.springsns.manager.service.GetManagerCommentListService;
 
 @Controller
-public class CommentListController {
+public class ManagerCommentListController {
 	
 	@Autowired
-	private GetCommentListService service;
+	private GetManagerCommentListService service;
 	
 	@RequestMapping(value="/list/commentList", method = RequestMethod.GET)
 	public ModelAndView getCommentList() {

@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.team.springsns.manager.service.DeleteCommentService;
+import com.team.springsns.manager.service.DeleteManagerCommentService;
 
 @Controller
 @RequestMapping("/list/delete_comment")
-public class CommentDeleteController {
+public class ManagerCommentDeleteController {
 	
 	@Autowired
-	private DeleteCommentService service;
+	private DeleteManagerCommentService service;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String delete_comment(@RequestParam("commentNo") int commentNo) {
