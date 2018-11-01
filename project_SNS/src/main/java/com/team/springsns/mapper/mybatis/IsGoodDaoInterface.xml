@@ -4,16 +4,16 @@
  
  <mapper namespace="com.team.springsns.isgood.dao.IsGoodDaoInterface">
  
- 	<insert id="insertIsGood" parameterType="com.team.springsns.model.IsGoodDTO">
+ 	<insert id="insertIsGood" parameterType="com.team.springsns.isgood.model.IsGoodDTO">
  		insert into isgood (boardno, userno) 
  		value (#{boardNo}, #{userNo})
  	</insert>
  	
- 	<select id="selectIsGood" resultType="com.team.springsns.model.IsGoodDTO">
+ 	<select id="selectIsGood" resultType="com.team.springsns.isgood.model.IsGoodDTO">
  		select * from isgood where boardno=#{boardNo} and userno=#{userNo}
  	</select>
  	
- 	<select id="getCountIsGood" resultType="com.team.springsns.model.CountIsGoodDTO">
+ 	<select id="getCountIsGood" resultType="com.team.springsns.isgood.model.CountIsGoodDTO">
  		select boardno, count(userno) as isgoodcnt from isgood group by boardno having boardno=#{boardNo}
  	</select>
 
@@ -21,7 +21,7 @@
  		select * from board
  	</select> -->
  	
- 	<delete id="deleteIsGood" parameterType="com.team.springsns.model.IsGoodDTO">
+ 	<delete id="deleteIsGood" parameterType="com.team.springsns.isgood.model.IsGoodDTO">
  		delete from isgood where boardno=#{boardNo} and userno=#{userNo}
  	</delete>
  
