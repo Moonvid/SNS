@@ -22,8 +22,8 @@ public class MessageGetCntController {
 		ModelAndView modelAndView = new ModelAndView();
 		MessageWriteInfo resultInfo = service.getCntMessage(messageWriteInfo);
 		
-		modelAndView.addObject("messageInfo", resultInfo);
-		modelAndView.setViewName("MessageTo/MessageCnt");
+		modelAndView.addObject("resultInfo", resultInfo);
+		modelAndView.setViewName("MessageTo/MessageTo");
 		
 		return modelAndView;
 	}

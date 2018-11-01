@@ -22,16 +22,23 @@
 	rel="stylesheet">
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<style>
+#wrap{
+	width:1000px;
+	margin:0;
+}
+</style>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/common/layout_top.jsp"%>
 	<%@ include file="/WEB-INF/views/common/layout_right.jsp"%>
+	
 	<br>
-	<br>
-	<br>
-	<br>
+	<h1>${resultInfo.recvid }님의 확인 안 한 메세지 개수: ${resultInfo.count }개 입니다.</h1><br>
+	
 	<h1>받은 메세지 출력</h1>
-	<table border="1">
+	<div id="wrap">
+	<table class="table table-hover">
 		<tr>
 			<td>보낸사람</td>
 			<td>받은사람</td>
@@ -41,7 +48,7 @@
 			<td colspan="2">확인 삭제</td>
 		</tr>
 		<c:forEach var="messageInfo" items="${messageInfo}">
-			<tr class="checkMessage">
+			<tr><!--  class="checkMessage" -->
 				<td>${messageInfo.sendid }</td>
 				<td>${messageInfo.recvid }</td>
 				<td>${messageInfo.messagecont }</td>
@@ -52,6 +59,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
 	<a href="../board/boardList">[메인으로]</a>
 	<!-- 왜 data 받을때 그냥 messageNum으로 받으면 값 안넘어가는지는 잘 모르겠다. 질문하자 -->
 	<!--경로도 왜 contextPath까지 다 써줘야하나?-->
