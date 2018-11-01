@@ -5,11 +5,13 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.team.springsns.comment.dao.CommentDaoInterface;
 import com.team.springsns.comment.model.CommentDTO;
 
+@Service
 public class GetCommentListService {
 
 	@Autowired

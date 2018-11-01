@@ -5,12 +5,14 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.team.springsns.board.model.Board;
 import com.team.springsns.isgood.dao.IsGoodDaoInterface;
 import com.team.springsns.isgood.model.CountIsGoodDTO;
 
+@Service
 public class GetIsGoodCountAllService {
 	
 	@Autowired
