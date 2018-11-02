@@ -30,7 +30,7 @@ public class UserBoardWriteController {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		int resultCnt = service.write(board, request);
-		System.out.println(userId);
+		System.out.println("UserBoardWriteController userId: "+userId);
 		
 		modelAndView.addObject("userId", userId);
 		modelAndView.setViewName("redirect:/board/boardList");

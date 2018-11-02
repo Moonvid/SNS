@@ -21,10 +21,10 @@
 		keyProperty="boardno">
 		<!-- insert into board_test (userno, boardcontent, boardphoto, hashtag) 
 			values (#{userNo}, #{boardContent}, #{boardPhoto}, #{hashTag}) -->
-		insert into board (userno,
+		insert into board (boardno, userno,
 		boardcontent, boardphoto, hashtag)
 		values
-		(#{userNo},
+		(#{boardNo}, #{userNo},
 		#{boardContent},
 		#{boardPhoto},
 		#{hashTag})

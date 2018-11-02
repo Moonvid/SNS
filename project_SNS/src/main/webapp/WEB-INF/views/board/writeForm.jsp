@@ -13,7 +13,7 @@
 		사용자no: <input type="text" name="userNo" value=${loginInfo.userNo }><br>
 		사용자id: <input type="text" name="userId" value=${loginInfo.userId }><br>
 		내용: <textarea name="boardContent"></textarea><br> 
- 		사진: <input type="file" name="boardPhotoFile"><br> 
+<!--  		사진: <input type="file" name="boardPhotoFile"><br>  -->
 		해시태그: <input type="text" name="hashTag"><br>
 		<button type="submit">submit button</button>
 		<input type=button value="취소" OnClick="javascript:history.back(-1)">

@@ -23,8 +23,14 @@ public class BoardWriteService {
 	
 	@Transactional
 	public int write(Board board, HttpServletRequest request) throws IllegalStateException, IOException {
+		
+		System.out.println("boardWriteService 진입: "+board);
 		dao = sqlSessionTemplate.getMapper(BoardDao.class);
 		String uploadUri = "/uploadfile";
+		
+		//파일 저장을 위한... 해당 사용자의 게시글
+		int userBoardCnt = dao.selectCount(request.getParameter("userId"));
+		System.out.println("BoardWriteService getParameter userId: "+request.getParameter("userId"));
 
 		// uploadUri 경로의 시스템 경로
 		String dir = request.getSession().getServletContext().getRealPath(uploadUri);
@@ -33,7 +39,7 @@ public class BoardWriteService {
 		String imgName = "";
 
 		if (!board.getBoardPhotoFile().isEmpty()) {
-			imgName = board.getBoardNo() + "_" + board.getBoardPhotoFile().getOriginalFilename();
+			imgName = board.getBoardNo() + "_" + board.getUserNo()+ "_" + board.getBoardPhotoFile().getOriginalFilename();
 
 			board.getBoardPhotoFile().transferTo(new File(dir, imgName));
 
