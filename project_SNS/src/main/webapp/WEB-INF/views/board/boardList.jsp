@@ -30,12 +30,14 @@
 	<%@ include file="/WEB-INF/views/common/layout_top.jsp"%>
 	<%@ include file="/WEB-INF/views/common/layout_right.jsp"%>
 	<section id="boardSection">
-		<c:forEach items="${viewData.boardList}" var="board">
+		<div>
+			<h1>내가 쓴 게시글</h1>
+		</div>
+		<c:forEach items="${viewData.boardList}" var="board"
+			varStatus="boardI">
 			<div class="userBoard">
 				<div>
-					#번호:
-					<c:out value="${board.boardNo }" />
-					로그인 userno:
+					#번호: ${boardI.count },	로그인 userno:
 					<c:out value="${loginInfo.userNo }" />
 				</div>
 				<div>
@@ -69,10 +71,10 @@
 				</div>
 				<div>
 					<c:if test="${boardcont ne cont}">
-					<input type="hidden" id="reportChk" value="${board.reportCheck}">
+						<input type="hidden" id="reportChk" value="${board.reportCheck}">
 						<button class="btn btn-default rechk"
 							<%-- Onclick="reportNo(${board.boardNo})" --%> value="${board.boardNo}">신고하기</button>
-							<span>신고된갯수 : ${result }</span>
+						<span>신고된갯수 : ${result }</span>
 					</c:if>
 				</div>
 				<span id="isGood_${board.boardNo}">좋아요 : <c:if
@@ -85,7 +87,8 @@
 						</c:forEach>
 					</c:if>
 				</span> <span> <c:if test="${boardcont ne cont}">
-						<button id="is_${board.boardNo}_${loginInfo.userNo}" class="isGoodBnt" value="${board.boardNo}">좋아요!</button>
+						<button id="is_${board.boardNo}_${loginInfo.userNo}"
+							class="isGoodBnt" value="${board.boardNo}">좋아요!</button>
 					</c:if>
 				</span><br>
 				<c:if test="${boardcont ne cont}">
@@ -107,141 +110,175 @@
 			href='boardList?userId=<c:out value="${loginInfo.userId }" />&page=${num}'>[${num}]</a>
 	</c:forEach>
 
-<!-- &userid=<c:out value="${loginInfo.userId }" /> -->
+	<!-- &userid=<c:out value="${loginInfo.userId }" /> -->
 
 
 
 
 
-
-<script>
-$(document).ready(function(){
-	var userNo = ${loginInfo.userNo}
-	$.ajax({
- 		type: "GET",
-		url: "isGood",
-		data: {"userNo":userNo},
- 		success: function(isGood){
- 			if(isGood.length>0){
- 				for(var i=0; i<isGood.length; i++){
- 					var bNo = isGood[i].boardNo;
- 						$('#is_'+bNo+'_'+userNo).empty();
-				 		$('#is_'+bNo+'_'+userNo).append("안좋아요");
- 					 }
- 				}
- 			}
-	});
-});
-</script>
 
 	<script>
-	//커멘트관련
-$('.commBtn').click(function() {
-	   	var userId = '${loginInfo.userId}';
-		var bNo = $(this).val();
-		/* alert(bNo); */
-		var commList = [];
-		var comm = "";
-	 	
-		status = $('#commHidden_'+bNo).css("display");
-		if(status=="none"){
-			status = $('#commHidden_'+bNo).css("display", "");
-			
+		$(document).ready(function() {
+			var userNo = $
+			{
+				loginInfo.userNo
+			}
 			$.ajax({
-				type: "GET",
-				url: "viewComment",
-				data: {"bNo":bNo},
-				dataType: "JSON",
-			 	success: function(data){
-			 		commList = data;
-			 		
-			 		if(commList.length==0){
-			 			comm += 'NO COMMENT!';
-			 		}else{
-			 				comm += '<br>총 댓글: '+commList.length+'<br>';
-			 			for(var i=0; i<commList.length; i++){
-			 				comm += '<br>댓글번호 : '+commList[i].commentNo+'<br>';
-			 				comm += '<c:if test="${userId eq commList[i].userId}">';
-			 				comm += '<a href="editComment?commentNo='+commList[i].commentNo+'">[수정하기]</a>';
-			 				comm += '<a href="deleteComment?commentNo='+commList[i].commentNo+'&userId='+userId+'">[삭제하기]</a><br>';
-			 				comm += '</c:if>'
-			 				comm += '작성자 : '+commList[i].userId+'<br>';
-			 				comm += '코멘트 : '+commList[i].commentCont+'<br>';
-			 			}
-			 		}
-			 		$('#commHidden_'+bNo).empty();
-			 		$('#commHidden_'+bNo).append(comm);
-			 	}
+				type : "GET",
+				url : "isGood",
+				data : {
+					"userNo" : userNo
+				},
+				success : function(isGood) {
+					if (isGood.length > 0) {
+						for (var i = 0; i < isGood.length; i++) {
+							var bNo = isGood[i].boardNo;
+							$('#is_' + bNo + '_' + userNo).empty();
+							$('#is_' + bNo + '_' + userNo).append("안좋아요");
+						}
+					}
+				}
 			});
-			
-		}else{
-			status = $('#commHidden_'+bNo).css("display", "none");
-		}
-});
-</script>
+		});
+	</script>
 
 	<script>
-	$('.isGoodBnt').click(function() {
-		if($(this).html()=='안좋아요'){
-			$(this).html('좋아요');
-		}else{
-			$(this).html('안좋아요');
-		}
-		
-		var boardNo = $(this).val();
-		var userNo = ${loginInfo.userNo}
-		 $.ajax({
-		 	type: "POST",
-			url: "isGoodBoard",
-			data: {"boardNo":boardNo, "userNo":userNo},
-		 	success: function(data){
-		 		$('#isGood_'+boardNo).empty(),
-				$('#isGood_'+boardNo).append("좋아요 : "+data);
-		 	}                                                             
-		});
-	});
-</script>
+		//커멘트관련
+		$('.commBtn')
+				.click(
+						function() {
+							var userId = '${loginInfo.userId}';
+							var bNo = $(this).val();
+							/* alert(bNo); */
+							var commList = [];
+							var comm = "";
 
-<script>
+							status = $('#commHidden_' + bNo).css("display");
+							if (status == "none") {
+								status = $('#commHidden_' + bNo).css("display",
+										"");
 
-$('.rechk').click(function() {
-	var boardNo = $(this).val();
-	var userNo = '${loginInfo.userNo}';
-	var chk = confirm('신고하시겠습니까?');
-	var url = '/springsns';
-	var chch = '${!board.reportCheck}';
-	
-	
-	$.ajax({
-		url : url,
-		data : {
-			"boardNo" : boardNo,
-			"userNo" : userNo
-		},
-		success : function reportNo(chk){
-			if (chk) {
-				alert('첫번쨰완료');
-				location.href='report?boardNo='+boardNo+'&userNo='+userNo;
-				}
-			}
-		});
-	
-	$.ajax({
-		url : url + '/reportcnt',
-		data : {
-			"boardNo" : boardNo
-		}, 
-		success : function(result) {
-			if (result == 1 && chk) {
-			alert('두번째성공');
-			alert(chch);
-				$('#reportChk').val(chch);
-				$('.rechk').attr('disabled', true);
-			}
-		}
-	});
-});
+								$
+										.ajax({
+											type : "GET",
+											url : "viewComment",
+											data : {
+												"bNo" : bNo
+											},
+											dataType : "JSON",
+											success : function(data) {
+												commList = data;
 
-</script>
+												if (commList.length == 0) {
+													comm += 'NO COMMENT!';
+												} else {
+													comm += '<br>총 댓글: '
+															+ commList.length
+															+ '<br>';
+													for (var i = 0; i < commList.length; i++) {
+														comm += '<br>댓글번호 : '
+																+ commList[i].commentNo
+																+ '<br>';
+														comm += '<c:if test="${userId eq commList[i].userId}">';
+														comm += '<a href="editComment?commentNo='
+																+ commList[i].commentNo
+																+ '">[수정하기]</a>';
+														comm += '<a href="deleteComment?commentNo='
+																+ commList[i].commentNo
+																+ '&userId='
+																+ userId
+																+ '">[삭제하기]</a><br>';
+														comm += '</c:if>'
+														comm += '작성자 : '
+																+ commList[i].userId
+																+ '<br>';
+														comm += '코멘트 : '
+																+ commList[i].commentCont
+																+ '<br>';
+													}
+												}
+												$('#commHidden_' + bNo).empty();
+												$('#commHidden_' + bNo).append(
+														comm);
+											}
+										});
+
+							} else {
+								status = $('#commHidden_' + bNo).css("display",
+										"none");
+							}
+						});
+	</script>
+
+	<script>
+		$('.isGoodBnt').click(
+				function() {
+					if ($(this).html() == '안좋아요') {
+						$(this).html('좋아요');
+					} else {
+						$(this).html('안좋아요');
+					}
+
+					var boardNo = $(this).val();
+					var userNo = $
+					{
+						loginInfo.userNo
+					}
+					$.ajax({
+						type : "POST",
+						url : "isGoodBoard",
+						data : {
+							"boardNo" : boardNo,
+							"userNo" : userNo
+						},
+						success : function(data) {
+							$('#isGood_' + boardNo).empty(), $(
+									'#isGood_' + boardNo).append(
+									"좋아요 : " + data);
+						}
+					});
+				});
+	</script>
+
+	<script>
+		$('.rechk').click(
+				function() {
+					var boardNo = $(this).val();
+					var userNo = '${loginInfo.userNo}';
+					var chk = confirm('신고하시겠습니까?');
+					var url = '/springsns';
+					var chch = '${!board.reportCheck}';
+
+					$.ajax({
+						url : url,
+						data : {
+							"boardNo" : boardNo,
+							"userNo" : userNo
+						},
+						success : function reportNo(chk) {
+							if (chk) {
+								alert('첫번쨰완료');
+								location.href = 'report?boardNo=' + boardNo
+										+ '&userNo=' + userNo;
+							}
+						}
+					});
+
+					$.ajax({
+						url : url + '/reportcnt',
+						data : {
+							"boardNo" : boardNo
+						},
+						success : function(result) {
+							if (result == 1 && chk) {
+								alert('두번째성공');
+								alert(chch);
+								$('#reportChk').val(chch);
+								$('.rechk').attr('disabled', true);
+							}
+						}
+					});
+				});
+	</script>
 </body>
 </html>
