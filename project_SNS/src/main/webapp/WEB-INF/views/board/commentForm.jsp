@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="../css/default.css">
 </head>
 <body>
+<!-- 혜연언니바보 -->
 	<%@ include file="/WEB-INF/views/common/layout_top.jsp"%>
 	<%@ include file="/WEB-INF/views/common/layout_right.jsp"%>
 	
