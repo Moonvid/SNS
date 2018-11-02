@@ -37,8 +37,6 @@ public class UserBoardReportController {
 		int result = service.reportCnt(boardNo);
 		int chk = service.reportBool(boardNo);
 		
-		System.out.println("불리언값"+chk);
-
 		if (result >= 3) {
 			// 신고접수되고 내용 수정해줌!
 			service.updateReport(boardNo);
