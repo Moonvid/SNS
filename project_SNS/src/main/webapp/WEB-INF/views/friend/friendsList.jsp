@@ -18,10 +18,6 @@
 <!-- 구글폰트 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo" rel="stylesheet">
 <style>
-table {
-	border: 1px solid black;
-	width: 700px;
-}
 #friendmenu{
 	padding: 20px;
 	text-align: center;
@@ -31,7 +27,9 @@ table {
 	padding: 20px;
 }
 #tablesetting{
-text-align: center;
+	text-align: center;
+	border: 1px solid black;
+	width: 700px;
 }
 </style>
 </head>
@@ -46,6 +44,7 @@ text-align: center;
 </c:if>
 
 <c:if test="${!empty friendsList}">
+	<div id="showFriend">
 	<table id="tablesetting" border=1>
 		<tr>
 			<td id="friendmenu" colspan="3">친구목록</td>
@@ -60,6 +59,7 @@ text-align: center;
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
 </c:if>
 
 <br><br><br><br>
@@ -69,18 +69,20 @@ text-align: center;
 </c:if>
 
 <c:if test="${!empty requestList}">
-	<table>
+	<div id="showRequest">
+	<table id="tablesetting" border=1>
 		<tr>
-			<td rowspan=2>FriendName</td>
+			<td colspan=3 id="friendmenu">요청목록</td>
 		</tr>
 		<c:forEach var="request" items="${requestList}">
 			<tr>
-				<td><a href="#">${request.requestUserName}</a></td>
-				<td><button class="accept" value="${loginInfo.userNo},${request.requestUserNo}" onclick="Accept(this)">수락</button></td>
-				<td><button class="deny" value="${loginInfo.userNo},${request.requestUserNo}" onclick="deny(this)">거절</button></td>
+				<td id="friendname"><a href="#">${request.requestUserName}</a></td>
+				<td id="friendname"><button class="accept" value="${loginInfo.userNo},${request.requestUserNo}" onclick="Accept(this)">수락</button></td>
+				<td id="friendname"><button class="deny" value="${loginInfo.userNo},${request.requestUserNo}" onclick="deny(this)">거절</button></td>
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
 </c:if>
 
 <script>
