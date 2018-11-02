@@ -85,6 +85,7 @@
 				});
 			});
 		});
+	
 		/* 읽음 버튼 누른애들 비활성화+메세지 읽음 처리 */
 		$('.ReadMessage').click(function(kk) {
 			var messageNum = $(this).val();

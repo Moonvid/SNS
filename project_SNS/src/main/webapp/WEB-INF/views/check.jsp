@@ -19,10 +19,11 @@
 	<br>
 	<br>
 	<h2>${search}를 검색하였습니다!</h2><br>
-	<c:forEach var="dataVo" items="${dataVO }">
 		<hr>
+		<c:if test=""></c:if>
 		<a href="${pageContext.request.contextPath}/friend/friendsPage/${dataVo.userno }">유저 번호 : ${dataVo.userno} <br>유저아이디:{userVO.userId}<br> 유저 이름:${userVO.userName }<br></a>
 		<hr>
+	<c:forEach var="dataVo" items="${dataVO }">
 		<a href="${pageContext.request.contextPath}/friend/friendsPage/${dataVo.userno }">Userno:${dataVo.userno }</a><br>
 		Boardcontent:${dataVo.boardcontent }<br>
 		Hashtag:${dataVo.hashtag }<br>

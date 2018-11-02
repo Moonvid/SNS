@@ -57,6 +57,7 @@ public class SearchDataService {
 
 				resultDataDao = data.searchIdData(paramDataDao);
 				resultfriendsListView = data.searchUserId(friendsListView);
+				searchAndPageResultData.setFriendsListView(resultfriendsListView);
 			} else {
 				// 숫자가 아니면 컨텐츠인걸로 확인
 				paramDataDao.setBoardcontent(searchData);
@@ -73,7 +74,6 @@ public class SearchDataService {
 
 		searchAndPageResultData.setPageData(finalpage);
 		searchAndPageResultData.setQueryResult(resultDataDao);
-		searchAndPageResultData.setFriendsListView(resultfriendsListView);
 
 		return searchAndPageResultData;
 	}
