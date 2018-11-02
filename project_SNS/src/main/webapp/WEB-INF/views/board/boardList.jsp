@@ -134,6 +134,7 @@ $(document).ready(function(){
 </script>
 
 	<script>
+	//커멘트관련
 $('.commBtn').click(function() {
 	   	var userId = '${loginInfo.userId}';
 		var bNo = $(this).val();
