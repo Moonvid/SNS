@@ -214,6 +214,29 @@
 		<a href='${pageContext.request.contextPath}/friend/friendsPage/${friendInfo.userNo}?userId=<c:out value="${friendInfo.userId }" />&page=${num}'>[${num}]</a>
 	</c:forEach>
 	
+	
+	<script>
+		$(document).ready(function() {
+			var userNo = ${loginInfo.userNo};
+			$.ajax({
+				type : "GET",
+				url : "${pageContext.request.contextPath}/board/isGood",
+				data : {"userNo" : userNo},
+				success : function(isGood) {
+					if (isGood.length > 0) {
+						for (var i = 0; i < isGood.length; i++) {
+							var bNo = isGood[i].boardNo;
+							$('#is_' + bNo + '_' + userNo).empty();
+							$('#is_' + bNo + '_' + userNo).append("안좋아요");
+						}
+					}
+				}
+			});
+		});
+	</script>
+	
+	
+	
 		<script>
 		$('.commBtn').click(function() {
 			   	var userId = '${loginInfo.userId}';
@@ -261,7 +284,7 @@
 		<script>
 			$('.isGoodBnt').click(function() {
 				var boardNo = $(this).val();
-				var userNo = ${friendInfo.userNo}
+				var userNo = ${loginInfo.userNo}
 				 $.ajax({
 				 	type: "POST",
 					url: "${pageContext.request.contextPath}/board/isGoodBoard",
