@@ -119,16 +119,11 @@
 
 	<script>
 		$(document).ready(function() {
-			var userNo = $
-			{
-				loginInfo.userNo
-			}
+			var userNo = ${loginInfo.userNo};
 			$.ajax({
 				type : "GET",
 				url : "isGood",
-				data : {
-					"userNo" : userNo
-				},
+				data : {"userNo" : userNo},
 				success : function(isGood) {
 					if (isGood.length > 0) {
 						for (var i = 0; i < isGood.length; i++) {
@@ -220,10 +215,7 @@
 					}
 
 					var boardNo = $(this).val();
-					var userNo = $
-					{
-						loginInfo.userNo
-					}
+					var userNo = ${loginInfo.userNo}
 					$.ajax({
 						type : "POST",
 						url : "isGoodBoard",
@@ -232,9 +224,8 @@
 							"userNo" : userNo
 						},
 						success : function(data) {
-							$('#isGood_' + boardNo).empty(), $(
-									'#isGood_' + boardNo).append(
-									"좋아요 : " + data);
+							$('#isGood_' + boardNo).empty();
+							$('#isGood_' + boardNo).append("좋아요 : " + data);
 						}
 					});
 				});
