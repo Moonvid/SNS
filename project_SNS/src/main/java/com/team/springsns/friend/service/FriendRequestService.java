@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.team.springsns.friend.dao.FriendsDaoInterface;
 import com.team.springsns.friend.model.FriendRequestInfo;
-import com.team.springsns.friend.model.Friends;
  
 @Service
 public class FriendRequestService {
@@ -53,6 +52,18 @@ public class FriendRequestService {
 		deleteCnt = friendsDao.deleteRequest(requestInfo);
 
 		return deleteCnt;
+	}
+	
+	// 친구 요청 상태를 체크하는 메서드
+	
+	public int chkRequest(FriendRequestInfo request) {
+		
+		friendsDao = sqlSessionTemplate.getMapper(FriendsDaoInterface.class);
+		
+		int chkRequest = friendsDao.getChkRequest(request);
+		
+		return chkRequest;
+		
 	}
 
 }

@@ -40,29 +40,36 @@
 <%@ include file="/WEB-INF/views/common/layout_right.jsp"%>
 
 <br><br>
-<!--혜연언니바보ㅋㅋㅋㅋ -->
+
 	<h1>친구 페이지</h1>
 	<br><br>
 	<h4>ID : ${friendInfo.userId}</h4> 
 	<h4>이름 : ${friendInfo.userName}</h4>
-
+	
 	<c:forEach var="friendRequestInfo" items="${friendRequestInfo}">
 	<input id="loginUser${friendRequestInfo.requestUserNo}" type="hidden" value="${friendRequestInfo.requestAccept }" /></c:forEach>
 	
 	<c:if test="${chkFriends==0}">
-	<span class="${loginInfo.userNo}"><button id="${loginInfo.userNo}" value="${loginInfo.userNo},${loginInfo.userName},${friendInfo.userNo},${friendInfo.userName}" onclick="friendReg(this)">[친구신청]</button></span>
-	<script>
-		var aarray = $('button[onclick="friendReg(this)"]').val().split(',');
-		var cancelRequest1='<td class="1"><button value ="'+aarray[0]+','+aarray[1]+','+aarray[2]+','+aarray[3]+'" onclick="cancelReg(this)">[요청취소]</button></td>';
-		console.log($('input[type="hidden"]').val());
-		if($('input[type="hidden"]').val()=='false'){
-			$('button[onclick="friendReg(this)"]').text('[요청중...]');
-			$('button[onclick="friendReg(this)"]').attr('disabled',true);
-			$('.${loginInfo.userNo}').after(cancelRequest1);
-		}
-	</script>
-	
+		
+		<c:if test="${chkRequest==0}">
+			<span class="${loginInfo.userNo}"><button id="${loginInfo.userNo}" value="${loginInfo.userNo},${loginInfo.userName},${friendInfo.userNo},${friendInfo.userName}" onclick="friendReg(this)">[친구신청]</button></span>
+		</c:if>
+		
+		<c:if test="${chkRequest==1}">
+			<span class="${loginInfo.userNo}"><button id="${loginInfo.userNo}" value="${loginInfo.userNo},${loginInfo.userName},${friendInfo.userNo},${friendInfo.userName}" onclick="friendReg(this)">[친구신청]</button></span>
+			<script>
+				var aarray = $('button[onclick="friendReg(this)"]').val().split(',');
+				var cancelRequest1='<td class="1"><button value ="'+aarray[0]+','+aarray[1]+','+aarray[2]+','+aarray[3]+'" onclick="cancelReg(this)">[요청취소]</button></td>';
+				console.log($('input[type="hidden"]').val());
+				if($('input[type="hidden"]').val()=='false'){
+					$('button[onclick="friendReg(this)"]').text('[요청중...]');
+					$('button[onclick="friendReg(this)"]').attr('disabled',true);
+					$('.${loginInfo.userNo}').after(cancelRequest1);
+				}
+			</script>
+		</c:if>
 	</c:if>
+	
 	
 	<script>
 	/* 로그인 되어있는 상태의 입장이라 생각하고 진행 */
@@ -132,10 +139,6 @@
 				<div>
 					#번호: <c:out value="${board.boardNo }" /> /
 					UserNo: <c:out value="${friendInfo.userNo }" />
-					<script>
-						var test = ${board.boardNo}
-						console.log("#태그 용 번호 : " + test);
-					</script>
 				</div>
 				
 				<div>
@@ -162,15 +165,7 @@
 				<div>
 					<c:if test="${boardcont ne cont}">
 						<a href="${pageContext.request.contextPath}/board/edit?boardno=<c:out value="${board.boardNo}"/>">수정</a>
-						<script>
-							var test = ${board.boardNo}
-							console.log("수정용 번호 : " + test);
-						</script>
 						<a href='${pageContext.request.contextPath}/board/delete?boardno=<c:out value="${board.boardNo}" />&userid=<c:out value="${friendInfo.userId }" />'>삭제</a>
-						<script>
-							var test = ${board.boardNo}
-							console.log("삭제용 번호 : " + test);
-						</script>
 					</c:if>
 				</div>
 				
@@ -178,18 +173,10 @@
 					<c:if test="${boardcont ne cont}">
 						<input type="hidden" id="reportChk" value="${board.reportCheck}">
 							<button class="btn btn-default" <%-- Onclick="reportNo(${board.boardNo})" --%> value="${board.boardNo }">신고하기</button>
-							<script>
-								var test = ${board.boardNo}
-								console.log("신고 용 번호 : " + test);
-							</script>
 					</c:if>
 				</div>
 				
 				<span id="isGood_${board.boardNo}">좋아요 : 
-					<script>
-						var test = ${board.boardNo}
-						console.log("좋아요 용 번호 : " + test);
-					</script>
 					<c:if test="${isGoodList.isEmpty()}">0</c:if> 
 					<c:if test="${!isGoodList.isEmpty() }">
 						<c:forEach var="isGood" items="${isGoodList}">
@@ -203,33 +190,17 @@
 				<span> 
 					<c:if test="${boardcont ne cont}">
 						<button class="isGoodBnt" value="${board.boardNo}">좋아요!</button>
-						<script>
-								var test = ${board.boardNo}
-								console.log("좋아요 후 번호 : " + test);
-						</script>
 					</c:if>
 				</span><br>
 				
 				<c:if test="${boardcont ne cont}">
 					<span><a href="${pageContext.request.contextPath}/board/comment?boardNo=${board.boardNo}">[댓글달기]</a></span>
-					<script>
-						var test = ${board.boardNo}
-						console.log("댓글 달기용 번호 : " + test);
-					</script>
 					<br>
 					<span>
 						<button class="commBtn" value="${board.boardNo}">댓글...댓글을보자!</button></span>
-							<script>
-								var test = ${board.boardNo}
-								console.log("댓글 보기용 번호 : " + test);
-							</script>
 				</c:if>
 				
 				<div class="commentSection" id="commHidden_${board.boardNo}" style="display: none;">
-					<script>
-						var test = ${board.boardNo}
-						console.log("댓글 숨기기용 번호 : " + test);
-					</script>
 				</div>
 
 				</div>

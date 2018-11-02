@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.team.springsns.board.model.BoardListView;
 import com.team.springsns.board.service.BoardListService;
+import com.team.springsns.friend.model.FriendRequestInfo;
 import com.team.springsns.friend.model.Friends;
 import com.team.springsns.friend.service.FriendRequestService;
 import com.team.springsns.friend.service.FriendsViewService;
@@ -54,6 +55,8 @@ public class FriendsPageController {
 		Friends friends = new Friends(loginInfo.getUserNo(), friendNo);
 
 		int chkFriend = viewService.chkFriend(friends);
+		
+		FriendRequestInfo requestChk = new FriendRequestInfo(loginInfo.getUserNo(), friendNo);
 
 		// MemberInfo 객체 형식으로 가져온 친구 정보를 view단에 friendInfo라고 넘겨준다.
 		MemberInfo friendInfo = viewService.viewFriendPage(friendNo); // 친구 목록에 있는 친구 정보를 클릭하여 전달받은 친구의 userNo 값으로 친구
@@ -61,9 +64,12 @@ public class FriendsPageController {
 		mav.addObject("friendInfo", friendInfo);
 
 		mav.addObject("friendRequestInfo", requestService.viewRequestList(friendNo));
+		
 		session.setAttribute("friendInfo", friendInfo);
 
 		mav.addObject("chkFriends", chkFriend);
+		
+		mav.addObject("chkRequest", requestService.chkRequest(requestChk));
 		
 		///////////////////////////// 친구 페이지 게시글 표시 /////////////////////////////////////////////////////////////////////////////////////////
 		

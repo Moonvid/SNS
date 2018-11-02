@@ -63,7 +63,12 @@
 	
 	<!-- 친구 상태 확인 -->
 	<select id="chkFriend" parameterType="com.team.springsns.friend.model.Friends" resultType="int">
-		select count(*) from relation where userno = #{userNo} and friendno = #{friendNo};
+		select count(*) from relation where userno = #{userNo} and friendno = #{friendNo}
+	</select>
+	
+	<!-- 친구 요청상태 확인 -->
+	<select id="getChkRequest" parameterType="com.team.springsns.friend.model.FriendRequestInfo" resultType="int">
+		select count(*) from request where requestUserNo = #{requestUserNo} and responseUserNo = #{responseUserNo}
 	</select>
 	
 

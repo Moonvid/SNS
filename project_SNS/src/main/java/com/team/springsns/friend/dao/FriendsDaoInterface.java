@@ -41,5 +41,8 @@ public interface FriendsDaoInterface {
 	
 	// 친구 상태를 체크하는 메서드
 	public int chkFriend(Friends friends);
+	
+	// 친구 요청 상태를 체크하는 메서드
+	public int getChkRequest(FriendRequestInfo request); 
 
 }
