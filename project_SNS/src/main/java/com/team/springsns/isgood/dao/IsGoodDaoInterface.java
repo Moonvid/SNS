@@ -13,5 +13,6 @@ public interface IsGoodDaoInterface {
 	public void deleteIsGood(IsGoodDTO isGoodDTO);
 	public CountIsGoodDTO getCountIsGood(int boardNo);
 	public List<Board> getBoardAll();
+	public List<IsGoodDTO> getIsGoods(int userNo);
 	public void deleteIsGoodAll(int boardNo);
 }

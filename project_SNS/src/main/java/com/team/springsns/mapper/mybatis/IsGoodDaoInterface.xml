@@ -21,6 +21,10 @@
  		select * from board
  	</select>
  	
+ 	<select id="getIsGoods" resultType="com.team.springsns.isgood.model.IsGoodDTO">
+ 		select * from isgood where userno=#{userNo}
+ 	</select>
+ 	
  	<delete id="deleteIsGood" parameterType="com.team.springsns.isgood.model.IsGoodDTO">
  		delete from isgood where boardno=#{boardNo} and userno=#{userNo}
  	</delete>

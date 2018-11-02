@@ -84,7 +84,7 @@
 						</c:forEach>
 					</c:if>
 				</span> <span> <c:if test="${boardcont ne cont}">
-						<button class="isGoodBnt" value="${board.boardNo}">좋아요!</button>
+						<button id="is_${board.boardNo}_${loginInfo.userNo}" class="isGoodBnt" value="${board.boardNo}">좋아요!</button>
 					</c:if>
 				</span><br>
 				<c:if test="${boardcont ne cont}">
@@ -110,6 +110,28 @@
 
 
 
+
+
+
+<script>
+$(document).ready(function(){
+	var userNo = ${loginInfo.userNo}
+	$.ajax({
+ 		type: "GET",
+		url: "isGood",
+		data: {"userNo":userNo},
+ 		success: function(isGood){
+ 			if(isGood.length>0){
+ 				for(var i=0; i<isGood.length; i++){
+ 					var bNo = isGood[i].boardNo;
+ 						$('#is_'+bNo+'_'+userNo).empty();
+				 		$('#is_'+bNo+'_'+userNo).append("안좋아요");
+ 					 }
+ 				}
+ 			}
+	});
+});
+</script>
 
 	<script>
 $('.commBtn').click(function() {
@@ -156,6 +178,12 @@ $('.commBtn').click(function() {
 
 	<script>
 	$('.isGoodBnt').click(function() {
+		if($(this).html()=='좋아요'){
+			$(this).html('안좋아요');
+		}else{
+			$(this).html('좋아요');
+		}
+		
 		var boardNo = $(this).val();
 		var userNo = ${loginInfo.userNo}
 		 $.ajax({
