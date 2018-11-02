@@ -40,7 +40,7 @@
 <%@ include file="/WEB-INF/views/common/layout_right.jsp"%>
 
 <br><br>
-
+<!-- 혜얀ㄴ엉어니잉 -->
 	<h1>친구 페이지</h1>
 	<br><br>
 	<h4>ID : ${friendInfo.userId}</h4> 
