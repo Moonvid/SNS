@@ -1,7 +1,7 @@
 package com.team.springsns.friend.model;
 
 public class FriendRequestInfo {
- 
+  
 	private int requestNo;
 	private int requestUserNo;
 	private String requestUserName;

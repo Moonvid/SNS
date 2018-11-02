@@ -7,7 +7,7 @@
 	<!-- 친구 요청 시 -->
 	<insert id="setFriendRequest"
 			parameterType="com.team.springsns.friend.model.FriendRequestInfo"
-			useGeneratedKeys="true" keyProperty="requestNo">
+			useGeneratedKeys="true" keyProperty="requestNo"> 
 		insert into request(requestUserNo, requestUserName, responseUserNo, responseUserName)
 		values(#{requestUserNo}, #{requestUserName}, #{responseUserNo}, #{responseUserName})
 	</insert>

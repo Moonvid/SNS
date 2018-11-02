@@ -22,7 +22,7 @@ public interface FriendsDaoInterface {
 	
 	// relation 테이블에서 친구 해제(삭제)하는 메서드
 	public int deleteFriend1(Friends friends);
-	
+	 
 	// relation 테이블에서 친구 해제(삭제)하는 메서드
 	public int deleteFriend2(Friends friends);
 		

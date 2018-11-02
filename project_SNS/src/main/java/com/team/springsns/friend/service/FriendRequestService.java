@@ -44,7 +44,7 @@ public class FriendRequestService {
 
 	// 친구 요청을 취소(삭제)하는 메서드
 	public int deleteRequest(FriendRequestInfo requestInfo) {
-
+ 
 		friendsDao = sqlSessionTemplate.getMapper(FriendsDaoInterface.class);
 
 		int deleteCnt = 0;

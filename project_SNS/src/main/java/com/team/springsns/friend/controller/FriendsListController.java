@@ -18,7 +18,7 @@ public class FriendsListController {
 	 
 	@Autowired
 	private FriendsListService ListService;
-	
+	 
 	@Autowired
 	private FriendRequestService requestService;
 	
