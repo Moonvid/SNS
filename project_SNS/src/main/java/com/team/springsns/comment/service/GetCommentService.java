@@ -3,6 +3,7 @@ package com.team.springsns.comment.service;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.team.springsns.comment.dao.CommentDaoInterface;
 import com.team.springsns.comment.model.CommentDTO;
@@ -15,6 +16,7 @@ public class GetCommentService {
 	
 	private CommentDaoInterface commentDao;
 	
+	@Transactional
 	public CommentDTO getComment(int commentNo) {
 		
 		commentDao = sqlSessionTemplate.getMapper(CommentDaoInterface.class);
