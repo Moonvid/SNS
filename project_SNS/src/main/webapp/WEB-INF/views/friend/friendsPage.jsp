@@ -130,86 +130,124 @@
 		<c:forEach items="${viewData.boardList}" var="board">
 			<div class="userBoard">
 				<div>
-					#번호:
-					<c:out value="${board.boardNo }" />
-					로그인 userno:
-					<c:out value="${friendInfo.userNo }" />
+					#번호: <c:out value="${board.boardNo }" /> /
+					UserNo: <c:out value="${friendInfo.userNo }" />
+					<script>
+						var test = ${board.boardNo}
+						console.log("#태그 용 번호 : " + test);
+					</script>
 				</div>
+				
 				<div>
 					<c:set var="cont" value="신고접수된 글입니다." />
 					<c:set var="boardcont" value="${board.boardContent}" />
 					<c:if test="${boardcont ne cont}">
-					사진: <img
-							src="<c:url value='${pageContext.request.contextPath}/uploadfile/${board.boardPhotoFile}' />">
+					사진: <img src="<c:url value='${pageContext.request.contextPath}/uploadfile/${board.boardPhotoFile}' />">
 						<%-- <c:out value="${board.boardPhotoFile }" /> --%>
 					</c:if>
 				</div>
+				
 				<div>
-					내용:
-					<c:out value="${board.boardContent }" />
+					내용: <c:out value="${board.boardContent }" />
 				</div>
+				
 				<div>
-					해시태그:
-					<c:out value="${board.hashTag }" />
+					해시태그: <c:out value="${board.hashTag }" />
 				</div>
+				
 				<div>
-					등록일:
-					<fmt:formatDate pattern="yyyy-MM-dd" value="${board.boardDate }" />
+					등록일: <fmt:formatDate pattern="yyyy-MM-dd" value="${board.boardDate }" />
 				</div>
-				<div>
-					<c:if test="${boardcont ne cont}">
-						<a
-							href="${pageContext.request.contextPath}/board/edit?boardno=<c:out value="${board.boardNo}"/>">수정</a>
-						<a
-							href='${pageContext.request.contextPath}/board/delete?boardno=<c:out value="${board.boardNo}" />&userid=<c:out value="${friendInfo.userId }" />'>삭제</a>
-					</c:if>
-				</div>
+				
 				<div>
 					<c:if test="${boardcont ne cont}">
-					<input type="hidden" id="reportChk" value="${board.reportCheck}">
-						<button class="btn btn-default"
-							<%-- Onclick="reportNo(${board.boardNo})" --%> value="${board.boardNo }">신고하기</button>
+						<a href="${pageContext.request.contextPath}/board/edit?boardno=<c:out value="${board.boardNo}"/>">수정</a>
+						<script>
+							var test = ${board.boardNo}
+							console.log("수정용 번호 : " + test);
+						</script>
+						<a href='${pageContext.request.contextPath}/board/delete?boardno=<c:out value="${board.boardNo}" />&userid=<c:out value="${friendInfo.userId }" />'>삭제</a>
+						<script>
+							var test = ${board.boardNo}
+							console.log("삭제용 번호 : " + test);
+						</script>
 					</c:if>
 				</div>
-				<span id="isGood_${board.boardNo}">좋아요 : <c:if
-						test="${isGoodList.isEmpty()}">0</c:if> <c:if
-						test="${!isGoodList.isEmpty() }">
+				
+				<div>
+					<c:if test="${boardcont ne cont}">
+						<input type="hidden" id="reportChk" value="${board.reportCheck}">
+							<button class="btn btn-default" <%-- Onclick="reportNo(${board.boardNo})" --%> value="${board.boardNo }">신고하기</button>
+							<script>
+								var test = ${board.boardNo}
+								console.log("신고 용 번호 : " + test);
+							</script>
+					</c:if>
+				</div>
+				
+				<span id="isGood_${board.boardNo}">좋아요 : 
+					<script>
+						var test = ${board.boardNo}
+						console.log("좋아요 용 번호 : " + test);
+					</script>
+					<c:if test="${isGoodList.isEmpty()}">0</c:if> 
+					<c:if test="${!isGoodList.isEmpty() }">
 						<c:forEach var="isGood" items="${isGoodList}">
 							<c:if test="${board.boardNo eq isGood.boardNo}">
-							${isGood.isGoodCnt}
-						</c:if>
+								${isGood.isGoodCnt}
+							</c:if>
 						</c:forEach>
 					</c:if>
-				</span> <span> <c:if test="${boardcont ne cont}">
+				</span> 
+				
+				<span> 
+					<c:if test="${boardcont ne cont}">
 						<button class="isGoodBnt" value="${board.boardNo}">좋아요!</button>
+						<script>
+								var test = ${board.boardNo}
+								console.log("좋아요 후 번호 : " + test);
+						</script>
 					</c:if>
 				</span><br>
+				
 				<c:if test="${boardcont ne cont}">
 					<span><a href="${pageContext.request.contextPath}/board/comment?boardNo=${board.boardNo}">[댓글달기]</a></span>
+					<script>
+						var test = ${board.boardNo}
+						console.log("댓글 달기용 번호 : " + test);
+					</script>
 					<br>
-					<span><button class="commBtn" value="${board.boardNo}">댓글...댓글을
-							보자!</button></span>
+					<span>
+						<button class="commBtn" value="${board.boardNo}">댓글...댓글을보자!</button></span>
 							<script>
-								console.log(${board.boardNo});
+								var test = ${board.boardNo}
+								console.log("댓글 보기용 번호 : " + test);
 							</script>
 				</c:if>
-				<div class="commentSection" id="commHidden_${board.boardNo}"
-					style="display: none;"></div>
+				
+				<div class="commentSection" id="commHidden_${board.boardNo}" style="display: none;">
+					<script>
+						var test = ${board.boardNo}
+						console.log("댓글 숨기기용 번호 : " + test);
+					</script>
+				</div>
 
-			</div>
+				</div>
 		</c:forEach>
 	</section>
 
+
+
 	<!-- 해당페이지로 가게 넘버링 해주기 -->
 	<c:forEach var="num" begin="1" end="${viewData.pageTotalCount}">
-		<a
-			href='${pageContext.request.contextPath}/friend/friendsPage/${friendInfo.userNo}?userId=<c:out value="${friendInfo.userId }" />&page=${num}'>[${num}]</a>
+		<a href='${pageContext.request.contextPath}/friend/friendsPage/${friendInfo.userNo}?userId=<c:out value="${friendInfo.userId }" />&page=${num}'>[${num}]</a>
 	</c:forEach>
 	
 		<script>
 		$('.commBtn').click(function() {
-			   	var userId = '${friendInfo.userId}';
+			   	var userId = '${loginInfo.userId}';
 				var bNo = $(this).val();
+				console.log(bNo);
 				/* alert(bNo); */
 				var commList = [];
 				var comm = "";
@@ -220,7 +258,7 @@
 					
 					$.ajax({
 						type: "GET",
-						url: "viewComment",
+						url: "${pageContext.request.contextPath}/board/viewComment",
 						data: {"bNo":bNo},
 						dataType: "JSON",
 					 	success: function(data){
@@ -249,13 +287,13 @@
 		});
 		</script>
 		
-			<script>
+		<script>
 			$('.isGoodBnt').click(function() {
 				var boardNo = $(this).val();
 				var userNo = ${friendInfo.userNo}
 				 $.ajax({
 				 	type: "POST",
-					url: "isGoodBoard",
+					url: "${pageContext.request.contextPath}/board/isGoodBoard",
 					data: {"boardNo":boardNo, "userNo":userNo},
 				 	success: function(data){
 				 		$('#isGood_'+boardNo).empty(),
@@ -266,44 +304,43 @@
 		</script>
 		
 		<script>
-		
-		$('.btn').click(function() {
-			var boardNo = $(this).val();
-			var userNo = '${friendInfo.userNo}';
-			var chk = confirm('신고하시겠습니까?');
-		
-			/* 루트기준 절대경로 */
-			var url = '/springsns/reportcnt';
-			var url2 = '/springsns';
-			var url3 = '${pageContext.request.contextPath}/friend/friendsPage/${friendInfo.userNo}';
-			$.ajax({
-				url : url,
-				data : {
-					"boardNo" : boardNo
-				}, 
-				success : function(chk, response) {
-					if (response == 1 && chk) {
-						$('#reportChk').val('true');
-						$('.btn').attr('disabled', true);
-					}
-				}
-			});
+			$('.btn').click(function() {
+				var boardNo = $(this).val();
+				var userNo = '${friendInfo.userNo}';
+				var chk = confirm('신고하시겠습니까?');
 			
-			$.ajax({
-				url : url2,
-				data : {
-					"boardNo" : boardNo,
-					"userNo" : userNo
-				},
-				success : function reportNo(chk){
-					if (chk) {
-						//location.href='report?boardNo='+boardNo+'&userNo='+userNo;
-						location.href=url3;
+				/* 루트기준 절대경로 */
+				var url = '${pageContext.request.contextPath}/reportcnt';
+				var url2 = '${pageContext.request.contextPath}';
+				var url3 = '${pageContext.request.contextPath}/friend/friendsPage/${friendInfo.userNo}';
+				$.ajax({
+					url : url,
+					data : {
+						"boardNo" : boardNo
+					}, 
+					success : function(chk, response) {
+						if (response == 1 && chk) {
+							$('#reportChk').val('true');
+							$('.btn').attr('disabled', true);
 						}
 					}
 				});
 				
-			});
+				$.ajax({
+					url : url2,
+					data : {
+						"boardNo" : boardNo,
+						"userNo" : userNo
+					},
+					success : function reportNo(chk){
+						if (chk) {
+							location.href='/report?boardNo='+boardNo+'&userNo='+userNo;
+							//location.href=url3;
+							}
+						}
+					});
+					
+				});
 		</script>
 </body>
 </html>

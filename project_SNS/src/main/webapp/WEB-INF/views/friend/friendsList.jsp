@@ -20,7 +20,7 @@
 <style>
 table {
 	border: 1px solid black;
-	width: 1200px;
+	width: 700px;
 }
 #friendmenu{
 	padding: 20px;
