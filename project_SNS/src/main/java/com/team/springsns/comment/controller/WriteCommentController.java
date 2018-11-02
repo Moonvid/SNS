@@ -30,7 +30,7 @@ public class WriteCommentController {
 		
 		modelAndView.addObject("userId", userId);
 		modelAndView.setViewName("redirect:/board/boardList");
-		
+		//언니바봉..
 		writeCommentService.writeComment(commentDTO);
 		
 		return modelAndView;

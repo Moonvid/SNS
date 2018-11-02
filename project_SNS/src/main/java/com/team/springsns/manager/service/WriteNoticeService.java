@@ -38,7 +38,7 @@ public class WriteNoticeService {
 				if (!notice.getNoticeFile().isEmpty()) {
 
 					imgName = notice.getNoticeNo() + "_" + notice.getNoticeFile().getOriginalFilename();
-
+					System.out.println("공지사항 controller: "+notice.getNoticeNo());
 					// 물리적 저장
 					notice.getNoticeFile().transferTo(new File(dir, imgName));
 
