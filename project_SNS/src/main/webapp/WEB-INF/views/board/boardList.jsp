@@ -70,7 +70,7 @@
 				<div>
 					<c:if test="${boardcont ne cont}">
 					<input type="hidden" id="reportChk" value="${board.reportCheck}">
-						<button class="btn btn-default"
+						<button class="btn2 btn-default2"
 							<%-- Onclick="reportNo(${board.boardNo})" --%> value="${board.boardNo }">신고하기</button>
 					</c:if>
 				</div>
@@ -172,7 +172,7 @@ $('.commBtn').click(function() {
 
 <script>
 
-$('.btn').click(function() {
+$('.btn2').click(function() {
 	var boardNo = $(this).val();
 	var userNo = '${loginInfo.userNo}';
 	var chk = confirm('신고하시겠습니까?');
