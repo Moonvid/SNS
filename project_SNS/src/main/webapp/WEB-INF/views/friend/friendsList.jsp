@@ -20,7 +20,7 @@
 <style>
 table {
 	border: 1px solid black;
-	width: 1100px;
+	width: 1500px;
 }
 #friendmenu{
 	padding: 20px;
@@ -55,7 +55,9 @@ text-align: center;
 				<td id="friendname"><a href="friendsPage/${friends.userNo}">${friends.userName}</a></td>
 			
 				<td id="friendname"><button class="remove" value="${loginInfo.userNo},${friends.userNo}" onclick="Remove(this)">친구 해제</button></td>
-					
+		
+			<%-- ${friends.userId },${friends.userName },${friends.friendNo },${friends.userNo } --%>
+			
 				<td><button onclick="location.href='${pageContext.request.contextPath}/MessageFrom/MessageFrom?recvid=${friends.userId }&sendid=${loginInfo.userId }'" >쪽지보내기</button></td>
 			</tr>
 		</c:forEach>
@@ -71,7 +73,7 @@ text-align: center;
 <c:if test="${!empty requestList}">
 	<table>
 		<tr>
-			<td>FriendName</td>
+			<td rowspan=2>FriendName</td>
 		</tr>
 		<c:forEach var="request" items="${requestList}">
 			<tr>
