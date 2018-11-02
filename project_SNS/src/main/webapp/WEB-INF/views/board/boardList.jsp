@@ -178,10 +178,10 @@ $('.commBtn').click(function() {
 
 	<script>
 	$('.isGoodBnt').click(function() {
-		if($(this).html()=='좋아요'){
-			$(this).html('안좋아요');
-		}else{
+		if($(this).html()=='안좋아요'){
 			$(this).html('좋아요');
+		}else{
+			$(this).html('안좋아요');
 		}
 		
 		var boardNo = $(this).val();
