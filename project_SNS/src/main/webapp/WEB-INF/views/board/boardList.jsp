@@ -33,8 +33,7 @@
 		<div>
 			<h1>내가 쓴 게시글</h1>
 		</div>
-		<c:forEach items="${viewData.boardList}" var="board"
-			varStatus="boardI">
+		<c:forEach items="${viewData.boardList}" var="board" varStatus="boardI">
 			<div class="userBoard">
 				<div>
 					#번호: ${boardI.count },	로그인 userno:
@@ -44,8 +43,8 @@
 					<c:set var="cont" value="신고접수된 글입니다." />
 					<c:set var="boardcont" value="${board.boardContent}" />
 					<c:if test="${boardcont ne cont}">
-					사진: <img
-							src="<c:url value='/uploadfile/${board.boardPhotoFile}' />">
+					<%-- 사진: <img
+							src="<c:url value='/uploadfile/${board.boardPhotoFile}' />"> --%>
 						<%-- <c:out value="${board.boardPhotoFile }" /> --%>
 					</c:if>
 				</div>

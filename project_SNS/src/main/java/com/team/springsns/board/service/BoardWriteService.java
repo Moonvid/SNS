@@ -38,14 +38,14 @@ public class BoardWriteService {
 		// DB 저장용 파일 이름, 물리적 저장할때의 이름
 		String imgName = "";
 
-		if (!board.getBoardPhotoFile().isEmpty()) {
+/*		if (!board.getBoardPhotoFile().isEmpty()) {
 			imgName = board.getBoardNo() + "_" + board.getUserNo()+ "_" + board.getBoardPhotoFile().getOriginalFilename();
 
 			board.getBoardPhotoFile().transferTo(new File(dir, imgName));
 
 			board.setBoardPhoto(imgName);
 		}
-
+*/
 		return dao.insert(board);
 	}
 
