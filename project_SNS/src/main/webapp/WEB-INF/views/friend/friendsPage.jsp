@@ -51,26 +51,23 @@
 	
 	<c:if test="${chkFriends==0}">
 	<span class="${loginInfo.userNo}"><button id="${loginInfo.userNo}" value="${loginInfo.userNo},${loginInfo.userName},${friendInfo.userNo},${friendInfo.userName}" onclick="friendReg(this)">[친구신청]</button></span>
+	<script>
+		var aarray = $('button[onclick="friendReg(this)"]').val().split(',');
+		var cancelRequest1='<td class="1"><button value ="'+aarray[0]+','+aarray[1]+','+aarray[2]+','+aarray[3]+'" onclick="cancelReg(this)">[요청취소]</button></td>';
+		console.log($('input[type="hidden"]').val());
+		if($('input[type="hidden"]').val()=='false'){
+			$('button[onclick="friendReg(this)"]').text('[요청중...]');
+			$('button[onclick="friendReg(this)"]').attr('disabled',true);
+			$('.${loginInfo.userNo}').after(cancelRequest1);
+		}
+	</script>
+	
 	</c:if>
 	
 	<script>
 	/* 로그인 되어있는 상태의 입장이라 생각하고 진행 */
 	/* 친구신청 페이지 들어왔을떄 요청 중인지 아닌지 확인하기 위한 코드 */
 	
-	$(document).ready(function(){
-		var aarray = $('button[onclick="friendReg(this)"]').val().split(',');
-		var cancelRequest1='<td class="1"><button value ="'+aarray[0]+','+aarray[1]+','+aarray[2]+','+aarray[3]+'" onclick="cancelReg(this)">[요청취소]</button></td>';
-		console.log($('input[type="hidden"]').val());
-		
-		if($('input[type="hidden"]').val()=='false'){
-			$('button[onclick="friendReg(this)"]').text('[요청중...]');
-			$('button[onclick="friendReg(this)"]').attr('disabled',true);
-			$('.${loginInfo.userNo}').after(cancelRequest1); 
-		}
-		
-		
-		
-	});
 	
 	/* 요청 버튼 누르면 요청중 으로 변경 */
 	function friendReg(data){
@@ -126,6 +123,7 @@
 	
 	</script>
 	
+	<!-- ------------------------------------------------------------------------------------------------------------------------------ -->
 	
 	<!-- 친구 페이지 게시글 표시 -->
 	<section id="boardSection">
@@ -142,7 +140,7 @@
 					<c:set var="boardcont" value="${board.boardContent}" />
 					<c:if test="${boardcont ne cont}">
 					사진: <img
-							src="<c:url value='/uploadfile/${board.boardPhotoFile}' />">
+							src="<c:url value='${pageContext.request.contextPath}/uploadfile/${board.boardPhotoFile}' />">
 						<%-- <c:out value="${board.boardPhotoFile }" /> --%>
 					</c:if>
 				</div>
@@ -161,9 +159,9 @@
 				<div>
 					<c:if test="${boardcont ne cont}">
 						<a
-							href="<%=request.getContextPath()%>/board/edit?boardno=<c:out value="${board.boardNo}"/>">수정</a>
+							href="${pageContext.request.contextPath}/board/edit?boardno=<c:out value="${board.boardNo}"/>">수정</a>
 						<a
-							href='<%=request.getContextPath()%>/board/delete?boardno=<c:out value="${board.boardNo}" />&userid=<c:out value="${friendInfo.userId }" />'>삭제</a>
+							href='${pageContext.request.contextPath}/board/delete?boardno=<c:out value="${board.boardNo}" />&userid=<c:out value="${friendInfo.userId }" />'>삭제</a>
 					</c:if>
 				</div>
 				<div>
@@ -187,10 +185,13 @@
 					</c:if>
 				</span><br>
 				<c:if test="${boardcont ne cont}">
-					<span><a href="comment?boardNo=${board.boardNo}">[댓글달기]</a></span>
+					<span><a href="${pageContext.request.contextPath}/board/comment?boardNo=${board.boardNo}">[댓글달기]</a></span>
 					<br>
 					<span><button class="commBtn" value="${board.boardNo}">댓글...댓글을
 							보자!</button></span>
+							<script>
+								console.log(${board.boardNo});
+							</script>
 				</c:if>
 				<div class="commentSection" id="commHidden_${board.boardNo}"
 					style="display: none;"></div>
