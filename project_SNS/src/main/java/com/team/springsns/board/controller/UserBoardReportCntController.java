@@ -21,8 +21,7 @@ public class UserBoardReportCntController {
 	@ResponseBody
 	public int reportCnt(@RequestParam("boardNo") int boardNo, Model model) {
 		
-		// boardNo넣어줌! reportcnt = 0값 들어감!
-		service.reportPlus(boardNo);
+	
 		
 		// 업데이트해줌 카운트 + 1
 		// 업데이트됐으면 1값반환될듯..?

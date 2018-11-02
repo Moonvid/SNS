@@ -22,7 +22,7 @@ public class UserBoardReportController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
-	public ModelAndView report(@RequestParam("boardNo") int boardNo, @RequestParam("userNo") int userNo,
+	public void report(@RequestParam("boardNo") int boardNo, @RequestParam("userNo") int userNo,
 			HttpServletRequest request) {
 
 		MemberInfo loginInfo = (MemberInfo) request.getSession(false).getAttribute("loginInfo");
@@ -30,9 +30,13 @@ public class UserBoardReportController {
 
 		ModelAndView modelAndView = new ModelAndView();
 
+		
+		// boardNo넣어줌! reportcnt = 0값 들어감!
+		service.reportPlus(boardNo);
+
 		// boardNo, userNo 넣어줌!
 		service.report(boardNo, userNo);
-
+				
 		// 신고카운트된 값반환해줌!
 		int result = service.reportCnt(boardNo);
 		int chk = service.reportBool(boardNo);
@@ -48,7 +52,8 @@ public class UserBoardReportController {
 		modelAndView.addObject("result", result);
 		// 메인페이지로 보내줌!
 		modelAndView.setViewName("forward:/board/boardList?userId="+userId);
-		return modelAndView;
+		
+		//return modelAndView;
 
 	}
 
