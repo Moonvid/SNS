@@ -334,7 +334,7 @@
 					},
 					success : function reportNo(chk){
 						if (chk) {
-							location.href='/report?boardNo='+boardNo+'&userNo='+userNo;
+							location.href='${pageContext.request.contextPath}/board/report?boardNo='+boardNo+'&userNo='+userNo;
 							//location.href=url3;
 							}
 						}
