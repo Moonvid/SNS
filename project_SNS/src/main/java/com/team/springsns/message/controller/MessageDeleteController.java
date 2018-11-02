@@ -21,7 +21,8 @@ public class MessageDeleteController {
 	public ModelAndView deleteMessage(MessageWriteInfo messageWriteInfo) throws UnsupportedEncodingException {
 		ModelAndView modelAndView = new ModelAndView();
 		int result = service.MessageDelete(messageWriteInfo);
-
+		
+		//삭제 버튼 눌러서 온 파라미터 인코딩
 		if (result == 1) {
 			String recvId = URLEncoder.encode(messageWriteInfo.getRecvid(), "utf-8");
 			modelAndView.setViewName("redirect:/MessageTo/MessageTo?recvid=" + recvId);

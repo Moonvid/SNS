@@ -15,4 +15,7 @@
 	<select id="searchIdData" parameterType="com.team.springsns.search.vo.DataVO" resultType="com.team.springsns.search.vo.DataVO">
 		select * from board where userno = #{userno}
 	</select>
+	<select id="searchUserId" parameterType="com.team.springsns.friend.model.FriendsListView" resultType="com.team.springsns.friend.model.FriendsListView">
+		select * from member where userno = #{userNo}
+	</select>
 </mapper>

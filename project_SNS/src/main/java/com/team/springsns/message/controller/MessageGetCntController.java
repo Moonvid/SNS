@@ -24,14 +24,15 @@ public class MessageGetCntController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView goWhoRecv(MessageWriteInfo messageWriteInfo,HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
+//		세션에 있는 로그인 유저 아이디 받아옴 
 		String recvid = (String)(((MemberInfo)session.getAttribute("loginInfo")).getUserId());
 		
 		messageWriteInfo.setRecvid(recvid);
 		MessageWriteInfo resultInfo = service.getCntMessage(messageWriteInfo);
 		List<MessageWriteInfo> messageInfo = service.getMessage(messageWriteInfo);
 
-		
 		resultInfo.setRecvid(messageWriteInfo.getRecvid());
+		
 		modelAndView.addObject("resultInfo", resultInfo);
 		modelAndView.addObject("messageInfo", messageInfo);
 		modelAndView.setViewName("MessageTo/MessageTo");

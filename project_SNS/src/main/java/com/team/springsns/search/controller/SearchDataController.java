@@ -21,10 +21,9 @@ public class SearchDataController {
 		SearchAndPageResultData dataDao = new SearchAndPageResultData();
 		
 		dataDao = service.getSearchData(search);
-
-		System.out.println(dataDao);
 		
 		modelAndView.addObject("dataVO", dataDao.getQueryResult());
+		modelAndView.addObject("userVO", dataDao.getFriendsListView());
 		modelAndView.addObject("search",search);
 		modelAndView.setViewName("check");
 		
