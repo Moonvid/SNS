@@ -202,7 +202,7 @@
 	<!-- 해당페이지로 가게 넘버링 해주기 -->
 	<c:forEach var="num" begin="1" end="${viewData.pageTotalCount}">
 		<a
-			href='boardList?userId=<c:out value="${friendInfo.userId }" />&page=${num}'>[${num}]</a>
+			href='${pageContext.request.contextPath}/friend/friendsPage/${friendInfo.userNo}?userId=<c:out value="${friendInfo.userId }" />&page=${num}'>[${num}]</a>
 	</c:forEach>
 	
 		<script>
