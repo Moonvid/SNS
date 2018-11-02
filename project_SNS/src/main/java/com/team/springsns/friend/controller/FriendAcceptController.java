@@ -12,7 +12,7 @@ import com.team.springsns.friend.service.FriendAcceptService;
 
 @Controller
 public class FriendAcceptController {
-	  
+	
 	@Autowired
 	private FriendAcceptService acceptService;
 	
@@ -31,7 +31,7 @@ public class FriendAcceptController {
 		System.out.println("insertCnt의 값 : " + insertCnt );
 		System.out.println("accept용 deleteCnt의 값 : " + deleteCnt );
 		
-		return "team/friendsList";
+		return "friend/friendsList";
 	}
 	
 	@RequestMapping("/friendDeny")
@@ -45,7 +45,7 @@ public class FriendAcceptController {
 		System.out.println("deny용 deleteCnt의 값 : " + deleteCnt);
 		
 		
-		return "team/friendsList";
+		return "friend/friendsList";
 		
 	}
 	

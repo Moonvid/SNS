@@ -11,7 +11,7 @@ import com.team.springsns.friend.service.FriendRequestService;
 
 @Controller
 public class FriendRegController {
-  
+
 	@Autowired
 	private FriendRequestService requestService;
 
