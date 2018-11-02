@@ -30,6 +30,7 @@ public class UserBoardListController {
 		System.out.println("@@@s");
 		String pageNumberStr = request.getParameter("page");
 		String userId = request.getParameter("userId");
+//		String result = request.getParameter("result");
 
 		List<CountIsGoodDTO> isGoodList = new ArrayList<CountIsGoodDTO>();
 		
@@ -46,6 +47,7 @@ public class UserBoardListController {
 
 		modelAndView.setViewName("board/boardList");
 		modelAndView.addObject("viewData", viewData);
+		/*modelAndView.addObject("result", result);*/
 		//modelAndView.addObject("userId", userId);
 		modelAndView.addObject("isGoodList", isGoodList);
 

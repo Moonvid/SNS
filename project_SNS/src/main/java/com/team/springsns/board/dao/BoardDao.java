@@ -27,5 +27,6 @@ public interface BoardDao {
 	public int reportcntPlus(@Param("boardNo") int boardNo);
 	public int reportcntCnt(int boardNo);
 	public int reportcntUp(int boardNo);
+	public int reportBoolean(int boardNo);
 	
 }

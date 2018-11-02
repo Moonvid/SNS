@@ -70,8 +70,9 @@
 				<div>
 					<c:if test="${boardcont ne cont}">
 					<input type="hidden" id="reportChk" value="${board.reportCheck}">
-						<button class="btn2 btn-default2"
-							<%-- Onclick="reportNo(${board.boardNo})" --%> value="${board.boardNo }">신고하기</button>
+						<button class="btn btn-default rechk"
+							<%-- Onclick="reportNo(${board.boardNo})" --%> value="${board.boardNo}">신고하기</button>
+							<span>신고된갯수 : ${result }</span>
 					</c:if>
 				</div>
 				<span id="isGood_${board.boardNo}">좋아요 : <c:if
@@ -203,41 +204,44 @@ $('.commBtn').click(function() {
 
 <script>
 
-$('.btn2').click(function() {
+$('.rechk').click(function() {
 	var boardNo = $(this).val();
 	var userNo = '${loginInfo.userNo}';
 	var chk = confirm('신고하시겠습니까?');
-
-	/* 루트기준 절대경로 */
-	var url = '/springsns/reportcnt';
-	var url2 = '/springsns';
-	$.ajax({
-		url : url,
-		data : {
-			"boardNo" : boardNo
-		}, 
-		success : function(chk, response) {
-			if (response == 1 && chk) {
-				$('#reportChk').val('true');
-				$('.btn').attr('disabled', true);
-			}
-		}
-	});
+	var url = '/springsns';
+	var chch = '${!board.reportCheck}';
+	
 	
 	$.ajax({
-		url : url2,
+		url : url,
 		data : {
 			"boardNo" : boardNo,
 			"userNo" : userNo
 		},
 		success : function reportNo(chk){
 			if (chk) {
+				alert('첫번쨰완료');
 				location.href='report?boardNo='+boardNo+'&userNo='+userNo;
 				}
 			}
 		});
-		
+	
+	$.ajax({
+		url : url + '/reportcnt',
+		data : {
+			"boardNo" : boardNo
+		}, 
+		success : function(result) {
+			if (result == 1 && chk) {
+			alert('두번째성공');
+			alert(chch);
+				$('#reportChk').val(chch);
+				$('.rechk').attr('disabled', true);
+			}
+		}
 	});
+});
+
 </script>
 </body>
 </html>

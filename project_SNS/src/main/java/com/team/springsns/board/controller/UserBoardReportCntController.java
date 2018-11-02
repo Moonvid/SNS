@@ -2,6 +2,7 @@ package com.team.springsns.board.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,15 +17,20 @@ public class UserBoardReportCntController {
 	@Autowired
 	private BoardReportService service;
 	
-	@RequestMapping(method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
-	public int reportCnt(@RequestParam("boardNo") int boardNo) {
+	public int reportCnt(@RequestParam("boardNo") int boardNo, Model model) {
+		
+		// boardNo넣어줌! reportcnt = 0값 들어감!
+		service.reportPlus(boardNo);
 		
 		// 업데이트해줌 카운트 + 1
 		// 업데이트됐으면 1값반환될듯..?
-		return service.reportUpdate(boardNo);
-		
-		
-	}
+		int result = service.reportUp(boardNo);
 
+		System.out.println("카운트 +1 "+ result);
+		
+		return result;
+
+	}
 }

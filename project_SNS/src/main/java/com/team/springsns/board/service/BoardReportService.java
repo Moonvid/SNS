@@ -46,9 +46,14 @@ public class BoardReportService {
 	}
 	
 	// 신고받으면 신고카운트 +1해줌
-	public int reportUpdate(int boardNo) {
+	public int reportUp(int boardNo) {
 		dao = sqlSessionTemplate.getMapper(BoardDao.class);
 		return dao.reportcntUp(boardNo);
+	}
+	
+	public int reportBool(int boardNo) {
+		dao = sqlSessionTemplate.getMapper(BoardDao.class);
+		return dao.reportBoolean(boardNo);
 	}
 
 }
