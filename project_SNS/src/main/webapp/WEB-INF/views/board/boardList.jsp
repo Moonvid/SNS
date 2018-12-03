@@ -70,11 +70,13 @@
 				</div>
 				<div>
 					<c:if test="${boardcont ne cont}">
-					${board.reportCheck}
-						<input type="hidden" id="reportChk" value="${board.reportCheck}">
-						<button class="btn btn-default rechk" <c:if test="${board.reportCheck}"> disabled </c:if>
+						<%-- <input type="hidden" id="reportChk" name="reportCheck" value="${reportOk.reportCheck}"> --%>
+						<button class="btn btn-default rechk"  
+						<c:forEach var="re" items="${reportOk}">
+						<c:if test="${re.boardNo eq board.boardNo and re.reportCheck == 1}"> disabled </c:if> 
+						</c:forEach>
 							<%-- Onclick="reportNo(${board.boardNo})" --%> value="${board.boardNo}" >신고하기</button>
-						<span>신고된갯수 : ${result }</span>
+						<%-- <span>신고된갯수 : ${result }</span> --%>
 					</c:if>
 				</div>
 				<span id="isGood_${board.boardNo}">좋아요 : <c:if
@@ -120,6 +122,7 @@
 	<script>
 		$(document).ready(function() {
 			var userNo = ${loginInfo.userNo};
+			var reportOk = ${reportOk};
 			$.ajax({
 				type : "GET",
 				url : "isGood",
@@ -236,15 +239,14 @@
 				function() {
 					var obj = $(this);
 					var boardNo = $(this).val();
-					var userNo = '${loginInfo.userNo}';
+					var userId = '${loginInfo.userId}';
 					var chk = confirm('신고하시겠습니까?');
 					var url = '/springsns';
 					var chch = '${!board.reportCheck}';
 					if (chk) {
 					$.ajax({
-						url : url+'/board/report?boardNo='+ boardNo+'&userNo='+userNo,
+						url : url+'/board/report?boardNo='+ boardNo+'&userId='+userId,
 						success : function (data) {
-							console.log('아싸성공')
 							
 							$.ajax({
 								url : url + '/reportcnt',

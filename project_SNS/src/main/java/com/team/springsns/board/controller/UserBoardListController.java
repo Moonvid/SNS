@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.team.springsns.board.model.Board;
 import com.team.springsns.board.model.BoardListView;
 import com.team.springsns.board.service.BoardListService;
+import com.team.springsns.board.service.BoardReportService;
 import com.team.springsns.isgood.model.CountIsGoodDTO;
 import com.team.springsns.isgood.sevice.GetIsGoodCountAllService;
 
@@ -25,6 +27,9 @@ public class UserBoardListController {
 	@Autowired
 	private GetIsGoodCountAllService getIsGoodCountAllService;
 	
+	@Autowired
+	private BoardReportService boardReportService;
+	
 	@RequestMapping(value="board/boardList", method = RequestMethod.GET)
 	public ModelAndView getBoardList(HttpServletRequest request) {
 		System.out.println("@@@s");
@@ -33,8 +38,11 @@ public class UserBoardListController {
 //		String result = request.getParameter("result");
 
 		List<CountIsGoodDTO> isGoodList = new ArrayList<CountIsGoodDTO>();
+		List<Board> reOk = new ArrayList<Board>();
 		
 		isGoodList = getIsGoodCountAllService.getIsGoodCountAll();
+		reOk = boardReportService.reportCom(userId);
+		
 		
 		int pageNumber = 1;
 		if (pageNumberStr != null) {
@@ -50,6 +58,7 @@ public class UserBoardListController {
 		/*modelAndView.addObject("result", result);*/
 		//modelAndView.addObject("userId", userId);
 		modelAndView.addObject("isGoodList", isGoodList);
+		modelAndView.addObject("reportOk", reOk);
 
 		return modelAndView;
 	}

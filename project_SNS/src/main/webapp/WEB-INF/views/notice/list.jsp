@@ -60,7 +60,8 @@ a {
 
 	<c:if test="${!viewData.isEmpty()}">
 		<div id="wrap">
-			<h1 id="title" style="text-align: center;">공지사항</h1><br>
+			<h1 id="title" style="text-align: center;">공지사항</h1>
+			<br>
 
 			<form>
 				<table class="table table-hover">
@@ -90,11 +91,20 @@ a {
 			</form>
 		</div>
 		<!-- 해당페이지로 가게 넘버링 해주기 -->
-		<div id="paging">
+
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+			<c:forEach var="num" begin="1" end="${viewData.pageTotalCount}">
+				<li class="page-item"><a class="page-link" href="list?page=${num}">${num}</a></li>
+			</c:forEach>
+			</ul>
+		</nav>
+ 
+		<%-- <div id="paging">
 			<c:forEach var="num" begin="1" end="${viewData.pageTotalCount}">
 				<a href="list?page=${num}">[${num}]</a>
 			</c:forEach>
-		</div>
+		</div> --%>
 	</c:if>
 </body>
 </html>

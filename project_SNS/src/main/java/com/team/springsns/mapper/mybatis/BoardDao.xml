@@ -104,16 +104,16 @@
 	</update>
 
 	<!-- 신고버튼누르면 신고해주는쿼리 -->
-	<insert id="reportUp" parameterType="int">
+	<insert id="reportUp">
 		insert into report
 		(boardno,
-		userno)
+		userid)
 		values
-		(#{boardNo}, #{userNo})
+		(#{boardNo}, #{userId})
 	</insert>
 
 	<!-- 신고들어왔을때, boardno값 넣어주고 default값 = 0으로 들어감! -->
-	<insert id="reportcntPlus" parameterType="int">
+	<insert id="reportcntPlus">
 		insert into report_cnt
 		(boardno) values (#{boardNo})
 	</insert>
@@ -135,12 +135,17 @@
 
 	<!-- 트루로 바꿔줌 -->
 	<update id="reportBoolean"
-		parameterType="com.team.springsns.board.model.Board">
+		parameterType="int">
 		update report
-		set reportcheck = true
+		set reportcheck = 1
 		where boardno =
 		#{boardNo}
 	</update>
+	
+	<!-- 신고여부 확인 -->
+	<select id="reportCom"  resultType="com.team.springsns.board.model.Board">
+		select * from report where userId = #{userId}
+	</select>
 
 
 </mapper>

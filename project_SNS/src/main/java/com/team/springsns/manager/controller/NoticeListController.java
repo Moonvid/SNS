@@ -25,15 +25,10 @@ public class NoticeListController {
 		if (pageNumberStr != null) {
 			pageNumber = Integer.parseInt(pageNumberStr);
 		}
-		
 		NoticeListView viewData = service.getNoticeList(pageNumber);
-
 		ModelAndView modelAndView = new ModelAndView();
-
-		// view name 설정
+		
 		modelAndView.setViewName("notice/list");
-
-		// view에 결과 데이터를 전달(공유)
 		modelAndView.addObject("viewData", viewData);
 		
 		return modelAndView;

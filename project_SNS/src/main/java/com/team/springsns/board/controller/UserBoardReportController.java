@@ -1,5 +1,6 @@
 package com.team.springsns.board.controller;
 
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class UserBoardReportController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
-	public void report(@RequestParam("boardNo") int boardNo, @RequestParam("userNo") int userNo,
+	public void report(@RequestParam("boardNo") int boardNo,
 			HttpServletRequest request) {
 
 		MemberInfo loginInfo = (MemberInfo) request.getSession(false).getAttribute("loginInfo");
@@ -35,23 +36,26 @@ public class UserBoardReportController {
 		service.reportPlus(boardNo);
 
 		// boardNo, userNo 넣어줌!
-		service.report(boardNo, userNo);
+		service.report(boardNo, userId);
 				
 		// 신고카운트된 값반환해줌!
 		int result = service.reportCnt(boardNo);
-		int chk = service.reportBool(boardNo);
+		service.reportBool(boardNo);
 		
 		if (result >= 3) {
 			// 신고접수되고 내용 수정해줌!
 			service.updateReport(boardNo);
 		}
+		
+		/*List<Board> reOk = service.reportCom(userId);*/
 
 		System.out.println("신고카운트된 갯수" + result);
 
 		modelAndView.addObject("userId", userId);
 		modelAndView.addObject("result", result);
+		/*modelAndView.addObject("reportOk", reOk);*/
 		// 메인페이지로 보내줌!
-		modelAndView.setViewName("forward:/board/boardList?userId="+userId);
+		modelAndView.setViewName("redirect:/board/boardList?userId="+userId);
 		
 		//return modelAndView;
 

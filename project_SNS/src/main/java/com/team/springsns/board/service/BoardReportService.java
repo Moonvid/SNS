@@ -1,11 +1,14 @@
 package com.team.springsns.board.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.team.springsns.board.dao.BoardDao;
+import com.team.springsns.board.model.Board;
 
 @Service
 public class BoardReportService {
@@ -28,9 +31,9 @@ public class BoardReportService {
 	
 	// 보드넘버, 유저넘버 넣어줌!
 	@Transactional
-	public int report(int boardNo, int userNo) {
+	public int report(int boardNo, String userId) {
 		dao = sqlSessionTemplate.getMapper(BoardDao.class);
-		return dao.reportUp(boardNo, userNo);
+		return dao.reportUp(boardNo, userId);
 	}
 	
 	// 신고건수 반환
@@ -54,6 +57,11 @@ public class BoardReportService {
 	public int reportBool(int boardNo) {
 		dao = sqlSessionTemplate.getMapper(BoardDao.class);
 		return dao.reportBoolean(boardNo);
+	}
+	
+	public List<Board> reportCom(String userId) {
+		dao = sqlSessionTemplate.getMapper(BoardDao.class);
+		return dao.reportCom(userId);
 	}
 
 }

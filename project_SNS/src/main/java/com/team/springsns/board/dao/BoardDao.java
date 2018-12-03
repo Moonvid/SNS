@@ -23,10 +23,11 @@ public interface BoardDao {
 	
 	/*public int reportCnt(int boardNo); // 신고건수*/	
 	public int report(int boardNo); // 신고받은 게시글 바꿔주기
-	public int reportUp(@Param("boardNo") int boardNo, @Param("userNo") int userNo); // 추가
+	public int reportUp(@Param("boardNo") int boardNo, @Param("userId") String userId); // 추가
 	public int reportcntPlus(@Param("boardNo") int boardNo);
 	public int reportcntCnt(int boardNo);
 	public int reportcntUp(int boardNo);
 	public int reportBoolean(int boardNo);
+	public List<Board> reportCom(@Param("userId") String userId);
 	
 }
